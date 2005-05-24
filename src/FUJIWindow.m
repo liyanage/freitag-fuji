@@ -46,9 +46,16 @@
 		[self clearKeyBuffer];
 		return;
 	}
-	
+
+	if ([theEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask) {
+		[super keyDown:theEvent];
+		return;
+	}
+
 	[keyBuffer appendString:[theEvent characters]];
-	
+
+	NSLog(@"event: %@ / %d / %p", [theEvent characters], [[theEvent characters] length], [theEvent modifierFlags]);
+
 //	int value = [theEvent intValue];
 	
 /*	NSLog(@"event: %@ / %d / %d", [theEvent characters], [[theEvent characters] length], [theEvent modifierFlags]);

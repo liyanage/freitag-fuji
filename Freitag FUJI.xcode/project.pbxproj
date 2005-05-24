@@ -499,6 +499,20 @@
 			settings = {
 			};
 		};
+		1B9FAE1A0843888900F5C792 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			name = Icon.icns;
+			path = artwork/Icon.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		1B9FAE1B0843888900F5C792 = {
+			fileRef = 1B9FAE1A0843888900F5C792;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		1BB9F9950838B05C005D68FB = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -615,6 +629,7 @@
 				1A70E5F8083E30B40083535A,
 				1B933AC1083B914F004D26FA,
 				1A70E600083E3B020083535A,
+				1B9FAE1A0843888900F5C792,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
 				29B97318FDCFA39411CA2CEA,
@@ -742,7 +757,7 @@
 			buildRules = (
 			);
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "\"/Users/liyanage/Desktop/Freitag FUJI/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = Frameworks;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Freitag FUJI_Prefix.pch";
@@ -774,6 +789,7 @@
 				1A70E5FF083E39130083535A,
 				1A70E601083E3B020083535A,
 				1A70E603083E3DD70083535A,
+				1B9FAE1B0843888900F5C792,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;

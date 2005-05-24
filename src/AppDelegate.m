@@ -19,7 +19,6 @@
 	
 	[mainWindow setDelegate:self];
 
-// fixme: enable in final
 	[mainWindow setMovableByWindowBackground:NO];
 	CGDisplayCapture(kCGDirectMainDisplay);
 	[mainWindow setLevel:CGShieldingWindowLevel()];

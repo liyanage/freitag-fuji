@@ -5,7 +5,7 @@
 #import "FUJIWindow.h"
 #import "ServerConfig.h"
 #import "Constants.h"
-#import "CocoaSequenceGrabber/CocoaSequenceGrabber.h"
+#import <CocoaSequenceGrabber/CocoaSequenceGrabber.h>
 #import <CURLHandle/CURLHandle+extras.h>
 
 @class FUJIWindow;
