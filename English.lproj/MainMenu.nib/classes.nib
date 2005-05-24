@@ -1,0 +1,51 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                captureFrame = id; 
+                chooseColor = id; 
+                chooseModel = id; 
+                choosePerson = id; 
+                chooseStyle = id; 
+                dismissError = id; 
+                doCheckState = id; 
+                doRunPrefs = id; 
+                myAction = id; 
+                runCaptureSettingsDialog = id; 
+                toggleAcceptingInput = id; 
+            }; 
+            CLASS = AppDelegate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                actionScanPanel = NSPanel; 
+                actionSuccessPanel = NSPanel; 
+                bagScanPanel = NSPanel; 
+                boxView = NSBox; 
+                captureImageView = NSImageView; 
+                captureMonitorView = NSImageView; 
+                capturePanel = NSPanel; 
+                colorImageView = NSImageView; 
+                colorsMatrix = NSMatrix; 
+                colorsPanel = NSPanel; 
+                currentPanelView = NSView; 
+                initFailedPanel = NSPanel; 
+                jobScanPanel = NSPanel; 
+                modelsMatrix = NSMatrix; 
+                modelsPanel = NSPanel; 
+                peopleMatrix = NSMatrix; 
+                peoplePanel = NSPanel; 
+                personImageView = NSImageView; 
+                prefsPanel = NSPanel; 
+                startupPanel = NSPanel; 
+                stylesMatrix = NSMatrix; 
+                stylesPanel = NSPanel; 
+                submitFailedPanel = NSPanel; 
+                templateWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NoBackgroundClickView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
+    ); 
+    IBVersion = 1; 
+}

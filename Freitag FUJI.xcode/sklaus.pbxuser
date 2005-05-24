@@ -1,0 +1,282 @@
+// !$*UTF8*$!
+{
+	1A70E593083E1EA70083535A = {
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		configStateDict = {
+		};
+		cppStopOnCatchEnabled = 0;
+		cppStopOnThrowEnabled = 0;
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		isa = PBXExecutable;
+		libgmallocEnabled = 0;
+		name = "Freitag FUJI";
+		shlibInfoDictList_v2 = (
+		);
+		sourceDirectories = (
+		);
+	};
+	1A70E5A2083E1EAD0083535A = {
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		isa = PBXSourceControlManager;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	1A70E5A3083E1EAD0083535A = {
+		indexTemplatePath = "";
+		isa = PBXCodeSenseManager;
+	};
+	1A70E5CB083E203B0083535A = {
+		fRef = 8D1107310486CEB800E47090;
+		isa = PBXTextBookmark;
+		name = "Info.plist: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 780;
+		vrLoc = 0;
+	};
+	1A70E5CC083E203B0083535A = {
+		fRef = 1B933AC1083B914F004D26FA;
+		isa = PBXBookmark;
+	};
+	1A70E5CD083E203B0083535A = {
+		fRef = 1B933AC1083B914F004D26FA;
+		isa = PBXBookmark;
+	};
+	1A70E5CE083E203B0083535A = {
+		fRef = 8D1107310486CEB800E47090;
+		isa = PBXTextBookmark;
+		name = "Info.plist: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 780;
+		vrLoc = 0;
+	};
+	1A70E5DB083E21210083535A = {
+		fRef = 1B9D4EFF08308C9B00CCED04;
+		isa = PBXTextBookmark;
+		name = "#import \"CocoaSequenceGrabber/CocoaSequenceGrabber.h\"";
+		rLen = 54;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 0;
+	};
+	1A70E5DC083E21210083535A = {
+		fRef = 1A70E5DD083E21210083535A;
+		isa = PBXTextBookmark;
+		name = "(null): 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1094;
+		vrLoc = 0;
+	};
+	1A70E5DD083E21210083535A = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = CSGCamera.h;
+		path = "/Library/WebServer/Documents/fuji/(material)/Client/20050520/Freitag FUJI/Frameworks/CocoaSequenceGrabber.framework/Versions/A/Headers/CSGCamera.h";
+		refType = 0;
+		sourceTree = "<absolute>";
+	};
+	1A70E5E0083E21210083535A = {
+		fRef = 1B9D4EFF08308C9B00CCED04;
+		isa = PBXTextBookmark;
+		name = "#import \"CocoaSequenceGrabber/CocoaSequenceGrabber.h\"";
+		rLen = 54;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 1114;
+		vrLoc = 0;
+	};
+	1A70E5E1083E21210083535A = {
+		fRef = 1A70E5E2083E21210083535A;
+		isa = PBXTextBookmark;
+		name = "(null): 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1094;
+		vrLoc = 0;
+	};
+	1A70E5E2083E21210083535A = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = CSGCamera.h;
+		path = "/Library/WebServer/Documents/fuji/(material)/Client/20050520/Freitag FUJI/Frameworks/CocoaSequenceGrabber.framework/Versions/A/Headers/CSGCamera.h";
+		refType = 0;
+		sourceTree = "<absolute>";
+	};
+	1A70E5E4083E21210083535A = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = CocoaSequenceGrabber.h;
+		path = "/Library/WebServer/Documents/fuji/(material)/Client/20050520/Freitag FUJI/Frameworks/CocoaSequenceGrabber.framework/Versions/A/Headers/CocoaSequenceGrabber.h";
+		refType = 0;
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {415, 595}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {415, 595}}";
+		};
+	};
+	1A70E604083E3E590083535A = {
+		fRef = 1A70E5E4083E21210083535A;
+		isa = PBXTextBookmark;
+		name = "CocoaSequenceGrabber.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 269;
+		vrLoc = 0;
+	};
+	1A70E605083E3E590083535A = {
+		fRef = 1A70E5F7083E30B40083535A;
+		isa = PBXBookmark;
+	};
+	1A70E606083E3E590083535A = {
+		fRef = 1A70E5FC083E34D20083535A;
+		isa = PBXBookmark;
+	};
+	1A70E607083E3E590083535A = {
+		fRef = 1A70E5FE083E39130083535A;
+		isa = PBXBookmark;
+	};
+	1A70E608083E3E590083535A = {
+		fRef = 1A70E600083E3B020083535A;
+		isa = PBXBookmark;
+	};
+	1A70E609083E3E590083535A = {
+		fRef = 1A70E602083E3DD70083535A;
+		isa = PBXBookmark;
+	};
+	1A70E60A083E3E590083535A = {
+		fRef = 1A70E5E4083E21210083535A;
+		isa = PBXTextBookmark;
+		name = "CocoaSequenceGrabber.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 269;
+		vrLoc = 0;
+	};
+	1A70E60B083E3E590083535A = {
+		fRef = 1A70E5F7083E30B40083535A;
+		isa = PBXBookmark;
+	};
+	1A70E60C083E3E590083535A = {
+		fRef = 1A70E5FC083E34D20083535A;
+		isa = PBXBookmark;
+	};
+	1A70E60D083E3E590083535A = {
+		fRef = 1A70E5FE083E39130083535A;
+		isa = PBXBookmark;
+	};
+	1A70E60E083E3E590083535A = {
+		fRef = 1A70E600083E3B020083535A;
+		isa = PBXBookmark;
+	};
+	1A70E60F083E3E590083535A = {
+		fRef = 1A70E602083E3DD70083535A;
+		isa = PBXBookmark;
+	};
+	1B9D4EFE08308C9B00CCED04 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {998, 8484}}";
+			sepNavSelRange = "{0, 24}";
+			sepNavVisRect = "{{0, 0}, {459, 186}}";
+			sepNavWindowFrame = "{{1764, 6}, {950, 976}}";
+		};
+	};
+	1B9D4EFF08308C9B00CCED04 = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {415, 1358}}";
+			sepNavSelRange = "{165, 54}";
+			sepNavVisRect = "{{0, 0}, {415, 595}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA = {
+		activeBuildStyle = 4A9504CCFFE6A4B311CA0CBA;
+		activeExecutable = 1A70E593083E1EA70083535A;
+		activeTarget = 8D1107260486CEB800E47090;
+		addToTargets = (
+			8D1107260486CEB800E47090,
+		);
+		codeSenseManager = 1A70E5A3083E1EAD0083535A;
+		executables = (
+			1A70E593083E1EA70083535A,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					217,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 138293371;
+			PBXWorkspaceStateSaveDate = 138293371;
+		};
+		perUserProjectItems = {
+			1A70E5CB083E203B0083535A = 1A70E5CB083E203B0083535A;
+			1A70E5CC083E203B0083535A = 1A70E5CC083E203B0083535A;
+			1A70E5CD083E203B0083535A = 1A70E5CD083E203B0083535A;
+			1A70E5CE083E203B0083535A = 1A70E5CE083E203B0083535A;
+			1A70E5DB083E21210083535A = 1A70E5DB083E21210083535A;
+			1A70E5DC083E21210083535A = 1A70E5DC083E21210083535A;
+			1A70E5E0083E21210083535A = 1A70E5E0083E21210083535A;
+			1A70E5E1083E21210083535A = 1A70E5E1083E21210083535A;
+			1A70E604083E3E590083535A = 1A70E604083E3E590083535A;
+			1A70E605083E3E590083535A = 1A70E605083E3E590083535A;
+			1A70E606083E3E590083535A = 1A70E606083E3E590083535A;
+			1A70E607083E3E590083535A = 1A70E607083E3E590083535A;
+			1A70E608083E3E590083535A = 1A70E608083E3E590083535A;
+			1A70E609083E3E590083535A = 1A70E609083E3E590083535A;
+			1A70E60A083E3E590083535A = 1A70E60A083E3E590083535A;
+			1A70E60B083E3E590083535A = 1A70E60B083E3E590083535A;
+			1A70E60C083E3E590083535A = 1A70E60C083E3E590083535A;
+			1A70E60D083E3E590083535A = 1A70E60D083E3E590083535A;
+			1A70E60E083E3E590083535A = 1A70E60E083E3E590083535A;
+			1A70E60F083E3E590083535A = 1A70E60F083E3E590083535A;
+		};
+		sourceControlManager = 1A70E5A2083E1EAD0083535A;
+		userBuildSettings = {
+		};
+	};
+	8D1107260486CEB800E47090 = {
+		activeExec = 0;
+		executables = (
+			1A70E593083E1EA70083535A,
+		);
+	};
+}
