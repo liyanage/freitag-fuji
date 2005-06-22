@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A70E5F9083E30B40083535A /* Barcode-Scanner-On.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */; };
+		1A70E5FA083E30B40083535A /* Barcode-Scanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5F8083E30B40083535A /* Barcode-Scanner.png */; };
+		1A70E5FD083E34D20083535A /* Error-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5FC083E34D20083535A /* Error-Icon.png */; };
+		1A70E5FF083E39130083535A /* Action-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5FE083E39130083535A /* Action-Icon.png */; };
+		1A70E601083E3B020083535A /* OK-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E600083E3B020083535A /* OK-Icon.png */; };
+		1A70E603083E3DD70083535A /* Freitag-Logo-(ungenau).pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E602083E3DD70083535A /* Freitag-Logo-(ungenau).pdf */; };
+		1B3D912708390F1B00E6EDCE /* ServerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D912608390F1B00E6EDCE /* ServerConfig.m */; };
+		1B3D915808391E5100E6EDCE /* ServerConfigItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D915708391E5100E6EDCE /* ServerConfigItem.m */; };
+		1B3D915B08391E5F00E6EDCE /* ServerConfigColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D915A08391E5F00E6EDCE /* ServerConfigColor.m */; };
+		1B3D91BC083926DF00E6EDCE /* ServerConfigStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D91BB083926DF00E6EDCE /* ServerConfigStyle.m */; };
+		1B3D91C70839286F00E6EDCE /* ServerConfigPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D91C60839286F00E6EDCE /* ServerConfigPerson.m */; };
+		1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */; };
+		1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */; };
+		1B933AC2083B914F004D26FA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B933AC1083B914F004D26FA /* Logo.png */; };
+		1B933D65083D4DBD004D26FA /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B933D64083D4DBD004D26FA /* CURLHandle.framework */; };
+		1B933D8E083D4DCB004D26FA /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B933D64083D4DBD004D26FA /* CURLHandle.framework */; };
+		1B9D4F0008308C9B00CCED04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */; };
+		1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1B9FAE1A0843888900F5C792 /* Icon.icns */; };
+		1BB8E5080868A7D9009FA114 /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BB8E5070868A7D9009FA114 /* notes.txt */; };
+		1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */; };
+		1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */; };
+		1BB9F9970838B05D005D68FB /* NoBackgroundClickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9950838B05C005D68FB /* NoBackgroundClickView.m */; };
+		1BB9F9DA0838B53D005D68FB /* FUJIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9D90838B53D005D68FB /* FUJIWindow.m */; };
+		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		4A9504CCFFE6A4B311CA0CBA /* Development */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		4A9504CDFFE6A4B311CA0CBA /* Deployment */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		1BB8E5390868ACC4009FA114 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = CocoaSequenceGrabber;
+		};
+		1BB8E53B0868AD33009FA114 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = CocoaSequenceGrabber;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B933B9E083C0C42004D26FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
+				1B933D8E083D4DCB004D26FA /* CURLHandle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Barcode-Scanner-On.png"; path = "artwork/Barcode-Scanner-On.png"; sourceTree = "<group>"; };
+		1A70E5F8083E30B40083535A /* Barcode-Scanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Barcode-Scanner.png"; path = "artwork/Barcode-Scanner.png"; sourceTree = "<group>"; };
+		1A70E5FC083E34D20083535A /* Error-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Error-Icon.png"; path = "artwork/Error-Icon.png"; sourceTree = "<group>"; };
+		1A70E5FE083E39130083535A /* Action-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Action-Icon.png"; path = "artwork/Action-Icon.png"; sourceTree = "<group>"; };
+		1A70E600083E3B020083535A /* OK-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "OK-Icon.png"; path = "artwork/OK-Icon.png"; sourceTree = "<group>"; };
+		1A70E602083E3DD70083535A /* Freitag-Logo-(ungenau).pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Freitag-Logo-(ungenau).pdf"; path = "artwork/Freitag-Logo-(ungenau).pdf"; sourceTree = "<group>"; };
+		1B09BD6A0868E4DB00988C92 /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaSequenceGrabber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B3D912508390F1B00E6EDCE /* ServerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfig.h; path = src/ServerConfig.h; sourceTree = "<group>"; };
+		1B3D912608390F1B00E6EDCE /* ServerConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfig.m; path = src/ServerConfig.m; sourceTree = "<group>"; };
+		1B3D915608391E5100E6EDCE /* ServerConfigItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigItem.h; path = src/ServerConfigItem.h; sourceTree = "<group>"; };
+		1B3D915708391E5100E6EDCE /* ServerConfigItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigItem.m; path = src/ServerConfigItem.m; sourceTree = "<group>"; };
+		1B3D915908391E5F00E6EDCE /* ServerConfigColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigColor.h; path = src/ServerConfigColor.h; sourceTree = "<group>"; };
+		1B3D915A08391E5F00E6EDCE /* ServerConfigColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigColor.m; path = src/ServerConfigColor.m; sourceTree = "<group>"; };
+		1B3D91BA083926DF00E6EDCE /* ServerConfigStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigStyle.h; path = src/ServerConfigStyle.h; sourceTree = "<group>"; };
+		1B3D91BB083926DF00E6EDCE /* ServerConfigStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigStyle.m; path = src/ServerConfigStyle.m; sourceTree = "<group>"; };
+		1B3D91C50839286F00E6EDCE /* ServerConfigPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigPerson.h; path = src/ServerConfigPerson.h; sourceTree = "<group>"; };
+		1B3D91C60839286F00E6EDCE /* ServerConfigPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigPerson.m; path = src/ServerConfigPerson.m; sourceTree = "<group>"; };
+		1B3D92DE083935C500E6EDCE /* ServerConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigModel.h; path = src/ServerConfigModel.h; sourceTree = "<group>"; };
+		1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigModel.m; path = src/ServerConfigModel.m; sourceTree = "<group>"; };
+		1B3D92EB0839366A00E6EDCE /* ServerConfigAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigAction.h; path = src/ServerConfigAction.h; sourceTree = "<group>"; };
+		1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigAction.m; path = src/ServerConfigAction.m; sourceTree = "<group>"; };
+		1B3D93430839445600E6EDCE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = src/Constants.h; sourceTree = "<group>"; };
+		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
+		1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaSequenceGrabber.framework; path = Frameworks/CocoaSequenceGrabber.framework; sourceTree = "<group>"; };
+		1B933D64083D4DBD004D26FA /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CURLHandle.framework; path = Frameworks/CURLHandle.framework; sourceTree = "<group>"; };
+		1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = src/AppDelegate.m; sourceTree = "<group>"; };
+		1B9D4EFF08308C9B00CCED04 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = src/AppDelegate.h; sourceTree = "<group>"; };
+		1B9FAE1A0843888900F5C792 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = artwork/Icon.icns; sourceTree = "<group>"; };
+		1BB8E5070868A7D9009FA114 /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
+		1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaSequenceGrabber.xcodeproj; path = "framework-src/CocoaSequenceGrabber/CocoaSequenceGrabber.xcodeproj"; sourceTree = "<group>"; };
+		1BB9F9950838B05C005D68FB /* NoBackgroundClickView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = NoBackgroundClickView.m; path = src/NoBackgroundClickView.m; sourceTree = "<group>"; };
+		1BB9F9960838B05D005D68FB /* NoBackgroundClickView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NoBackgroundClickView.h; path = src/NoBackgroundClickView.h; sourceTree = "<group>"; };
+		1BB9F9D80838B53D005D68FB /* FUJIWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUJIWindow.h; path = src/FUJIWindow.h; sourceTree = "<group>"; };
+		1BB9F9D90838B53D005D68FB /* FUJIWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUJIWindow.m; path = src/FUJIWindow.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
+		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* Freitag FUJI_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Freitag FUJI_Prefix.pch"; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Freitag FUJI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Freitag FUJI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				1B933D65083D4DBD004D26FA /* CURLHandle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1B3D93430839445600E6EDCE /* Constants.h */,
+				1B9D4EFF08308C9B00CCED04 /* AppDelegate.h */,
+				1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */,
+				1BB9F9960838B05D005D68FB /* NoBackgroundClickView.h */,
+				1BB9F9950838B05C005D68FB /* NoBackgroundClickView.m */,
+				1BB9F9D80838B53D005D68FB /* FUJIWindow.h */,
+				1BB9F9D90838B53D005D68FB /* FUJIWindow.m */,
+				1B3D912508390F1B00E6EDCE /* ServerConfig.h */,
+				1B3D912608390F1B00E6EDCE /* ServerConfig.m */,
+				1B3D915608391E5100E6EDCE /* ServerConfigItem.h */,
+				1B3D915708391E5100E6EDCE /* ServerConfigItem.m */,
+				1B3D915908391E5F00E6EDCE /* ServerConfigColor.h */,
+				1B3D915A08391E5F00E6EDCE /* ServerConfigColor.m */,
+				1B3D91BA083926DF00E6EDCE /* ServerConfigStyle.h */,
+				1B3D91BB083926DF00E6EDCE /* ServerConfigStyle.m */,
+				1B3D91C50839286F00E6EDCE /* ServerConfigPerson.h */,
+				1B3D91C60839286F00E6EDCE /* ServerConfigPerson.m */,
+				1B3D92DE083935C500E6EDCE /* ServerConfigModel.h */,
+				1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */,
+				1B3D92EB0839366A00E6EDCE /* ServerConfigAction.h */,
+				1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B933D64083D4DBD004D26FA /* CURLHandle.framework */,
+				1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Freitag FUJI.app */,
+				1B09BD6A0868E4DB00988C92 /* CocoaSequenceGrabber.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1BB8E5360868ACC4009FA114 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Freitag FUJI */ = {
+			isa = PBXGroup;
+			children = (
+				1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				1BB8E5070868A7D9009FA114 /* notes.txt */,
+			);
+			name = "Freitag FUJI";
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Freitag FUJI_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A70E602083E3DD70083535A /* Freitag-Logo-(ungenau).pdf */,
+				1A70E5FE083E39130083535A /* Action-Icon.png */,
+				1A70E5FC083E34D20083535A /* Error-Icon.png */,
+				1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */,
+				1A70E5F8083E30B40083535A /* Barcode-Scanner.png */,
+				1B933AC1083B914F004D26FA /* Logo.png */,
+				1A70E600083E3B020083535A /* OK-Icon.png */,
+				1B9FAE1A0843888900F5C792 /* Icon.icns */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Freitag FUJI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BB8E1E608588B88009FA114 /* Build configuration list for PBXNativeTarget "Freitag FUJI" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				1B933B9E083C0C42004D26FA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = Frameworks;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Freitag FUJI_Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = "Freitag FUJI";
+				WRAPPER_EXTENSION = app;
+			};
+			dependencies = (
+				1BB8E53C0868AD33009FA114 /* PBXTargetDependency */,
+			);
+			name = "Freitag FUJI";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "Freitag FUJI";
+			productReference = 8D1107320486CEB800E47090 /* Freitag FUJI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1BB8E1EA08588B88009FA114 /* Build configuration list for PBXProject "Freitag FUJI" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4A9504CCFFE6A4B311CA0CBA /* Development */,
+				4A9504CDFFE6A4B311CA0CBA /* Deployment */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Freitag FUJI */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1BB8E5360868ACC4009FA114 /* Products */;
+					ProjectRef = 1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */;
+				},
+			);
+			targets = (
+				8D1107260486CEB800E47090 /* Freitag FUJI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaSequenceGrabber.framework;
+			remoteRef = 1BB8E5390868ACC4009FA114 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				1B933AC2083B914F004D26FA /* Logo.png in Resources */,
+				1A70E5F9083E30B40083535A /* Barcode-Scanner-On.png in Resources */,
+				1A70E5FA083E30B40083535A /* Barcode-Scanner.png in Resources */,
+				1A70E5FD083E34D20083535A /* Error-Icon.png in Resources */,
+				1A70E5FF083E39130083535A /* Action-Icon.png in Resources */,
+				1A70E601083E3B020083535A /* OK-Icon.png in Resources */,
+				1A70E603083E3DD70083535A /* Freitag-Logo-(ungenau).pdf in Resources */,
+				1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */,
+				1BB8E5080868A7D9009FA114 /* notes.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				1B9D4F0008308C9B00CCED04 /* AppDelegate.m in Sources */,
+				1BB9F9970838B05D005D68FB /* NoBackgroundClickView.m in Sources */,
+				1BB9F9DA0838B53D005D68FB /* FUJIWindow.m in Sources */,
+				1B3D912708390F1B00E6EDCE /* ServerConfig.m in Sources */,
+				1B3D915808391E5100E6EDCE /* ServerConfigItem.m in Sources */,
+				1B3D915B08391E5F00E6EDCE /* ServerConfigColor.m in Sources */,
+				1B3D91BC083926DF00E6EDCE /* ServerConfigStyle.m in Sources */,
+				1B3D91C70839286F00E6EDCE /* ServerConfigPerson.m in Sources */,
+				1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */,
+				1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BB8E53C0868AD33009FA114 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaSequenceGrabber;
+			targetProxy = 1BB8E53B0868AD33009FA114 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B97319FDCFA39411CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BB8E1E708588B88009FA114 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = Frameworks;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Freitag FUJI_Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Freitag FUJI";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		1BB8E1E808588B88009FA114 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = Frameworks;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Freitag FUJI_Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Freitag FUJI";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		1BB8E1EB08588B88009FA114 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+			};
+			name = Development;
+		};
+		1BB8E1EC08588B88009FA114 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BB8E1E608588B88009FA114 /* Build configuration list for PBXNativeTarget "Freitag FUJI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BB8E1E708588B88009FA114 /* Development */,
+				1BB8E1E808588B88009FA114 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+		1BB8E1EA08588B88009FA114 /* Build configuration list for PBXProject "Freitag FUJI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BB8E1EB08588B88009FA114 /* Development */,
+				1BB8E1EC08588B88009FA114 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Deployment;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

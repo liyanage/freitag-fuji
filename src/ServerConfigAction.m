@@ -20,7 +20,9 @@
 	[self setValue:[self stringForXPath:@"Value/text()" node:node] forKey:@"value"];
 	[self setValue:[self stringForXPath:@"Description/text()" node:node] forKey:@"description"];
 	[self setValue:[self stringForXPath:@"Type/text()" node:node] forKey:@"type"];
-		
+
+	NSLog(@"action object %@ / %@", barcode, description);
+
 	return self;
 	
 }

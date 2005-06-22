@@ -6,7 +6,9 @@
 #import "ServerConfig.h"
 #import "Constants.h"
 #import <CocoaSequenceGrabber/CocoaSequenceGrabber.h>
+#import <CocoaSequenceGrabber/CSGCameraSettingsCategory.h>
 #import <CURLHandle/CURLHandle+extras.h>
+
 
 @class FUJIWindow;
 
@@ -44,7 +46,7 @@
 	IBOutlet NSImageView *captureMonitorView;
 	
 	int appState;
-	BOOL acceptingInput;
+	BOOL acceptingInput, initializing;
 	ServerConfig *serverConfig;
 
 	ServerConfigModel *currentModel;
@@ -90,6 +92,7 @@
 - (void)setupPeoplePanel;
 - (void)setupColorsPanel;
 - (void)setupStylesPanel;
+- (void)doInit:(id)object;
 - (void)createJob;
 - (void)startCapture;
 - (void)submitBag;

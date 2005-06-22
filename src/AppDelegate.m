@@ -6,6 +6,8 @@
 
 	[self setupDefaults];
 	
+	
+	
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -19,9 +21,11 @@
 	
 	[mainWindow setDelegate:self];
 
+#ifndef DEBUG
 	[mainWindow setMovableByWindowBackground:NO];
 	CGDisplayCapture(kCGDirectMainDisplay);
 	[mainWindow setLevel:CGShieldingWindowLevel()];
+#endif
 	
     [mainWindow makeKeyAndOrderFront:nil];
 	[mainWindow setContentView:[templateWindow contentView]];
@@ -161,6 +165,12 @@
 	if (camera) return;
 	camera = [[CSGCamera alloc] init];
 	[camera setDelegate:self];
+
+	NSData *cameraSettings = [[NSUserDefaults standardUserDefaults] valueForKey:@"cameraSettings"];
+	if (cameraSettings) {
+		[camera setSettings:cameraSettings];
+	}
+
 }
 
 - (void)loadServerConfig {
@@ -324,10 +334,8 @@
 	switch (appState) {
 		
 		case UNINITIALIZED:
-			[self disableInput];
 			[self switchToPanelNamed:@"startup"];
-			[self loadServerConfig];
-			[self setupCamera];
+			[self performSelector:@selector(doInit:) withObject:nil afterDelay:0.1];
 			break;
 			
 		case INITFAILED:
@@ -440,6 +448,18 @@
 
 
 #pragma mark App state handlers
+
+
+- (void)doInit:(id)object {
+
+	[self disableInput];
+	[self setValue:[NSNumber numberWithBool:YES] forKey:@"initializing"];
+	[self loadServerConfig];
+	[self setupCamera];
+	[self setValue:[NSNumber numberWithBool:NO] forKey:@"initializing"];
+
+}
+
 
 - (void)createJob {
 	
@@ -665,14 +685,20 @@
 
 - (IBAction)runCaptureSettingsDialog:(id)sender {
 
+#ifndef DEBUG
 	CGDisplayRelease(kCGDirectMainDisplay);
-
 	[mainWindow setLevel:NSNormalWindowLevel];
+#endif
 
 	[camera runSettingsDialog];
 
+	NSData *settings = [camera getSettings];
+	[[NSUserDefaults standardUserDefaults] setValue:settings forKey:@"cameraSettings"];
+
+#ifndef DEBUG
 	CGDisplayCapture(kCGDirectMainDisplay);
 	[mainWindow setLevel:CGShieldingWindowLevel()];
+#endif
 
 
 }

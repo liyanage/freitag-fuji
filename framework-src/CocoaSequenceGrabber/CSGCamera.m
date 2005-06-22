@@ -29,33 +29,12 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
 
 // Init and dealloc
 
-- (void)dealloc;
-{
-	[self stop];
-	
-	[delegate release];
-	
-	[super dealloc];
-}
+- (id) init {
+	self = [super init];
+	if (self == nil) return nil;
 
-// API
+	OSErr theErr;
 
-- (void)setDelegate:(id)newDelegate;
-{
-    if (delegate == newDelegate)
-        return;
-        
-    [delegate release];
-    delegate = [newDelegate retain];
-}
-
-- (BOOL)startWithSize:(NSSize)frameSize;
-{
-    OSErr theErr;
-    
-    timeScale = 0;
-    lastTime = 0;
-    
     // Initialize movie toolbox
     theErr = EnterMovies();
     if (theErr != noErr) {
@@ -91,6 +70,48 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
         return NO;
     }
     
+	return self;
+}
+
+
+
+- (void)dealloc;
+{
+	[self stop];
+
+	OSErr theErr;
+    // Close sequence grabber component
+	if (component) {
+		theErr = CloseComponent(component);
+		if (theErr != noErr) {
+			NSLog(@"CloseComponent() returned %ld", theErr);
+		}
+		component = NULL;
+	}
+	
+	[delegate release];
+	
+	[super dealloc];
+}
+
+// API
+
+- (void)setDelegate:(id)newDelegate;
+{
+    if (delegate == newDelegate)
+        return;
+        
+    [delegate release];
+    delegate = [newDelegate retain];
+}
+
+- (BOOL)startWithSize:(NSSize)frameSize;
+{
+    OSErr theErr;
+    
+    timeScale = 0;
+    lastTime = 0;
+    
     // Set the grabber's bounds
     boundsRect.top = 0;
     boundsRect.left = 0;
@@ -102,7 +123,6 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
     theErr = SGSetChannelBounds(component, &boundsRect);
     
     // Create the GWorld
-//    theErr = QTNewGWorld(&gWorld, k32RGBAPixelFormat, &boundsRect, 0, NULL, 0);
     theErr = QTNewGWorld(&gWorld, k32ARGBPixelFormat, &boundsRect, 0, NULL, 0);
     if (theErr != noErr) {
         NSLog(@"QTNewGWorld() returned %ld", theErr);
@@ -194,14 +214,6 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
 		decompressionSequence = 0;
 	}
     
-    // Close sequence grabber component
-	if (component) {
-		theErr = CloseComponent(component);
-		if (theErr != noErr) {
-			NSLog(@"CloseComponent() returned %ld", theErr);
-		}
-		component = NULL;
-	}
     
     // Dispose of GWorld
 	if (gWorld) {
@@ -286,13 +298,10 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
 
         int bps = 8;
         int spp = 4;
-        void *pixBaseAddr = GetPixBaseAddr(pixMapHandle);
-        long pixmapRowBytes = GetPixRowBytes(pixMapHandle);
         BOOL has_alpha = YES;
-        unsigned char *bitmapData = (unsigned char *)pixBaseAddr;
-        
+
         NSBitmapImageRep *frameBitmap = [[[NSBitmapImageRep alloc]
-            initWithBitmapDataPlanes:&bitmapData
+            initWithBitmapDataPlanes:NULL
                           pixelsWide:pixels_wide
                           pixelsHigh:pixels_high
                        bitsPerSample:bps
@@ -300,9 +309,59 @@ pascal OSErr CSGCameraSGDataProc(SGChannel channel, Ptr data, long dataLength, l
                             hasAlpha:has_alpha
                             isPlanar:NO
                       colorSpaceName:NSDeviceRGBColorSpace
-                         bytesPerRow:pixmapRowBytes
+                         bytesPerRow:0
                         bitsPerPixel:0] autorelease];
         
+        CGColorSpaceRef dst_colorspaceref = CGColorSpaceCreateDeviceRGB();
+
+        CGImageAlphaInfo dst_alphainfo = has_alpha ? kCGImageAlphaPremultipliedLast : kCGImageAlphaNone;
+
+        CGContextRef dst_contextref = CGBitmapContextCreate( [frameBitmap bitmapData],
+                                                             pixels_wide,
+                                                             pixels_high,
+                                                             bps,
+                                                             [frameBitmap bytesPerRow],
+                                                             dst_colorspaceref,
+                                                             dst_alphainfo );
+
+        void *pixBaseAddr = GetPixBaseAddr(pixMapHandle);
+
+        long pixmapRowBytes = GetPixRowBytes(pixMapHandle);
+
+        CGDataProviderRef dataproviderref = CGDataProviderCreateWithData( NULL, pixBaseAddr, pixmapRowBytes * pixels_high, NULL );
+
+        int src_bps = 8;
+        int src_spp = 4;
+        BOOL src_has_alpha = YES;
+
+        CGColorSpaceRef src_colorspaceref = CGColorSpaceCreateDeviceRGB();
+
+        CGImageAlphaInfo src_alphainfo = src_has_alpha ? kCGImageAlphaPremultipliedFirst : kCGImageAlphaNone;
+
+        CGImageRef src_imageref = CGImageCreate( pixels_wide,
+                                                 pixels_high,
+                                                 src_bps,
+                                                 src_bps * src_spp,
+                                                 pixmapRowBytes,
+                                                 src_colorspaceref,
+                                                 src_alphainfo,
+                                                 dataproviderref,
+                                                 NULL,
+                                                 NO, // shouldInterpolate
+                                                 kCGRenderingIntentDefault );
+
+        CGRect rect = CGRectMake( 0, 0, pixels_wide, pixels_high );
+
+        CGContextDrawImage( dst_contextref, rect, src_imageref );
+
+        CGImageRelease( src_imageref );
+        CGColorSpaceRelease( src_colorspaceref );
+        CGDataProviderRelease( dataproviderref );
+        CGContextRelease( dst_contextref );
+        CGColorSpaceRelease( dst_colorspaceref );
+
+        UnlockPixels( pixMapHandle );
+
         CSGImage *image = [[CSGImage alloc] initWithSize:NSMakeSize(pixels_wide, pixels_high)];
         [image addRepresentation:frameBitmap];
         

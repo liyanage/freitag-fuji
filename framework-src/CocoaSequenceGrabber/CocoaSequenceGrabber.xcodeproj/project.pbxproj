@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BB8E5A80868B827009FA114 /* CSGCameraSettingsCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB8E5A60868B827009FA114 /* CSGCameraSettingsCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BB8E5A90868B827009FA114 /* CSGCameraSettingsCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB8E5A70868B827009FA114 /* CSGCameraSettingsCategory.m */; };
+		22D142C307EBDD9B00476199 /* CSGCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D142BF07EBDD9B00476199 /* CSGCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22D142C407EBDD9B00476199 /* CSGCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D142C007EBDD9B00476199 /* CSGCamera.m */; };
+		22D142C507EBDD9B00476199 /* CSGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D142C107EBDD9B00476199 /* CSGImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22D142C607EBDD9B00476199 /* CSGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D142C207EBDD9B00476199 /* CSGImage.m */; };
+		22D1431007EBE00900476199 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D1430F07EBE00900476199 /* QuickTime.framework */; };
+		22D1437A07EBE14400476199 /* CocoaSequenceGrabber.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D1437907EBE14400476199 /* CocoaSequenceGrabber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		014CEA440018CDF011CA2923 /* Development */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		014CEA450018CDF011CA2923 /* Deployment */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1BB8E5A60868B827009FA114 /* CSGCameraSettingsCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGCameraSettingsCategory.h; sourceTree = "<group>"; };
+		1BB8E5A70868B827009FA114 /* CSGCameraSettingsCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSGCameraSettingsCategory.m; sourceTree = "<group>"; };
+		22D142BF07EBDD9B00476199 /* CSGCamera.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CSGCamera.h; sourceTree = "<group>"; };
+		22D142C007EBDD9B00476199 /* CSGCamera.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CSGCamera.m; sourceTree = "<group>"; };
+		22D142C107EBDD9B00476199 /* CSGImage.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CSGImage.h; sourceTree = "<group>"; };
+		22D142C207EBDD9B00476199 /* CSGImage.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CSGImage.m; sourceTree = "<group>"; };
+		22D1430F07EBE00900476199 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		22D1437907EBE14400476199 /* CocoaSequenceGrabber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSequenceGrabber.h; sourceTree = "<group>"; };
+		32DBCF5E0370ADEE00C91783 /* CocoaSequenceGrabber_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSequenceGrabber_Prefix.pch; sourceTree = "<group>"; };
+		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8DC2EF5B0486A6940098B216 /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaSequenceGrabber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DC2EF560486A6940098B216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
+				22D1431007EBE00900476199 /* QuickTime.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5B0486A6940098B216 /* CocoaSequenceGrabber.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* CocoaSequenceGrabber */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				089C1665FE841158C02AAC07 /* Resources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = CocoaSequenceGrabber;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C1665FE841158C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				22D142BF07EBDD9B00476199 /* CSGCamera.h */,
+				22D142C007EBDD9B00476199 /* CSGCamera.m */,
+				22D142C107EBDD9B00476199 /* CSGImage.h */,
+				22D142C207EBDD9B00476199 /* CSGImage.m */,
+				1BB8E5A60868B827009FA114 /* CSGCameraSettingsCategory.h */,
+				1BB8E5A70868B827009FA114 /* CSGCameraSettingsCategory.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22D1430F07EBE00900476199 /* QuickTime.framework */,
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
+				D2F7E79907B2D74100F64583 /* CoreData.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF5E0370ADEE00C91783 /* CocoaSequenceGrabber_Prefix.pch */,
+				22D1437907EBE14400476199 /* CocoaSequenceGrabber.h */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8DC2EF500486A6940098B216 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D142C307EBDD9B00476199 /* CSGCamera.h in Headers */,
+				22D142C507EBDD9B00476199 /* CSGImage.h in Headers */,
+				22D1437A07EBE14400476199 /* CocoaSequenceGrabber.h in Headers */,
+				1BB8E5A80868B827009FA114 /* CSGCameraSettingsCategory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8DC2EF4F0486A6940098B216 /* CocoaSequenceGrabber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BB8E4DE0868A67B009FA114 /* Build configuration list for PBXNativeTarget "CocoaSequenceGrabber" */;
+			buildPhases = (
+				8DC2EF500486A6940098B216 /* Headers */,
+				8DC2EF520486A6940098B216 /* Resources */,
+				8DC2EF540486A6940098B216 /* Sources */,
+				8DC2EF560486A6940098B216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CocoaSequenceGrabber_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_STYLE = DYNAMIC;
+				PREBINDING = NO;
+				PRODUCT_NAME = CocoaSequenceGrabber;
+				WRAPPER_EXTENSION = framework;
+			};
+			dependencies = (
+			);
+			name = CocoaSequenceGrabber;
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = CocoaSequenceGrabber;
+			productReference = 8DC2EF5B0486A6940098B216 /* CocoaSequenceGrabber.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1BB8E4E20868A67B009FA114 /* Build configuration list for PBXProject "CocoaSequenceGrabber" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				014CEA440018CDF011CA2923 /* Development */,
+				014CEA450018CDF011CA2923 /* Deployment */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* CocoaSequenceGrabber */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			targets = (
+				8DC2EF4F0486A6940098B216 /* CocoaSequenceGrabber */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DC2EF520486A6940098B216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DC2EF540486A6940098B216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D142C407EBDD9B00476199 /* CSGCamera.m in Sources */,
+				22D142C607EBDD9B00476199 /* CSGImage.m in Sources */,
+				1BB8E5A90868B827009FA114 /* CSGCameraSettingsCategory.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1667FE841158C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1BB8E4DF0868A67B009FA114 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CocoaSequenceGrabber_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_STYLE = DYNAMIC;
+				PREBINDING = NO;
+				PRODUCT_NAME = CocoaSequenceGrabber;
+				WRAPPER_EXTENSION = framework;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		1BB8E4E00868A67B009FA114 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CocoaSequenceGrabber_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_STYLE = DYNAMIC;
+				PREBINDING = NO;
+				PRODUCT_NAME = CocoaSequenceGrabber;
+				WRAPPER_EXTENSION = framework;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		1BB8E4E10868A67B009FA114 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CocoaSequenceGrabber_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				LIBRARY_STYLE = DYNAMIC;
+				PREBINDING = NO;
+				PRODUCT_NAME = CocoaSequenceGrabber;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Default;
+		};
+		1BB8E4E30868A67B009FA114 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Development;
+		};
+		1BB8E4E40868A67B009FA114 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Deployment;
+		};
+		1BB8E4E50868A67B009FA114 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BB8E4DE0868A67B009FA114 /* Build configuration list for PBXNativeTarget "CocoaSequenceGrabber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BB8E4DF0868A67B009FA114 /* Development */,
+				1BB8E4E00868A67B009FA114 /* Deployment */,
+				1BB8E4E10868A67B009FA114 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		1BB8E4E20868A67B009FA114 /* Build configuration list for PBXProject "CocoaSequenceGrabber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BB8E4E30868A67B009FA114 /* Development */,
+				1BB8E4E40868A67B009FA114 /* Deployment */,
+				1BB8E4E50868A67B009FA114 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
