@@ -33,6 +33,7 @@
 	IBOutlet NSPanel *actionScanPanel;
 	IBOutlet NSPanel *actionSuccessPanel;
 	IBOutlet NSPanel *submitFailedPanel;
+	IBOutlet NSPanel *weightPanel;
 
 	IBOutlet NSMatrix *modelsMatrix;
 	IBOutlet NSMatrix *peopleMatrix;
@@ -53,14 +54,18 @@
 	ServerConfigModel *currentPerson;
 	ServerConfigAction *currentAction;
 	ServerConfigColor *currentColor;
+	ServerConfigColor *currentColor2;
 	ServerConfigStyle *currentStyle;
 	NSString *lastServerErrorMessage;
 	NSString *currentBarcode;
 	NSString *currentJobId;
+	NSString *tarpWeight;
 	NSImage *currentImage;
 	
 	CSGCamera *camera;
 	CSGImage *lastImage;
+	
+	
 }
 
 - (BOOL)appStateAcceptsNonActionBarcode;
@@ -96,10 +101,13 @@
 - (void)createJob;
 - (void)startCapture;
 - (void)submitBag;
+- (void)submitTarp;
 - (void)clearBag;
+- (void)clearTarp;
 - (void)clearJob;
 - (void)submitAction0;
 - (void)submitAction1;
 - (IBAction)captureFrame:(id)sender;
+- (IBAction)enterWeight:(id)sender;
 - (IBAction)dismissError:(id)sender;
 @end

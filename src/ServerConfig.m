@@ -31,6 +31,7 @@
 	}
 	
 	[self setupURLs];
+	[self setupClientMode];
 	
 	[self setupColors];
 	[self setupStyles];
@@ -50,6 +51,14 @@
 	[models release];
 	[actions release];
 	[super dealloc];
+}
+
+
+- (void)setupClientMode {
+
+	[self setValue:[[[doc nodesForXPath:@"xml/mode/text()" error:nil] objectAtIndex:0] XMLString] forKey:@"clientMode"];
+	NSLog(@"client mode %@", [self valueForKey:@"clientMode"]);
+
 }
 
 
@@ -158,6 +167,12 @@
 	return nil;
 }
 
+
+- (int)clientMode {
+
+	return clientMode;
+
+}
 
 
 

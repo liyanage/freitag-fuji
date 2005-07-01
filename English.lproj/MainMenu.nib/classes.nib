@@ -10,6 +10,7 @@
                 dismissError = id; 
                 doCheckState = id; 
                 doRunPrefs = id; 
+                enterWeight = id; 
                 myAction = id; 
                 runCaptureSettingsDialog = id; 
                 toggleAcceptingInput = id; 
@@ -41,6 +42,7 @@
                 stylesPanel = NSPanel; 
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
+                weightPanel = NSPanel; 
             }; 
             SUPERCLASS = NSObject; 
         }, 

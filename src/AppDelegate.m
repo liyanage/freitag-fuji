@@ -161,6 +161,7 @@
 	
 }
 
+
 - (void)setupCamera {
 	if (camera) return;
 	camera = [[CSGCamera alloc] init];
@@ -175,7 +176,7 @@
 
 - (void)loadServerConfig {
 	
-	serverConfig = [[ServerConfig alloc] init];
+	[self setValue:[[[ServerConfig alloc] init] autorelease] forKey:@"serverConfig"];
 	if (!serverConfig) {
 		[self runState:INITFAILED];
 		return;
@@ -185,8 +186,12 @@
 	[self setupPeoplePanel];
 	[self setupColorsPanel];
 	[self setupStylesPanel];
-	
-	[self runState:SCAN_JOB_BARCODE];
+
+	if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+		[self runState:SCAN_JOB_BARCODE];
+	} else {
+		[self runState:SCAN_TARP_BARCODE];
+	}
 	
 }
 
@@ -221,12 +226,15 @@
 
 
 	/* No action, must be a data or action parameter barcode */
+	
 	if (appState == SCAN_JOB_BARCODE) {
 		[self runState:PICK_MODEL];
 	} else if (appState == SCAN_BAG_BARCODE) {
 		[self runState:CAMERA_CAPTURE];
 	} else if (appState == SCAN_ACTION_PARAM_BARCODE) {
 		[self runState:SUBMIT_ACTION_TYPE1];
+	} else if (appState == SCAN_TARP_BARCODE) {
+		[self runState:CAMERA_CAPTURE];
 	}
 	
 }
@@ -245,6 +253,7 @@
 - (BOOL)appStateAcceptsNonActionBarcode {
 
 	switch (appState) {
+		case SCAN_TARP_BARCODE:
 		case SCAN_JOB_BARCODE:
 		case SCAN_BAG_BARCODE:
 		case SCAN_ACTION_PARAM_BARCODE:
@@ -388,15 +397,22 @@
 			break;
 			
 		case PICK_COLOR:
+		case PICK_COLOR2:
 			[self enableInput];
 			[self switchToPanelNamed:@"colors"];
 			break;
 			
 		case PICK_STYLE:
+		case PICK_QUALITY:
 			[self enableInput];
 			[self switchToPanelNamed:@"styles"];
 			break;
-			
+
+		case ENTER_WEIGHT:
+			[self enableInput];
+			[self switchToPanelNamed:@"weight"];
+			break;
+
 		case SUBMIT_BAG:
 			[self disableInput];
 			[self submitBag];
@@ -407,6 +423,11 @@
 			[self submitAction0];
 			break;
 			
+		case SUBMIT_TARP:
+			[self disableInput];
+			[self submitTarp];
+			break;
+
 		case SCAN_ACTION_PARAM_BARCODE:
 			[self enableInput];
 			[self switchToPanelNamed:@"actionScan"];
@@ -420,6 +441,7 @@
 		case SUBMIT_JOB_FAILED:
 		case SUBMIT_BAG_FAILED:
 		case SUBMIT_ACTION_FAILED:
+		case SUBMIT_TARP_FAILED:
 			[self switchToPanelNamed:@"submitFailed"];
 			break;
 			
@@ -427,6 +449,14 @@
 			[self switchToPanelNamed:@"actionSuccess"];
 			[self setState:SCAN_JOB_BARCODE];
 			break;
+
+		case SCAN_TARP_BARCODE:
+			[self enableInput];
+			[self clearJob];
+			[self switchToPanelNamed:@"jobScan"];
+			break;
+
+
 			
 		default:
 			NSLog(@"unknown state %d!", appState);
@@ -544,9 +574,48 @@
 		return;
 	}
 
-	[self clearBag];
 	[self runState:SCAN_BAG_BARCODE];
 }
+
+
+- (void)submitTarp {
+
+	CURLHandle *curl = [CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
+//	NSLog(@"curl: %@", curl);
+
+//	NSData *jpegImage = [NSData dataWithContentsOfFile:@"/Users/liyanage/Pictures/People/andyblond.jpg"];
+	NSData *jpegImage = [[[currentImage representations] objectAtIndex:0] representationUsingType:NSJPEGFileType properties:nil];
+//	[jpegImage writeToFile:@"/tmp/bag.jpg" atomically:YES];
+	NSDictionary *imagePart = [NSDictionary dictionaryWithObjectsAndKeys:jpegImage, @"data", @"dummy.jpg", @"filename", @"image/jpeg", @"mimeType", nil];
+	
+	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+		@"tarp_add", @"action",
+		currentBarcode, @"param",
+		[[NSUserDefaults standardUserDefaults] stringForKey:@"clientId"], @"client",
+		[currentColor valueForKey:@"itemId"], @"color0",
+		[currentColor2 valueForKey:@"itemId"], @"color1",
+		[currentStyle valueForKey:@"itemId"], @"style",
+		tarpWeight, @"weight",
+		imagePart, @"foto",
+		nil];
+
+	[curl setMultipartPostDictionary:params];
+	NSData *response = [curl resourceData];
+	NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithData:response options:0 error:nil] autorelease];
+
+	[self clearTarp];
+
+	if (![self checkServerResponse:responseDoc]) {
+		[self runState:SUBMIT_TARP_FAILED];
+		return;
+	}
+
+	[self runState:SCAN_TARP_BARCODE];
+}
+
+
+
+
 
 
 - (void)submitAction0 {
@@ -633,6 +702,15 @@
 	[self setValue:nil forKey:@"currentImage"];
 }
 
+- (void)clearTarp {
+	[self setValue:nil forKey:@"currentBarcode"];
+	[self setValue:nil forKey:@"currentColor"];
+	[self setValue:nil forKey:@"currentColor2"];
+	[self setValue:nil forKey:@"currentStyle"];
+	[self setValue:nil forKey:@"currentImage"];
+	[self setValue:nil forKey:@"tarpWeight"];
+}
+
 - (void)clearJob {
 	[self clearBag];
 	[self setValue:nil forKey:@"currentModel"];
@@ -668,18 +746,42 @@
 	[camera stop];
 	[self setValue:lastImage forKey:@"currentImage"];
 	[self runState:PICK_COLOR];
+
 }
+
+
+- (IBAction)enterWeight:(id)sender {
+	[self runState:SUBMIT_TARP];
+}
+
 
 - (IBAction)chooseColor:(id)sender {
 	id cell = [sender selectedCell];
-	[self setValue:[cell representedObject] forKey:@"currentColor"];
-	[self runState:PICK_STYLE];
+
+	NSString *colorKey = appState == PICK_COLOR ? @"currentColor" : @"currentColor2";
+	[self setValue:[cell representedObject] forKey:colorKey];
+
+	if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+		[self runState:PICK_STYLE];
+	} else if (appState == PICK_COLOR) {
+		[self runState:PICK_COLOR2];
+	} else {
+		[self runState:PICK_QUALITY];
+	}
+
 }
 
 - (IBAction)chooseStyle:(id)sender {
 	id cell = [sender selectedCell];
+
 	[self setValue:[cell representedObject] forKey:@"currentStyle"];
-	[self runState:SUBMIT_BAG];
+
+	if (appState == PICK_STYLE) {
+		[self runState:SUBMIT_BAG];
+	} else {
+		[self runState:ENTER_WEIGHT];
+	}
+
 }
 
 
@@ -713,6 +815,10 @@
 		
 		case SUBMIT_BAG_FAILED:
 			[self runState:SCAN_BAG_BARCODE];
+			break;
+
+		case SUBMIT_TARP_FAILED:
+			[self runState:SCAN_TARP_BARCODE];
 			break;
 
 		case SUBMIT_JOB_FAILED:

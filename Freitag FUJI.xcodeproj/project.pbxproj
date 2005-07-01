@@ -158,7 +158,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1B3D93430839445600E6EDCE /* Constants.h */,
 				1B9D4EFF08308C9B00CCED04 /* AppDelegate.h */,
 				1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */,
 				1BB9F9960838B05D005D68FB /* NoBackgroundClickView.h */,
@@ -224,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */,
+				1B3D93430839445600E6EDCE /* Constants.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,

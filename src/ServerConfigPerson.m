@@ -21,8 +21,8 @@
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?src=%@&width=80&height=80", [serverConfig valueForKey:@"urlGetImage"], path]];
 	NSImage *tempImage = [[NSImage alloc] initWithContentsOfURL:url];
 	[self setValue:tempImage forKey:@"image"];
-	NSLog(@"url %@", url);
-	NSLog(@"image %@", tempImage);
+//	NSLog(@"url %@", url);
+//	NSLog(@"image %@", tempImage);
 //	img_get.php?src=bild.jpg&width=100&height=100
 
 	

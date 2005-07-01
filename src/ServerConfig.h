@@ -24,8 +24,10 @@
 
 	NSString *urlAction;
 	NSString *urlGetImage;
+	int clientMode;
 }
 
+- (void)setupClientMode;
 - (void)setupURLs;
 
 - (void)setupColors;
@@ -35,5 +37,7 @@
 - (void)setupActions;
 
 - (ServerConfigAction *)actionForBarcode:(NSString *)barcode;
+- (int)clientMode;
+
 
 @end
