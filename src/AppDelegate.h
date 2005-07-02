@@ -60,6 +60,8 @@
 	NSString *currentBarcode;
 	NSString *currentJobId;
 	NSString *tarpWeight;
+	NSCharacterSet *weightNumberCharacterSkipSet;
+
 	NSImage *currentImage;
 	
 	CSGCamera *camera;

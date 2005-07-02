@@ -30,6 +30,8 @@
 		1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */; };
 		1BB9F9970838B05D005D68FB /* NoBackgroundClickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9950838B05C005D68FB /* NoBackgroundClickView.m */; };
 		1BB9F9DA0838B53D005D68FB /* FUJIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9D90838B53D005D68FB /* FUJIWindow.m */; };
+		1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BDDEA990876D286009CD0B1 /* MLFloatFormatter.h */; };
+		1BDDEA9C0876D286009CD0B1 /* MLFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDEA9A0876D286009CD0B1 /* MLFloatFormatter.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -89,6 +91,7 @@
 			files = (
 				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
 				1B933D8E083D4DCB004D26FA /* CURLHandle.framework in CopyFiles */,
+				1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +135,8 @@
 		1BB9F9960838B05D005D68FB /* NoBackgroundClickView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NoBackgroundClickView.h; path = src/NoBackgroundClickView.h; sourceTree = "<group>"; };
 		1BB9F9D80838B53D005D68FB /* FUJIWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUJIWindow.h; path = src/FUJIWindow.h; sourceTree = "<group>"; };
 		1BB9F9D90838B53D005D68FB /* FUJIWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUJIWindow.m; path = src/FUJIWindow.m; sourceTree = "<group>"; };
+		1BDDEA990876D286009CD0B1 /* MLFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLFloatFormatter.h; path = src/MLFloatFormatter.h; sourceTree = "<group>"; };
+		1BDDEA9A0876D286009CD0B1 /* MLFloatFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLFloatFormatter.m; path = src/MLFloatFormatter.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -178,6 +183,8 @@
 				1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */,
 				1B3D92EB0839366A00E6EDCE /* ServerConfigAction.h */,
 				1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */,
+				1BDDEA990876D286009CD0B1 /* MLFloatFormatter.h */,
+				1BDDEA9A0876D286009CD0B1 /* MLFloatFormatter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 				1B3D91C70839286F00E6EDCE /* ServerConfigPerson.m in Sources */,
 				1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */,
 				1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */,
+				1BDDEA9C0876D286009CD0B1 /* MLFloatFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

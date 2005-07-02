@@ -5,8 +5,7 @@
 - (void)awakeFromNib {
 
 	[self setupDefaults];
-	
-	
+	weightNumberCharacterSkipSet = [[[NSCharacterSet characterSetWithCharactersInString:@"01234567890."] invertedSet] retain];
 	
 }
 
@@ -42,7 +41,7 @@
 	[currentBarcode release];
 	[camera release];
 	[lastServerErrorMessage release];
-	
+	[weightNumberCharacterSkipSet release];
 	[super dealloc];
 	
 }
@@ -281,6 +280,13 @@
 }
 */
 
+
+
+
+#pragma mark Delegate method implementations
+
+
+
 #pragma mark Panel switching
 
 - (void)switchToPanelNamed:(NSString *)panelName {
@@ -447,7 +453,11 @@
 			
 		case CONFIRM_ACTION_SUCCESS:
 			[self switchToPanelNamed:@"actionSuccess"];
-			[self setState:SCAN_JOB_BARCODE];
+			if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+				[self runState:SCAN_JOB_BARCODE];
+			} else {
+				[self runState:SCAN_TARP_BARCODE];
+			}
 			break;
 
 		case SCAN_TARP_BARCODE:
@@ -470,10 +480,6 @@
 	appState = newState;
 }
 
-
-- (IBAction)doCheckState:(id)sender {
-	[self checkState];
-}
 
 
 
@@ -824,11 +830,19 @@
 		case SUBMIT_JOB_FAILED:
 		case SUBMIT_ACTION_FAILED:
 		default:
-			[self runState:SCAN_JOB_BARCODE];
+			if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+				[self runState:SCAN_JOB_BARCODE];
+			} else {
+				[self runState:SCAN_TARP_BARCODE];
+			}
 			break;
 
 	}
 
+}
+
+- (IBAction)doCheckState:(id)sender {
+	[self checkState];
 }
 
 
