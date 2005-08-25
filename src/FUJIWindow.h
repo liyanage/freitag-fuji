@@ -14,6 +14,7 @@
 @interface FUJIWindow : NSWindow {
 
 	NSMutableString *keyBuffer;
+	NSCharacterSet *acceptableCharacters;
 
 }
 

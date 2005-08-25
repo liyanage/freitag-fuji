@@ -454,9 +454,9 @@
 		case CONFIRM_ACTION_SUCCESS:
 			[self switchToPanelNamed:@"actionSuccess"];
 			if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
-				[self runState:SCAN_JOB_BARCODE];
+				[self setState:SCAN_JOB_BARCODE];
 			} else {
-				[self runState:SCAN_TARP_BARCODE];
+				[self setState:SCAN_TARP_BARCODE];
 			}
 			break;
 

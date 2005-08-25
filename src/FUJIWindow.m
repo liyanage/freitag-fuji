@@ -20,14 +20,20 @@
 
 	keyBuffer = [[NSMutableString alloc] init];
 	
+	acceptableCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._/"] retain];
+	
 	return self;
 }
+
+
 
 
 - (void)dealloc {
 
 	[keyBuffer release];
+	[acceptableCharacters release];
 	[super dealloc];
+	
 }
 
 
@@ -35,6 +41,7 @@
 
 
 - (void)keyDown:(NSEvent *)theEvent {
+
 
 	if ([theEvent type] != NSKeyDown || ![[self delegate] isAcceptingInput]) {
 		[super keyDown:theEvent];
@@ -47,14 +54,27 @@
 		return;
 	}
 
-	if ([theEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask) {
+	//NSLog(@"event: %@ (unichar %d) / %d / %p", [theEvent characters], [[theEvent characters] characterAtIndex:0], [[theEvent characters] length], [theEvent modifierFlags]);
+	
+	
+	if ([[theEvent characters] characterAtIndex:0] == (unichar)63289) {
+		return;
+	}
+
+	if (![acceptableCharacters characterIsMember:[[theEvent characters] characterAtIndex:0]]) {
 		[super keyDown:theEvent];
 		return;
 	}
 
+
+
 	[keyBuffer appendString:[theEvent characters]];
 
-	NSLog(@"event: %@ / %d / %p", [theEvent characters], [[theEvent characters] length], [theEvent modifierFlags]);
+/*
+	if ([theEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask) {
+	}
+*/
+
 
 //	int value = [theEvent intValue];
 	
