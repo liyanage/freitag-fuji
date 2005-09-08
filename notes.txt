@@ -1,1 +1,4 @@
 sudo tcpdump -i en1 -s 0 -A port 80 and host betabong.kicks-ass.net
+
+sudo tcpdump -w freitag.tcpdump -i en0 -p -s 0 port 80
+tcpdump -t freitag.tcpdump -A

@@ -1,33 +1,33 @@
 
 enum app_states {
 	UNINITIALIZED = 1,
-	INITFAILED,
-	INITIALIZED,
-	RUN_PREFS,
-	RUNNING_PREFS,
-	SCAN_JOB_BARCODE,
-	PICK_MODEL,
-	PICK_PERSON,
-	SCAN_BAG_BARCODE,
-	CAMERA_CAPTURE,
-	PICK_COLOR,
-	PICK_COLOR2,
-	PICK_STYLE,
-	PICK_QUALITY,
-	ENTER_WEIGHT,
-	SCAN_ACTION_PARAM_BARCODE,
-	CREATE_JOB,
-	SUBMIT_BAG,
-	SUBMIT_ACTION_TYPE0,
-	SUBMIT_ACTION_TYPE1,
-	SUBMIT_JOB_FAILED,
-	SUBMIT_BAG_FAILED,
-	SUBMIT_TARP_FAILED,
-	SUBMIT_ACTION_FAILED,
-	SUBMIT_TARP,
-	CONFIRM_ACTION_SUCCESS,
+	INITFAILED,                  //  2
+	INITIALIZED,                 //  3
+	RUN_PREFS,                   //  4
+	RUNNING_PREFS,               //  5
+	SCAN_JOB_BARCODE,            //  6
+	PICK_MODEL,                  //  7
+	PICK_PERSON,                 //  8
+	SCAN_BAG_BARCODE,            //  9
+	CAMERA_CAPTURE,              // 10
+	PICK_COLOR,                  // 11
+	PICK_COLOR2,                 // 12
+	PICK_STYLE,                  // 13
+	PICK_QUALITY,                // 14
+	ENTER_WEIGHT,                // 15
+	SCAN_ACTION_PARAM_BARCODE,   // 16
+	CREATE_JOB,                  // 17
+	SUBMIT_BAG,                  // 18
+	SUBMIT_ACTION_TYPE0,         // 19
+	SUBMIT_ACTION_TYPE1,         // 20
+	SUBMIT_JOB_FAILED,           // 21
+	SUBMIT_BAG_FAILED,           // 22
+	SUBMIT_TARP_FAILED,          // 23
+	SUBMIT_ACTION_FAILED,        // 24
+	SUBMIT_TARP,                 // 25
+	CONFIRM_ACTION_SUCCESS,      // 26
 	
-	SCAN_TARP_BARCODE
+	SCAN_TARP_BARCODE            // 27
 };
 
 enum client_modes {

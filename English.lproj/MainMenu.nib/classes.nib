@@ -42,6 +42,7 @@
                 stylesPanel = NSPanel; 
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
+                weightField = NSTextField; 
                 weightPanel = NSPanel; 
             }; 
             SUPERCLASS = NSObject; 

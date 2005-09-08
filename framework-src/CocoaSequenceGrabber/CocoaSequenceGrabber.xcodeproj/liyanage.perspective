@@ -277,7 +277,6 @@
 							<array>
 								<string>0867D691FE84028FC02AAC07</string>
 								<string>08FB77AEFE84172EC02AAC07</string>
-								<string>1C37FBAC04509CD000000102</string>
 								<string>1CC0EA4004350EF90044410B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
@@ -305,7 +304,7 @@
 							<real>193</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>85 130 1055 599 0 0 1440 878 </string>
+						<string>94 139 1055 599 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -323,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1B933C2C083D1BAB004D26FA</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CSGCameraSettingsCategory.m</string>
+								<string>CSGCamera.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,20 +330,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1B933C2D083D1BAB004D26FA</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CSGCameraSettingsCategory.m</string>
+										<string>CSGCamera.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B09BE3E0869067400988C92</string>
+										<string>1B8AFEFC08D0C438007C79B2</string>
 										<key>history</key>
 										<array>
-											<string>1BB8E5FD0868C0C2009FA114</string>
 											<string>1BB8E62E0868C222009FA114</string>
-											<string>1BB8E62F0868C222009FA114</string>
 											<string>1BB8E6300868C222009FA114</string>
 											<string>1BB8E6310868C222009FA114</string>
 											<string>1B09BDF50868EEAA00988C92</string>
-											<string>1B09BD6B0868E4DB00988C92</string>
+											<string>1B8AFEF408D0C413007C79B2</string>
+											<string>1B8AFEF508D0C413007C79B2</string>
+											<string>1BB8E5FD0868C0C2009FA114</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -355,8 +354,8 @@
 											<string>1BB8E6010868C0C2009FA114</string>
 											<string>1BB8E6360868C222009FA114</string>
 											<string>1BB8E63A0868C222009FA114</string>
-											<string>1B09BDF60868EEAA00988C92</string>
-											<string>1B09BDF70868EEAA00988C92</string>
+											<string>1B8AFEF608D0C413007C79B2</string>
+											<string>1B8AFEF708D0C413007C79B2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -372,7 +371,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {840, 407}}</string>
 								<key>RubberWindowFrame</key>
-								<string>85 130 1055 599 0 0 1440 878 </string>
+								<string>94 139 1055 599 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -397,7 +396,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {840, 119}}</string>
 										<key>RubberWindowFrame</key>
-										<string>85 130 1055 599 0 0 1440 878 </string>
+										<string>94 139 1055 599 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -456,11 +455,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B09BDF90868EEAA00988C92</string>
+				<string>1B8AFEF908D0C413007C79B2</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>1B09BDFA0868EEAA00988C92</string>
+				<string>1B8AFEFA08D0C413007C79B2</string>
 				<string>1B933C2C083D1BAB004D26FA</string>
-				<string>1B09BDFB0868EEAA00988C92</string>
+				<string>1B8AFEFB08D0C413007C79B2</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -875,7 +874,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>141094434.557028</real>
+	<real>147899400.178058</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -890,12 +889,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1B09BDEB0868EE6700988C92</string>
-		<string>1B09BE020868EEAA00988C92</string>
 		<string>/Users/liyanage/svn/entropy-private/freitag-fuji/framework-src/CocoaSequenceGrabber/CocoaSequenceGrabber.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>85 130 1055 599 0 0 1440 878 </string>
+	<string>94 139 1055 599 0 0 1440 878 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>

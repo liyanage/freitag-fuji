@@ -413,7 +413,7 @@ headers = {body = "Content-Type: text/html; filename = \"hello.html\""}
 							 CURLFORM_BUFFER, filenameCString,
 							 CURLFORM_CONTENTTYPE, mimeTypeCString,
 							 CURLFORM_END);
-				NSLog(@"one %s", filenameCString);
+//				NSLog(@"one %s", filenameCString);
 			} else {
 				// without filename parameter
 				curl_formadd(&post, &last,
@@ -422,7 +422,7 @@ headers = {body = "Content-Type: text/html; filename = \"hello.html\""}
 							 CURLFORM_CONTENTSLENGTH, length,
 							 CURLFORM_CONTENTHEADER, headers,
 							 CURLFORM_END);
-				NSLog(@"two %s", filenameCString);
+//				NSLog(@"two %s", filenameCString);
 			}
 		} else {
 			// add the value to the form using just the default header
@@ -435,7 +435,7 @@ headers = {body = "Content-Type: text/html; filename = \"hello.html\""}
 							 CURLFORM_BUFFER, filenameCString,
 							 CURLFORM_CONTENTTYPE, mimeTypeCString,
 							 CURLFORM_END);
-				NSLog(@"three %s, %d", filenameCString, length);
+//				NSLog(@"three %s, %d", filenameCString, length);
 			} else {
 				// without filename parameter
 				curl_formadd(&post, &last,
@@ -443,7 +443,7 @@ headers = {body = "Content-Type: text/html; filename = \"hello.html\""}
 							 CURLFORM_COPYCONTENTS, valueCString,
 							 CURLFORM_CONTENTSLENGTH, length,
 							 CURLFORM_END);
-				NSLog(@"four %s, %d", filenameCString, length);
+//				NSLog(@"four %s, %d", filenameCString, length);
 			}
 		}
 	}

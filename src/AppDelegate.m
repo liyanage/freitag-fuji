@@ -336,7 +336,9 @@
 #pragma mark App state management
 
 - (void)runState:(int)newState {
-//	NSLog(@"runState: switching %d -> %d", appState, newState);
+
+//fixme: comment out again
+	NSLog(@"runState: switching %d -> %d", appState, newState);
 	[self setState:newState];
 	[self checkState];
 }
@@ -344,7 +346,8 @@
 
 - (void)checkState {
 	
-//	NSLog(@"checkState: %d", appState);
+//fixme: comment out again
+	NSLog(@"checkState: %d", appState);
 	
 	switch (appState) {
 		
@@ -417,6 +420,7 @@
 		case ENTER_WEIGHT:
 			[self enableInput];
 			[self switchToPanelNamed:@"weight"];
+			[templateWindow makeFirstResponder:weightField];
 			break;
 
 		case SUBMIT_BAG:
@@ -567,15 +571,22 @@
 		[currentColor valueForKey:@"itemId"], @"color",
 		[currentStyle valueForKey:@"itemId"], @"style",
 		imagePart, @"foto",
-		nil];
+		nil
+	];
 
 	[curl setMultipartPostDictionary:params];
 	NSData *response = [curl resourceData];
+	if (!response) {
+		NSLog(@"submitBag: Unable to submit, null CURLHandle response, barcode = %@, curlError = %@", currentBarcode, [curl curlError]);
+		[self runState:SUBMIT_BAG_FAILED];
+		return;
+	}
+
 	NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithData:response options:0 error:nil] autorelease];
 
 	[self clearBag];
 
-	if (![self checkServerResponse:responseDoc]) {
+	if (!responseDoc || ![self checkServerResponse:responseDoc]) {
 		[self runState:SUBMIT_BAG_FAILED];
 		return;
 	}
@@ -692,6 +703,8 @@
 		return YES;
 	}
 
+	NSLog(@"checkServerResponse: Failure server response %@", [responseDoc XMLData]);
+
 	return NO;
 
 }
@@ -785,6 +798,7 @@
 	if (appState == PICK_STYLE) {
 		[self runState:SUBMIT_BAG];
 	} else {
+		NSLog(@"chooseStyle: switching to state ENTER_WEIGHT, app state %d, client mode %d", appState, [serverConfig clientMode]);
 		[self runState:ENTER_WEIGHT];
 	}
 

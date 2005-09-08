@@ -20,9 +20,9 @@
 		1B3D91C70839286F00E6EDCE /* ServerConfigPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D91C60839286F00E6EDCE /* ServerConfigPerson.m */; };
 		1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */; };
 		1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */; };
+		1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
+		1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
 		1B933AC2083B914F004D26FA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B933AC1083B914F004D26FA /* Logo.png */; };
-		1B933D65083D4DBD004D26FA /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B933D64083D4DBD004D26FA /* CURLHandle.framework */; };
-		1B933D8E083D4DCB004D26FA /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B933D64083D4DBD004D26FA /* CURLHandle.framework */; };
 		1B9D4F0008308C9B00CCED04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */; };
 		1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1B9FAE1A0843888900F5C792 /* Icon.icns */; };
 		1BB8E5080868A7D9009FA114 /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BB8E5070868A7D9009FA114 /* notes.txt */; };
@@ -66,6 +66,20 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
+		1B8AFE8F08D0C120007C79B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1B933E24083D5CD2004D26FA /* CURLHandle.framework */;
+			remoteInfo = CURLHandle;
+		};
+		1B8AFE9308D0C140007C79B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B933E15083D5CD2004D26FA /* CURLHandle */;
+			remoteInfo = CURLHandle;
+		};
 		1BB8E5390868ACC4009FA114 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */;
@@ -89,8 +103,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */,
 				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
-				1B933D8E083D4DCB004D26FA /* CURLHandle.framework in CopyFiles */,
 				1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +137,7 @@
 		1B3D92EB0839366A00E6EDCE /* ServerConfigAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigAction.h; path = src/ServerConfigAction.h; sourceTree = "<group>"; };
 		1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigAction.m; path = src/ServerConfigAction.m; sourceTree = "<group>"; };
 		1B3D93430839445600E6EDCE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = src/Constants.h; sourceTree = "<group>"; };
+		1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CURLHandle.xcodeproj; path = "framework-src/CURLHandle_1.9/CURLHandleSource/CURLHandle.xcodeproj"; sourceTree = "<group>"; };
 		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
 		1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaSequenceGrabber.framework; path = Frameworks/CocoaSequenceGrabber.framework; sourceTree = "<group>"; };
 		1B933D64083D4DBD004D26FA /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CURLHandle.framework; path = Frameworks/CURLHandle.framework; sourceTree = "<group>"; };
@@ -151,9 +166,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */,
 				1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				1B933D65083D4DBD004D26FA /* CURLHandle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +233,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1B8AFE8C08D0C120007C79B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1BB8E5360868ACC4009FA114 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +252,7 @@
 		29B97314FDCFA39411CA2CEA /* Freitag FUJI */ = {
 			isa = PBXGroup;
 			children = (
+				1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */,
 				1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */,
 				1B3D93430839445600E6EDCE /* Constants.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -305,6 +329,7 @@
 			};
 			dependencies = (
 				1BB8E53C0868AD33009FA114 /* PBXTargetDependency */,
+				1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */,
 			);
 			name = "Freitag FUJI";
 			productInstallPath = "$(HOME)/Applications";
@@ -332,6 +357,10 @@
 					ProductGroup = 1BB8E5360868ACC4009FA114 /* Products */;
 					ProjectRef = 1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */;
 				},
+				{
+					ProductGroup = 1B8AFE8C08D0C120007C79B2 /* Products */;
+					ProjectRef = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
+				},
 			);
 			targets = (
 				8D1107260486CEB800E47090 /* Freitag FUJI */,
@@ -340,6 +369,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CURLHandle.framework;
+			remoteRef = 1B8AFE8F08D0C120007C79B2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -393,6 +429,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CURLHandle;
+			targetProxy = 1B8AFE9308D0C140007C79B2 /* PBXContainerItemProxy */;
+		};
 		1BB8E53C0868AD33009FA114 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaSequenceGrabber;

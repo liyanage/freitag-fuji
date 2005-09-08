@@ -34,6 +34,8 @@
 	IBOutlet NSPanel *actionSuccessPanel;
 	IBOutlet NSPanel *submitFailedPanel;
 	IBOutlet NSPanel *weightPanel;
+	
+	IBOutlet NSTextField *weightField;
 
 	IBOutlet NSMatrix *modelsMatrix;
 	IBOutlet NSMatrix *peopleMatrix;
