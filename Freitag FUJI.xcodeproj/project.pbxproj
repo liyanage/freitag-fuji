@@ -70,14 +70,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1B933E24083D5CD2004D26FA /* CURLHandle.framework */;
+			remoteGlobalIDString = 1B933E24083D5CD2004D26FA;
 			remoteInfo = CURLHandle;
 		};
 		1B8AFE9308D0C140007C79B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B933E15083D5CD2004D26FA /* CURLHandle */;
+			remoteGlobalIDString = 1B933E15083D5CD2004D26FA;
 			remoteInfo = CURLHandle;
 		};
 		1BB8E5390868ACC4009FA114 /* PBXContainerItemProxy */ = {

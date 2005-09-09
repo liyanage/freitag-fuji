@@ -618,6 +618,11 @@
 
 	[curl setMultipartPostDictionary:params];
 	NSData *response = [curl resourceData];
+	if (!response) {
+		NSLog(@"submitTarp: Unable to submit, null CURLHandle response, barcode = %@, curlError = %@", currentBarcode, [curl curlError]);
+		[self runState:SUBMIT_TARP_FAILED];
+		return;
+	}
 	NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithData:response options:0 error:nil] autorelease];
 
 	[self clearTarp];

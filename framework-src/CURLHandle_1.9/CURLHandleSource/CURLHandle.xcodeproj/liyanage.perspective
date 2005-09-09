@@ -281,6 +281,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -320,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1B933E31083D5EE3004D26FA</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CURLHandle+extras.m</string>
+								<string>CURLHandle.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,21 +329,27 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1B933E32083D5EE3004D26FA</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CURLHandle+extras.m</string>
+										<string>CURLHandle.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B8AFEEC08D0C3B2007C79B2</string>
+										<string>1B8AFF3A08D0E0B2007C79B2</string>
 										<key>history</key>
 										<array>
-											<string>1B8AFE7F08D0C02A007C79B2</string>
 											<string>1B8AFE8008D0C02A007C79B2</string>
-											<string>1B8AFECB08D0C314007C79B2</string>
+											<string>1B8AFF3208D0E0B2007C79B2</string>
+											<string>1B8AFF3308D0E0B2007C79B2</string>
+											<string>1B8AFF3408D0E0B2007C79B2</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>1B8AFE8208D0C02A007C79B2</string>
 											<string>1B8AFE8308D0C02A007C79B2</string>
+											<string>1B8AFF3508D0E0B2007C79B2</string>
+											<string>1B8AFF3608D0E0B2007C79B2</string>
+											<string>1B8AFF3708D0E0B2007C79B2</string>
+											<string>1B8AFF3808D0E0B2007C79B2</string>
+											<string>1B8AFF3908D0E0B2007C79B2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -442,11 +449,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B8AFEED08D0C3B2007C79B2</string>
+				<string>1B8AFF3B08D0E0B2007C79B2</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>1B8AFEEE08D0C3B2007C79B2</string>
+				<string>1B8AFF3C08D0E0B2007C79B2</string>
 				<string>1B933E31083D5EE3004D26FA</string>
-				<string>1B8AFEEF08D0C3B2007C79B2</string>
+				<string>1B8AFF3D08D0E0B2007C79B2</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -827,7 +834,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>147899285.304216</real>
+	<real>147901269.284473</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
