@@ -39,6 +39,7 @@
 	[mainWindow release];
 	[serverConfig release];
 	[currentBarcode release];
+	[currentBagCount release];
 	[camera release];
 	[lastServerErrorMessage release];
 	[weightNumberCharacterSkipSet release];
@@ -337,8 +338,7 @@
 
 - (void)runState:(int)newState {
 
-//fixme: comment out again
-	NSLog(@"runState: switching %d -> %d", appState, newState);
+//	NSLog(@"runState: switching %d -> %d", appState, newState);
 	[self setState:newState];
 	[self checkState];
 }
@@ -346,8 +346,7 @@
 
 - (void)checkState {
 	
-//fixme: comment out again
-	NSLog(@"checkState: %d", appState);
+//	NSLog(@"checkState: %d", appState);
 	
 	switch (appState) {
 		
@@ -685,22 +684,25 @@
 
 - (BOOL)checkServerResponse:(NSXMLDocument *)responseDoc {
 
-	NSArray *stateArray = [responseDoc nodesForXPath:@"xml/state/text()" error:nil];
-	NSArray *resultArray = [responseDoc nodesForXPath:@"xml/result/text()" error:nil];
-	
+	NSString *state = [self stringForXpath:@"xml/state/text()" inDocument:responseDoc];
+	NSString *result = [self stringForXpath:@"xml/result/text()" inDocument:responseDoc];
+	NSString *count = [self stringForXpath:@"xml/count/text()" inDocument:responseDoc];
 
-	if ([stateArray count] < 1) {
+	if (! state) {
 		[self setValue:@"(Unbekannter Fehler)" forKey:@"lastServerErrorMessage"];
 		return NO;
 	}
 
-	NSString *state = [[stateArray objectAtIndex:0] XMLString];
-
-	if ([resultArray count] > 0) {
-		NSString *result = [[resultArray objectAtIndex:0] XMLString];
+	if (result) {
 		[self setValue:result forKey:@"lastServerErrorMessage"];
 	} else {
 		[self setValue:@"(Unbekannter Fehler)" forKey:@"lastServerErrorMessage"];
+	}
+
+	if (count) {
+		[self setValue:count forKey:@"currentBagCount"];
+	} else {
+		[self setValue:nil forKey:@"currentBagCount"];
 	}
 
 	if ([state isEqualToString:@"success"]) {
@@ -715,8 +717,11 @@
 }
 
 
-
-
+- (NSString *)stringForXpath:(NSString *)xpath inDocument:(NSXMLDocument *)doc {
+	NSArray *nodes = [doc nodesForXPath:xpath error:nil];
+	if ([nodes count] < 1) return nil;
+	return [[nodes objectAtIndex:0] XMLString];
+}
 
 
 - (void)clearBag {
@@ -803,7 +808,7 @@
 	if (appState == PICK_STYLE) {
 		[self runState:SUBMIT_BAG];
 	} else {
-		NSLog(@"chooseStyle: switching to state ENTER_WEIGHT, app state %d, client mode %d", appState, [serverConfig clientMode]);
+//		NSLog(@"chooseStyle: switching to state ENTER_WEIGHT, app state %d, client mode %d", appState, [serverConfig clientMode]);
 		[self runState:ENTER_WEIGHT];
 	}
 

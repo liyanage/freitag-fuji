@@ -254,13 +254,13 @@
 			children = (
 				1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */,
 				1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */,
+				1BB8E5070868A7D9009FA114 /* notes.txt */,
 				1B3D93430839445600E6EDCE /* Constants.h */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				1BB8E5070868A7D9009FA114 /* notes.txt */,
 			);
 			name = "Freitag FUJI";
 			sourceTree = "<group>";

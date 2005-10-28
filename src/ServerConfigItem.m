@@ -20,7 +20,7 @@
 	// fixme: error checks / match tests
 	[self setValue:[self stringForXPath:@"id/text()" node:node] forKey:@"itemId"];
 	[self setValue:[self stringForXPath:@"Name/text()" node:node] forKey:@"name"];
-	NSLog(@"init config item for %@", [self class]);
+//	NSLog(@"init config item for %@", [self class]);
 	return self;
 }
 

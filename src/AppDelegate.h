@@ -58,6 +58,7 @@
 	ServerConfigColor *currentColor;
 	ServerConfigColor *currentColor2;
 	ServerConfigStyle *currentStyle;
+	NSString *currentBagCount;
 	NSString *lastServerErrorMessage;
 	NSString *currentBarcode;
 	NSString *currentJobId;
@@ -79,6 +80,7 @@
 - (void)handleInput:(NSString *)input;
 - (BOOL)isAcceptingInput;
 - (BOOL)checkServerResponse:(NSXMLDocument *)responseDoc;
+- (NSString *)stringForXpath:(NSString *)xpath inDocument:(NSXMLDocument *)doc;
 //- (IBAction)toggleAcceptingInput:(id)sender;
 - (void)switchToPanelNamed:(NSString *)panelName;
 
