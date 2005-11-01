@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A2ABA9F0916869F00458E2F /* Package-Scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A2ABA9E0916869F00458E2F /* Package-Scan.png */; };
 		1A70E5F9083E30B40083535A /* Barcode-Scanner-On.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */; };
 		1A70E5FA083E30B40083535A /* Barcode-Scanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5F8083E30B40083535A /* Barcode-Scanner.png */; };
 		1A70E5FD083E34D20083535A /* Error-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A70E5FC083E34D20083535A /* Error-Icon.png */; };
@@ -115,6 +116,7 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1A2ABA9E0916869F00458E2F /* Package-Scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Package-Scan.png"; path = "artwork/Package-Scan.png"; sourceTree = "<group>"; };
 		1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Barcode-Scanner-On.png"; path = "artwork/Barcode-Scanner-On.png"; sourceTree = "<group>"; };
 		1A70E5F8083E30B40083535A /* Barcode-Scanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Barcode-Scanner.png"; path = "artwork/Barcode-Scanner.png"; sourceTree = "<group>"; };
 		1A70E5FC083E34D20083535A /* Error-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Error-Icon.png"; path = "artwork/Error-Icon.png"; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				1A70E602083E3DD70083535A /* Freitag-Logo-(ungenau).pdf */,
 				1A70E5FE083E39130083535A /* Action-Icon.png */,
 				1A70E5FC083E34D20083535A /* Error-Icon.png */,
+				1A2ABA9E0916869F00458E2F /* Package-Scan.png */,
 				1A70E5F7083E30B40083535A /* Barcode-Scanner-On.png */,
 				1A70E5F8083E30B40083535A /* Barcode-Scanner.png */,
 				1B933AC1083B914F004D26FA /* Logo.png */,
@@ -401,6 +404,7 @@
 				1A70E603083E3DD70083535A /* Freitag-Logo-(ungenau).pdf in Resources */,
 				1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */,
 				1BB8E5080868A7D9009FA114 /* notes.txt in Resources */,
+				1A2ABA9F0916869F00458E2F /* Package-Scan.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
