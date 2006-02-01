@@ -554,7 +554,7 @@
 
 - (void)submitBag {
 
-	CURLHandle *curl = [CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
+	CURLHandle *curl = (CURLHandle *)[CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
 //	NSLog(@"curl: %@", curl);
 
 //	NSData *jpegImage = [NSData dataWithContentsOfFile:@"/Users/liyanage/Pictures/People/andyblond.jpg"];
@@ -596,7 +596,7 @@
 
 - (void)submitTarp {
 
-	CURLHandle *curl = [CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
+	CURLHandle *curl = (CURLHandle *)[CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
 //	NSLog(@"curl: %@", curl);
 
 //	NSData *jpegImage = [NSData dataWithContentsOfFile:@"/Users/liyanage/Pictures/People/andyblond.jpg"];
