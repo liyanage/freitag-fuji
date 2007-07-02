@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xml>
+  <url>
+    <item>
+      <id>action</id>
+      <url>http://betabong.kicks-ass.net/fuji/_communication/action.php</url>
+    </item>
+    <item>
+      <id>get_image</id>
+      <url>http://betabong.kicks-ass.net/fuji/_communication/img_get.php</url>
+    </item>
+  </url>
+  <action>
+    <item>
+      <id>6</id>
+      <Barcode></Barcode>
+      <Value>client_init</Value>
+      <Type>0</Type>
+      <Name>Initiale Daten für Client</Name>
+      <Description>Liefert sämtliche initialen Daten für den Client: Farben, Varianten, Benutzer, Modelle, Aktionen</Description>
+    </item>
+    <item>
+      <id>7</id>
+      <Barcode></Barcode>
+      <Value>export_progress</Value>
+      <Type>1</Type>
+      <Name>Fortschritt eines Export-Vorgangs</Name>
+      <Description>Fortschritt eines Exportier-Vorgangs abrufen. Param: ID des Exports Result: Fortschritt (0 bis 1)</Description>
+    </item>
+    <item>
+      <id>8</id>
+      <Barcode></Barcode>
+      <Value>bag_add</Value>
+      <Type>2</Type>
+      <Name>Tasche hinzufügen</Name>
+      <Description>Params: param (barcode), job, color, style Result: db id of bag</Description>
+    </item>
+    <item>
+      <id>10</id>
+      <Barcode></Barcode>
+      <Value>tarp_init</Value>
+      <Type>0</Type>
+      <Name>Initiale Daten für Tarp-Client</Name>
+      <Description></Description>
+    </item>
+    <item>
+      <id>14</id>
+      <Barcode></Barcode>
+      <Value>tarp_add</Value>
+      <Type>2</Type>
+      <Name>Plane hinzufügen</Name>
+      <Description>Neue Plane hinzufügen.</Description>
+    </item>
+    <item>
+      <id>17</id>
+      <Barcode></Barcode>
+      <Value>spin_init</Value>
+      <Type>0</Type>
+      <Name>Initiale Daten für Spin Client</Name>
+      <Description>Wird von der Spin Client Applikation beim Startup aufgerufen.</Description>
+    </item>
+    <item>
+      <id>1</id>
+      <Barcode>111001</Barcode>
+      <Value>job_close</Value>
+      <Type>1</Type>
+      <Name>Foto-Job abschliessen</Name>
+      <Description>Alle Fotos dieses Jobs sind fotografiert. Nach Abschluss des Jobs können keine weiteren Taschen mehr hinzugefügt werden. Der Job wird dem PCS übergeben.</Description>
+    </item>
+    <item>
+      <id>2</id>
+      <Barcode>111002</Barcode>
+      <Value>job_create</Value>
+      <Type>2</Type>
+      <Name>Foto-Job erfassen</Name>
+      <Description>Es müssen noch Modell und Person erfasst werden. Params: param (Barcode), fotographer, model, client</Description>
+    </item>
+    <item>
+      <id>4</id>
+      <Barcode>111010</Barcode>
+      <Value>job_webshop_ch</Value>
+      <Type>1</Type>
+      <Name>Foto-Job in Webshop CH exportieren</Name>
+      <Description>Falls der Job schon abgeschlossen ist, werden die Fotos sofort exportiert. Ansonsten nach Abschluss des Jobs.</Description>
+    </item>
+    <item>
+      <id>5</id>
+      <Barcode>111011</Barcode>
+      <Value>job_webshop_eu</Value>
+      <Type>1</Type>
+      <Name>Foto-Job in Webshop EU exportieren</Name>
+      <Description>Falls der Job schon abgeschlossen ist, werden die Fotos sofort exportiert. Ansonsten nach Abschluss des Jobs.</Description>
+    </item>
+    <item>
+      <id>9</id>
+      <Barcode>111033</Barcode>
+      <Value>client_pref</Value>
+      <Type>2</Type>
+      <Name>Einstellungen anzeigen</Name>
+      <Description>Zeigt beim Client die Einstellungen an</Description>
+    </item>
+    <item>
+      <id>15</id>
+      <Barcode>111040</Barcode>
+      <Value>print_off</Value>
+      <Type>0</Type>
+      <Name>Drucken deaktivieren</Name>
+      <Description>Es werden keine Druckbefehle mehr ausgeführt.</Description>
+    </item>
+    <item>
+      <id>16</id>
+      <Barcode>111041</Barcode>
+      <Value>print_on</Value>
+      <Type>0</Type>
+      <Name>Drucken aktivieren</Name>
+      <Description>Druckbefehle werden ganz normal ausgeführt (z.b. automatisches Drucken von Labels)</Description>
+    </item>
+    <item>
+      <id>3</id>
+      <Barcode>111101</Barcode>
+      <Value>bag_print</Value>
+      <Type>1</Type>
+      <Name>Tasche drucken</Name>
+      <Description>Das Label wird neu erzeugt und die Tasche gedruckt.</Description>
+    </item>
+    <item>
+      <id>11</id>
+      <Barcode>222001</Barcode>
+      <Value>tarp_job_close</Value>
+      <Type>1</Type>
+      <Name>Tarp-Auftrag abschliessen</Name>
+      <Description>Auftrag bzw. Palette abschliessen. Die erfassten Planen werden dem PCS übermittelt. Achtung: Ist ein Auftrag erst einmal geschlossen, können davon keine weiteren Planen mehr fotografiert werden!</Description>
+    </item>
+    <item>
+      <id>12</id>
+      <Barcode>222101</Barcode>
+      <Value>tarp_print</Value>
+      <Type>1</Type>
+      <Name>Plane drucken</Name>
+      <Description>Das Ettikett dieser Plane wird neu erstellt und ausgedruckt.</Description>
+    </item>
+    <item>
+      <id>13</id>
+      <Barcode>222102</Barcode>
+      <Value>tarp_delete</Value>
+      <Type>1</Type>
+      <Name>Plane löschen</Name>
+      <Description>Alle Daten der erfassten Plane werden gelöscht. Bitte nur bei Fehleingabe verwenden!</Description>
+    </item>
+    <item>
+      <id>20</id>
+      <Barcode>333000</Barcode>
+      <Value>spin_add</Value>
+      <Type>1</Type>
+      <Name>Neue Spin Foto-Serie</Name>
+      <Description>Wird aufgerufen, sobald neue Fotos vom entsprechenden Artikel abgelegt sind. Diese Aktion sollte nur vom Fuji-Client aufgerufen werden.</Description>
+    </item>
+    <item>
+      <id>18</id>
+      <Barcode>333001</Barcode>
+      <Value>spin_hd_on</Value>
+      <Type>0</Type>
+      <Name>HD-Bildspeicherung aktivieren</Name>
+      <Description>Aufgenommene High Definition Bilder werden gespeichert für weitere Verwendung.</Description>
+    </item>
+    <item>
+      <id>19</id>
+      <Barcode>333002</Barcode>
+      <Value>spin_hd_off</Value>
+      <Type>0</Type>
+      <Name>HD-Bildspeicherung deaktivieren</Name>
+      <Description>High Definition Bilder werden nicht mehr gespeichert für weitere Verwendung. Original-Bilder werden ab jetzt gelöscht.</Description>
+    </item>
+  </action>
+  <mode>2</mode>
+  <state>success</state>
+</xml>
+

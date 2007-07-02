@@ -5,3 +5,13 @@ tcpdump -t freitag.tcpdump -A
 
 prefs barcode: 111033
 
+
+
+--------------
+
+extension for camera capture skipping mode
+
+- server config xml additional flag
+  xpath /xml/options/nocapture
+
+- 

@@ -169,9 +169,11 @@
 
 
 - (int)clientMode {
-
 	return clientMode;
+}
 
+- (BOOL)isClientMode:(int)mode {
+	return [self clientMode] == mode;
 }
 
 

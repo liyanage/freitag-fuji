@@ -16,10 +16,10 @@
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>2.9</string>
 	<key>CFBundleShortVersionString</key>
-	<string>Freitag FUJI 2.9</string>
+	<string>$(PRODUCT_NAME) 3.0</string>
+	<key>CFBundleVersion</key>
+	<string>3.0</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

@@ -38,6 +38,7 @@
 
 - (ServerConfigAction *)actionForBarcode:(NSString *)barcode;
 - (int)clientMode;
+- (BOOL)isClientMode:(int)mode;
 
 
 @end

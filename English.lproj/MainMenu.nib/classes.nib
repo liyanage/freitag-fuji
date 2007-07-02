@@ -42,6 +42,7 @@
                 stylesPanel = NSPanel; 
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
+                turntablePanel = NSPanel; 
                 weightField = NSTextField; 
                 weightPanel = NSPanel; 
             }; 

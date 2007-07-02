@@ -240,6 +240,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -277,12 +279,12 @@
 							<array>
 								<string>0867D691FE84028FC02AAC07</string>
 								<string>08FB77AEFE84172EC02AAC07</string>
+								<string>1C37FBAC04509CD000000102</string>
 								<string>1CC0EA4004350EF90044410B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -304,7 +306,7 @@
 							<real>193</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>94 139 1055 599 0 0 1440 878 </string>
+						<string>367 402 1055 599 0 0 2560 1578 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -315,8 +317,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -334,7 +334,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B8AFEFC08D0C438007C79B2</string>
+										<string>1B7F2C920C38239D00111DB0</string>
 										<key>history</key>
 										<array>
 											<string>1BB8E62E0868C222009FA114</string>
@@ -343,7 +343,7 @@
 											<string>1B09BDF50868EEAA00988C92</string>
 											<string>1B8AFEF408D0C413007C79B2</string>
 											<string>1B8AFEF508D0C413007C79B2</string>
-											<string>1BB8E5FD0868C0C2009FA114</string>
+											<string>1BA7CB9B0C0F6A170098B6DC</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -354,8 +354,6 @@
 											<string>1BB8E6010868C0C2009FA114</string>
 											<string>1BB8E6360868C222009FA114</string>
 											<string>1BB8E63A0868C222009FA114</string>
-											<string>1B8AFEF608D0C413007C79B2</string>
-											<string>1B8AFEF708D0C413007C79B2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -371,7 +369,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {840, 407}}</string>
 								<key>RubberWindowFrame</key>
-								<string>94 139 1055 599 0 0 1440 878 </string>
+								<string>367 402 1055 599 0 0 2560 1578 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -396,7 +394,7 @@
 										<key>Frame</key>
 										<string>{{10, 27}, {840, 119}}</string>
 										<key>RubberWindowFrame</key>
-										<string>94 139 1055 599 0 0 1440 878 </string>
+										<string>367 402 1055 599 0 0 2560 1578 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -455,11 +453,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B8AFEF908D0C413007C79B2</string>
+				<string>1B7F2C930C38239D00111DB0</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>1B8AFEFA08D0C413007C79B2</string>
+				<string>1B7F2C940C38239D00111DB0</string>
 				<string>1B933C2C083D1BAB004D26FA</string>
-				<string>1B8AFEFB08D0C413007C79B2</string>
+				<string>1B7F2C950C38239D00111DB0</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -874,7 +872,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>147899400.178058</real>
+	<real>205005711.13963699</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -892,7 +890,7 @@
 		<string>/Users/liyanage/svn/entropy-private/freitag-fuji/framework-src/CocoaSequenceGrabber/CocoaSequenceGrabber.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>94 139 1055 599 0 0 1440 878 </string>
+	<string>367 402 1055 599 0 0 2560 1578 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>

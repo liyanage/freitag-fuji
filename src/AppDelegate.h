@@ -8,7 +8,7 @@
 #import <CocoaSequenceGrabber/CocoaSequenceGrabber.h>
 #import <CocoaSequenceGrabber/CSGCameraSettingsCategory.h>
 #import <CURLHandle/CURLHandle+extras.h>
-
+#import <MLUsbHidWrapper/MLUsbHidDevice.h>
 
 @class FUJIWindow;
 
@@ -34,6 +34,7 @@
 	IBOutlet NSPanel *actionSuccessPanel;
 	IBOutlet NSPanel *submitFailedPanel;
 	IBOutlet NSPanel *weightPanel;
+	IBOutlet NSPanel *turntablePanel;
 	
 	IBOutlet NSTextField *weightField;
 
@@ -99,6 +100,8 @@
 - (void)runState:(int)newState;
 - (void)setupCamera;
 - (void)loadServerConfig;
+- (void)runStartState;
+- (void)setStartState;
 - (void)setupModelsPanel;
 - (void)setupPeoplePanel;
 - (void)setupColorsPanel;
@@ -106,6 +109,8 @@
 - (void)doInit:(id)object;
 - (void)createJob;
 - (void)startCapture;
+- (void)signalTurntableStart;
+- (void)processTurntableSignal;
 - (void)submitBag;
 - (void)submitTarp;
 - (void)clearBag;

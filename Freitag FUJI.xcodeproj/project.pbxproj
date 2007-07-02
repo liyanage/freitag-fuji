@@ -21,6 +21,9 @@
 		1B3D91C70839286F00E6EDCE /* ServerConfigPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D91C60839286F00E6EDCE /* ServerConfigPerson.m */; };
 		1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */; };
 		1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */; };
+		1B66BD130C39A31600BE5D68 /* freitag-fuji-transfer.pl in Resources */ = {isa = PBXBuildFile; fileRef = 1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */; };
+		1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
+		1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
 		1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
 		1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
 		1B933AC2083B914F004D26FA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B933AC1083B914F004D26FA /* Logo.png */; };
@@ -39,34 +42,28 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildStyle section */
-		4A9504CCFFE6A4B311CA0CBA /* Development */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
-				ZERO_LINK = YES;
-			};
-			name = Development;
-		};
-		4A9504CDFFE6A4B311CA0CBA /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				PREBINDING = NO;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
-
 /* Begin PBXContainerItemProxy section */
+		1B7F2CA60C3823FF00111DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = MLUsbHidWrapper;
+		};
+		1B7F2CA80C3823FF00111DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1BF712DD0C2872EF0076E295;
+			remoteInfo = Test;
+		};
+		1B7F2CBF0C38298A00111DB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = MLUsbHidWrapper;
+		};
 		1B8AFE8F08D0C120007C79B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
@@ -104,6 +101,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */,
 				1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */,
 				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
 				1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */,
@@ -139,6 +137,8 @@
 		1B3D92EB0839366A00E6EDCE /* ServerConfigAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConfigAction.h; path = src/ServerConfigAction.h; sourceTree = "<group>"; };
 		1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigAction.m; path = src/ServerConfigAction.m; sourceTree = "<group>"; };
 		1B3D93430839445600E6EDCE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = src/Constants.h; sourceTree = "<group>"; };
+		1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = "freitag-fuji-transfer.pl"; path = "src/freitag-fuji-transfer.pl"; sourceTree = "<group>"; };
+		1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = USBHidWrapper.xcodeproj; path = "../../entropy/cocoa-usb-hid-wrapper/USBHidWrapper.xcodeproj"; sourceTree = "<group>"; };
 		1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CURLHandle.xcodeproj; path = "framework-src/CURLHandle_1.9/CURLHandleSource/CURLHandle.xcodeproj"; sourceTree = "<group>"; };
 		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
 		1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaSequenceGrabber.framework; path = Frameworks/CocoaSequenceGrabber.framework; sourceTree = "<group>"; };
@@ -152,6 +152,7 @@
 		1BB9F9960838B05D005D68FB /* NoBackgroundClickView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = NoBackgroundClickView.h; path = src/NoBackgroundClickView.h; sourceTree = "<group>"; };
 		1BB9F9D80838B53D005D68FB /* FUJIWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FUJIWindow.h; path = src/FUJIWindow.h; sourceTree = "<group>"; };
 		1BB9F9D90838B53D005D68FB /* FUJIWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FUJIWindow.m; path = src/FUJIWindow.m; sourceTree = "<group>"; };
+		1BC870490C1303FA0097183D /* example-server-prefs.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "example-server-prefs.xml"; sourceTree = "<group>"; };
 		1BDDEA990876D286009CD0B1 /* MLFloatFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLFloatFormatter.h; path = src/MLFloatFormatter.h; sourceTree = "<group>"; };
 		1BDDEA9A0876D286009CD0B1 /* MLFloatFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLFloatFormatter.m; path = src/MLFloatFormatter.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = src/main.m; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */,
 				1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */,
 				1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -235,6 +237,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1B7F2CA20C3823FF00111DB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */,
+				1B7F2CA90C3823FF00111DB0 /* Test.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1B8AFE8C08D0C120007C79B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,10 +265,12 @@
 		29B97314FDCFA39411CA2CEA /* Freitag FUJI */ = {
 			isa = PBXGroup;
 			children = (
+				1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */,
 				1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */,
 				1BB8E5350868ACC4009FA114 /* CocoaSequenceGrabber.xcodeproj */,
 				1BB8E5070868A7D9009FA114 /* notes.txt */,
 				1B3D93430839445600E6EDCE /* Constants.h */,
+				1BC870490C1303FA0097183D /* example-server-prefs.xml */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -270,6 +283,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */,
 				32CA4F630368D1EE00C91783 /* Freitag FUJI_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -318,21 +332,10 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = Frameworks;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Freitag FUJI_Prefix.pch";
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = Info.plist;
-				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = "Freitag FUJI";
-				WRAPPER_EXTENSION = app;
-			};
 			dependencies = (
 				1BB8E53C0868AD33009FA114 /* PBXTargetDependency */,
 				1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */,
+				1B7F2CC00C38298A00111DB0 /* PBXTargetDependency */,
 			);
 			name = "Freitag FUJI";
 			productInstallPath = "$(HOME)/Applications";
@@ -346,12 +349,6 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1BB8E1EA08588B88009FA114 /* Build configuration list for PBXProject "Freitag FUJI" */;
-			buildSettings = {
-			};
-			buildStyles = (
-				4A9504CCFFE6A4B311CA0CBA /* Development */,
-				4A9504CDFFE6A4B311CA0CBA /* Deployment */,
-			);
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Freitag FUJI */;
 			projectDirPath = "";
@@ -364,6 +361,10 @@
 					ProductGroup = 1B8AFE8C08D0C120007C79B2 /* Products */;
 					ProjectRef = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
 				},
+				{
+					ProductGroup = 1B7F2CA20C3823FF00111DB0 /* Products */;
+					ProjectRef = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
+				},
 			);
 			targets = (
 				8D1107260486CEB800E47090 /* Freitag FUJI */,
@@ -372,6 +373,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MLUsbHidWrapper.framework;
+			remoteRef = 1B7F2CA60C3823FF00111DB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B7F2CA90C3823FF00111DB0 /* Test.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Test.octest;
+			remoteRef = 1B7F2CA80C3823FF00111DB0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -405,6 +420,7 @@
 				1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */,
 				1BB8E5080868A7D9009FA114 /* notes.txt in Resources */,
 				1A2ABA9F0916869F00458E2F /* Package-Scan.png in Resources */,
+				1B66BD130C39A31600BE5D68 /* freitag-fuji-transfer.pl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +449,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1B7F2CC00C38298A00111DB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MLUsbHidWrapper;
+			targetProxy = 1B7F2CBF0C38298A00111DB0 /* PBXContainerItemProxy */;
+		};
 		1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CURLHandle;
@@ -465,7 +486,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		1BB8E1E708588B88009FA114 /* Development */ = {
+		1BB8E1E708588B88009FA114 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
@@ -479,16 +500,21 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Freitag FUJI";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
-			name = Development;
+			name = Debug;
 		};
-		1BB8E1E808588B88009FA114 /* Deployment */ = {
+		1BB8E1E808588B88009FA114 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -498,25 +524,26 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Freitag FUJI";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
-			name = Deployment;
+			name = Release;
 		};
-		1BB8E1EB08588B88009FA114 /* Development */ = {
+		1BB8E1EB08588B88009FA114 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 			};
-			name = Development;
+			name = Debug;
 		};
-		1BB8E1EC08588B88009FA114 /* Deployment */ = {
+		1BB8E1EC08588B88009FA114 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 			};
-			name = Deployment;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -524,20 +551,20 @@
 		1BB8E1E608588B88009FA114 /* Build configuration list for PBXNativeTarget "Freitag FUJI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BB8E1E708588B88009FA114 /* Development */,
-				1BB8E1E808588B88009FA114 /* Deployment */,
+				1BB8E1E708588B88009FA114 /* Debug */,
+				1BB8E1E808588B88009FA114 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Deployment;
+			defaultConfigurationName = Release;
 		};
 		1BB8E1EA08588B88009FA114 /* Build configuration list for PBXProject "Freitag FUJI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BB8E1EB08588B88009FA114 /* Development */,
-				1BB8E1EC08588B88009FA114 /* Deployment */,
+				1BB8E1EB08588B88009FA114 /* Debug */,
+				1BB8E1EC08588B88009FA114 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Deployment;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

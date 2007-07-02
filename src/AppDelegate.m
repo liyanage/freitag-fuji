@@ -187,17 +187,51 @@
 	[self setupColorsPanel];
 	[self setupStylesPanel];
 
-	if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+	[self runStartState];
+	
+}
+
+
+- (void)runStartState {
+	if ([serverConfig isClientMode:CLIENT_MODE_BAG]) {
 		[self runState:SCAN_JOB_BARCODE];
+	} else if ([serverConfig isClientMode:CLIENT_MODE_TURNTABLE]) {
+		[self runState:SCAN_TURNTABLE_BARCODE];
 	} else {
 		[self runState:SCAN_TARP_BARCODE];
 	}
-	
 }
+
+
+- (void)setStartState {
+	if ([serverConfig isClientMode:CLIENT_MODE_BAG]) {
+		[self setState:SCAN_JOB_BARCODE];
+	} else if ([serverConfig isClientMode:CLIENT_MODE_TURNTABLE]) {
+		[self setState:SCAN_TURNTABLE_BARCODE];
+	} else {
+		[self setState:SCAN_TARP_BARCODE];
+	}
+}
+
+
 
 #pragma mark Barcode input handling
 
 - (void)handleInput:(NSString *)input {
+
+	if (![input length]) {
+		NSLog(@"Empty input string received, ignoring...");
+		return;
+	}
+
+	if ([input characterAtIndex:0] == NSF1FunctionKey) {
+		if (appState != WAIT_FOR_TURNTABLE_SIGNAL) {
+			NSLog(@"F1 key seen while not in WAIT_FOR_TURNTABLE_SIGNAL state, ignoring...");
+			return;
+		};
+		[self runState:RECEIVED_TURNTABLE_SIGNAL];
+		return;
+	}
 
 //	NSLog(@"handleInput: %@", input);
 	
@@ -235,6 +269,8 @@
 		[self runState:SUBMIT_ACTION_TYPE1];
 	} else if (appState == SCAN_TARP_BARCODE) {
 		[self runState:CAMERA_CAPTURE];
+	} else if (appState == SCAN_TURNTABLE_BARCODE) {
+		[self runState:SIGNAL_TURNTABLE_START];
 	}
 	
 }
@@ -256,6 +292,7 @@
 		case SCAN_TARP_BARCODE:
 		case SCAN_JOB_BARCODE:
 		case SCAN_BAG_BARCODE:
+		case SCAN_TURNTABLE_BARCODE:
 		case SCAN_ACTION_PARAM_BARCODE:
 		case CAMERA_CAPTURE:
 		case PICK_COLOR:
@@ -337,8 +374,7 @@
 #pragma mark App state management
 
 - (void)runState:(int)newState {
-
-//	NSLog(@"runState: switching %d -> %d", appState, newState);
+	NSLog(@"State transition from %d to %d", appState, newState);
 	[self setState:newState];
 	[self checkState];
 }
@@ -390,6 +426,7 @@
 			break;
 			
 		case SCAN_BAG_BARCODE:
+		case SCAN_TURNTABLE_BARCODE:
 			[self enableInput];
 			[self switchToPanelNamed:@"bagScan"];
 			break;
@@ -456,11 +493,7 @@
 			
 		case CONFIRM_ACTION_SUCCESS:
 			[self switchToPanelNamed:@"actionSuccess"];
-			if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
-				[self setState:SCAN_JOB_BARCODE];
-			} else {
-				[self setState:SCAN_TARP_BARCODE];
-			}
+			[self setStartState];
 			break;
 
 		case SCAN_TARP_BARCODE:
@@ -469,7 +502,19 @@
 			[self switchToPanelNamed:@"jobScan"];
 			break;
 
+		case SIGNAL_TURNTABLE_START:
+			[self signalTurntableStart];
+			break;
 
+		case WAIT_FOR_TURNTABLE_SIGNAL:
+			[self enableInput];
+			[self switchToPanelNamed:@"turntable"];
+			break;
+			
+		case RECEIVED_TURNTABLE_SIGNAL:
+			[self disableInput];
+			[self processTurntableSignal];
+			break;
 			
 		default:
 			NSLog(@"unknown state %d!", appState);
@@ -548,6 +593,63 @@
 - (void)camera:(CSGCamera *)aCamera didReceiveFrame:(CSGImage *)aFrame {
 	[captureMonitorView setImage:aFrame];
 	[self setValue:aFrame forKey:@"lastImage"];
+}
+
+
+- (void)signalTurntableStart {
+	NSArray *devices = [MLUsbHidDevice findDevicesForForUsagePage:0x01 usage:0x06];
+	NSAssert([devices count] > 0, @"No matching USB devices found");
+
+	unsigned int i, count = [devices count];
+	for (i = 0; i < count; i++) {
+		MLUsbHidDevice *device = [devices objectAtIndex:i];
+		BOOL result = [device setElementValue:1 forUsagePage:8 usage:2];
+		if (!result) {
+			NSLog(@"Unable to signal turntable (on) via USB");
+		}
+	}
+
+	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+
+	for (i = 0; i < count; i++) {
+		MLUsbHidDevice *device = [devices objectAtIndex:i];
+		BOOL result = [device setElementValue:0 forUsagePage:8 usage:2];
+		if (!result) {
+			NSLog(@"Unable to signal turntable (off) via USB");
+		}
+	}
+
+	[self runState:WAIT_FOR_TURNTABLE_SIGNAL];
+}
+
+
+
+- (void)processTurntableSignal {
+	NSLog(@"processing turntable pictures");
+
+	id tempDirPath = NSTemporaryDirectory();
+	NSString *transferScriptPath = [[NSBundle mainBundle] pathForResource:@"freitag-fuji-transfer" ofType:@"pl"];
+
+	NSArray *desktops = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES);
+	NSString *desktopPath = [desktops objectAtIndex:0];
+
+	NSMutableArray *args = [NSMutableArray array];
+	// first the script path as passed to the Perl interpreter
+	[args addObject:transferScriptPath];     
+	// add the remaining args as key/value pairs
+	[args addObject:@"capture_dir_path"];
+	[args addObject:[NSString stringWithFormat:@"%@/capture", desktopPath]];
+	[args addObject:@"temp_dir_path"];
+	[args addObject:tempDirPath];
+	[args addObject:@"barcode"];
+	[args addObject:[self valueForKey:@"currentBarcode"]];
+	[args addObject:@"action_url"];
+	[args addObject:[serverConfig valueForKey:@"urlAction"]];
+	
+	NSTask *task = [NSTask launchedTaskWithLaunchPath:@"/usr/bin/perl" arguments:args];
+	NSLog(@"transfer script launched with pid %d", [task processIdentifier]);
+
+	[self runStartState];
 }
 
 
@@ -749,6 +851,8 @@
 }
 
 
+
+
 #pragma mark IBActions
 
 - (IBAction)commitPrefs:(id)sender {
@@ -790,7 +894,7 @@
 	NSString *colorKey = appState == PICK_COLOR ? @"currentColor" : @"currentColor2";
 	[self setValue:[cell representedObject] forKey:colorKey];
 
-	if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
+	if ([serverConfig isClientMode:CLIENT_MODE_BAG]) {
 		[self runState:PICK_STYLE];
 	} else if (appState == PICK_COLOR) {
 		[self runState:PICK_COLOR2];
@@ -854,13 +958,8 @@
 		case SUBMIT_JOB_FAILED:
 		case SUBMIT_ACTION_FAILED:
 		default:
-			if ([serverConfig clientMode] == CLIENT_MODE_BAG) {
-				[self runState:SCAN_JOB_BARCODE];
-			} else {
-				[self runState:SCAN_TARP_BARCODE];
-			}
+			[self runStartState];
 			break;
-
 	}
 
 }

@@ -27,11 +27,17 @@ enum app_states {
 	SUBMIT_TARP,                 // 25
 	CONFIRM_ACTION_SUCCESS,      // 26
 	
-	SCAN_TARP_BARCODE            // 27
+	SCAN_TARP_BARCODE,           // 27
+	SCAN_TURNTABLE_BARCODE,      // 28
+	SIGNAL_TURNTABLE_START,      // 29
+	WAIT_FOR_TURNTABLE_SIGNAL,   // 30
+	RECEIVED_TURNTABLE_SIGNAL    // 31
+	
 };
 
 enum client_modes {
-	CLIENT_MODE_BAG = 0,
-	CLIENT_MODE_TARP = 1
+	CLIENT_MODE_BAG = 0,         // Product image capture workstation
+	CLIENT_MODE_TARP = 1,        // Tarp image capture workstation
+	CLIENT_MODE_TURNTABLE = 2    // Turntable multi-image capture workstation
 };
 
