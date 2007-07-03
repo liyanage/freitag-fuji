@@ -57,7 +57,7 @@
 - (void)setupClientMode {
 
 	[self setValue:[[[doc nodesForXPath:@"xml/mode/text()" error:nil] objectAtIndex:0] XMLString] forKey:@"clientMode"];
-	NSLog(@"client mode %@", [self valueForKey:@"clientMode"]);
+	NSLog(@"Client mode is %@", [self valueForKey:@"clientMode"]);
 
 }
 

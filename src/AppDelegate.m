@@ -630,11 +630,14 @@
 	id tempDirPath = NSTemporaryDirectory();
 	NSString *transferScriptPath = [[NSBundle mainBundle] pathForResource:@"freitag-fuji-transfer" ofType:@"pl"];
 
+	NSString *perlLibPath = [[NSBundle mainBundle] pathForResource:@"perl-lib-lwp" ofType:@""];
+
 	NSArray *desktops = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES);
 	NSString *desktopPath = [desktops objectAtIndex:0];
 
 	NSMutableArray *args = [NSMutableArray array];
 	// first the script path as passed to the Perl interpreter
+	[args addObject:[NSString stringWithFormat:@"-I%@", perlLibPath]];     
 	[args addObject:transferScriptPath];     
 	// add the remaining args as key/value pairs
 	[args addObject:@"capture_dir_path"];
@@ -645,6 +648,8 @@
 	[args addObject:[self valueForKey:@"currentBarcode"]];
 	[args addObject:@"action_url"];
 	[args addObject:[serverConfig valueForKey:@"urlAction"]];
+
+//	NSLog(@"/usr/bin/perl %@", [args componentsJoinedByString:@" "]);
 	
 	NSTask *task = [NSTask launchedTaskWithLaunchPath:@"/usr/bin/perl" arguments:args];
 	NSLog(@"transfer script launched with pid %d", [task processIdentifier]);

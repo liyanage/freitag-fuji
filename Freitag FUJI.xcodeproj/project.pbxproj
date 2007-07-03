@@ -22,6 +22,7 @@
 		1B3D92E0083935C500E6EDCE /* ServerConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92DF083935C500E6EDCE /* ServerConfigModel.m */; };
 		1B3D92ED0839366B00E6EDCE /* ServerConfigAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */; };
 		1B66BD130C39A31600BE5D68 /* freitag-fuji-transfer.pl in Resources */ = {isa = PBXBuildFile; fileRef = 1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */; };
+		1B66C1B50C3ADA7000BE5D68 /* perl-lib-lwp in Resources */ = {isa = PBXBuildFile; fileRef = 1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */; };
 		1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
 		1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
 		1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
@@ -138,6 +139,7 @@
 		1B3D92EC0839366A00E6EDCE /* ServerConfigAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConfigAction.m; path = src/ServerConfigAction.m; sourceTree = "<group>"; };
 		1B3D93430839445600E6EDCE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = src/Constants.h; sourceTree = "<group>"; };
 		1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = "freitag-fuji-transfer.pl"; path = "src/freitag-fuji-transfer.pl"; sourceTree = "<group>"; };
+		1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "perl-lib-lwp"; sourceTree = "<group>"; };
 		1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = USBHidWrapper.xcodeproj; path = "../../entropy/cocoa-usb-hid-wrapper/USBHidWrapper.xcodeproj"; sourceTree = "<group>"; };
 		1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CURLHandle.xcodeproj; path = "framework-src/CURLHandle_1.9/CURLHandleSource/CURLHandle.xcodeproj"; sourceTree = "<group>"; };
 		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */,
 				32CA4F630368D1EE00C91783 /* Freitag FUJI_Prefix.pch */,
+				1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -421,6 +424,7 @@
 				1BB8E5080868A7D9009FA114 /* notes.txt in Resources */,
 				1A2ABA9F0916869F00458E2F /* Package-Scan.png in Resources */,
 				1B66BD130C39A31600BE5D68 /* freitag-fuji-transfer.pl in Resources */,
+				1B66C1B50C3ADA7000BE5D68 /* perl-lib-lwp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
