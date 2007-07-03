@@ -35,7 +35,6 @@
 		1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BB8E53A0868ACC4009FA114 /* CocoaSequenceGrabber.framework */; };
 		1BB9F9970838B05D005D68FB /* NoBackgroundClickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9950838B05C005D68FB /* NoBackgroundClickView.m */; };
 		1BB9F9DA0838B53D005D68FB /* FUJIWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BB9F9D90838B53D005D68FB /* FUJIWindow.m */; };
-		1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BDDEA990876D286009CD0B1 /* MLFloatFormatter.h */; };
 		1BDDEA9C0876D286009CD0B1 /* MLFloatFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDDEA9A0876D286009CD0B1 /* MLFloatFormatter.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -105,7 +104,6 @@
 				1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */,
 				1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */,
 				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
-				1BDDEA9B0876D286009CD0B1 /* MLFloatFormatter.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
