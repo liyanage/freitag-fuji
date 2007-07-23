@@ -48,7 +48,7 @@
 
 	// turn table completion signal
 	if ([[theEvent characters] characterAtIndex:0] == NSF1FunctionKey) {
-		NSLog(@"f1 key");
+//		NSLog(@"f1 key");
 		[[self delegate] handleInput:[theEvent characters]];
 		[self clearKeyBuffer];
 		return;

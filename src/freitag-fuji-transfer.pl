@@ -12,25 +12,35 @@ use HTTP::Request::Common ();
 use IO::Dir;
 use Data::Dumper;
 
-my $args = {@ARGV};
 #warn "args: @ARGV";
 
-# /usr/bin/perl "-I/Users/liyanage/svn/entropy-private/freitag-fuji/build/Debug/Freitag FUJI.app/Contents/Resources/perl-lib-lwp" /Users/liyanage/svn/entropy-private/freitag-fuji/src/freitag-fuji-transfer.pl capture_dir_path /Users/liyanage/Desktop/capture temp_dir_path /private/var/tmp/folders.501/TemporaryItems barcode 45 action_url http://betabong.kicks-ass.net/fuji/_communication/action.php
+# /usr/bin/perl "-I/Users/liyanage/svn/entropy-private/freitag-fuji/build/Debug/Freitag FUJI.app/Contents/Resources/perl-lib-lwp" /Users/liyanage/svn/entropy-private/freitag-fuji/src/freitag-fuji-transfer.pl capture_files foo1.jpg,foo2.jpg temp_dir_path /private/var/tmp/folders.501/TemporaryItems barcode 45 action_url http://betabong.kicks-ass.net/fuji/_communication/action.php
 
+
+my $args = {@ARGV};
 check_args($args);
 move_images($args);
 upload_images($args);
 exit 0;
 
 
-
 sub check_args {
 	my ($args) = @_;
 	my %args = %$args;
+
 	die "capture dir path '$args{capture_dir_path}' invalid" unless (-d "$args{capture_dir_path}");
 	die "missing 'barcode' parameter" unless ($args{barcode});
 	die "missing 'action_url' parameter" unless ($args{action_url});
 	die "missing 'barcode' parameter" unless (-d "$args{temp_dir_path}");
+
+	my @image_files = split(/,/, $args{capture_files});
+	my @missing_image_files = grep {! -f "$args{capture_dir_path}/$_"} @image_files;
+	unless (@image_files and !@missing_image_files) {
+		die "No file list or missing image files: @missing_image_files";
+	}
+	my @sorted_images = map {$_->[0]} sort {$b->[1] <=> $a->[1]} map {[$_, -M "$args{capture_dir_path}/$_"]} @image_files;
+	$args->{capture_files} = \@sorted_images;
+#	warn("sorted files: @sorted_images");
 }
 
 
@@ -42,13 +52,11 @@ sub move_images {
 	remove_jobdir($jobdir) if (-d $jobdir);
 	die "Unable to create job dir '$jobdir': $!" unless (mkdir($jobdir));
 
-	my @files = sort grep {/.jpg$/i} IO::Dir->new($args{capture_dir_path})->read();
-	foreach my $file (@files) {
+	foreach my $file (@{$args{capture_files}}) {
 		my ($from, $to) = ("$args{capture_dir_path}/$file", "$jobdir/$file");
 		die "Unable to move '$from' to '$to': $!" unless (rename($from, $to));
 	}
 
-	$args->{files} = \@files;
 	$args->{jobdir} = $jobdir;
 }
 
@@ -81,14 +89,12 @@ sub make_file_list {
 	my ($args) = @_;
 	my %args = %$args;
 
-	my $index = 1;
+	my $index = 0;
 	my @list;
-	foreach my $file (@{$args{files}}) {
-#		push @list, "file_$index" => ["$args{jobdir}/$file", "$args{barcode}_$index.jpg", Content_Type => 'image/jpeg'];
-		push @list, "file[]" => ["$args{jobdir}/$file", "$args{barcode}_$index.jpg", Content_Type => 'image/jpeg'];
+	foreach my $file (@{$args{capture_files}}) {
+		push @list, "file_$index" => ["$args{jobdir}/$file", "$args{barcode}_$index.jpg", Content_Type => 'image/jpeg'];
 		$index++;
 	}
-
 	return @list;
 }
 

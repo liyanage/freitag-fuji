@@ -29,6 +29,7 @@
                 colorsMatrix = NSMatrix; 
                 colorsPanel = NSPanel; 
                 currentPanelView = NSView; 
+                genericErrorPanel = NSPanel; 
                 initFailedPanel = NSPanel; 
                 jobScanPanel = NSPanel; 
                 modelsMatrix = NSMatrix; 
@@ -43,6 +44,7 @@
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
                 turntablePanel = NSPanel; 
+                turntableThumbnailMatrix = NSMatrix; 
                 weightField = NSTextField; 
                 weightPanel = NSPanel; 
             }; 

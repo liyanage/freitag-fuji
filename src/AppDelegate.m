@@ -35,17 +35,19 @@
 
 
 - (void)dealloc {
-	
 	[mainWindow release];
 	[serverConfig release];
 	[currentBarcode release];
 	[currentBagCount release];
 	[camera release];
 	[lastServerErrorMessage release];
+	[genericErrorPanelMessage release];
 	[weightNumberCharacterSkipSet release];
+	[timestamp release];
+	[turntableImages release];
 	[super dealloc];
-	
 }
+
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
 	
@@ -162,33 +164,24 @@
 }
 
 
-- (void)setupCamera {
-	if (camera) return;
+- (BOOL)setupCamera {
+	if (camera) return YES;
 	camera = [[CSGCamera alloc] init];
+	if (!camera) return NO;
 	[camera setDelegate:self];
 
 	NSData *cameraSettings = [[NSUserDefaults standardUserDefaults] valueForKey:@"cameraSettings"];
 	if (cameraSettings) {
 		[camera setSettings:cameraSettings];
 	}
-
+	return YES;
 }
 
-- (void)loadServerConfig {
-	
-	[self setValue:[[[ServerConfig alloc] init] autorelease] forKey:@"serverConfig"];
-	if (!serverConfig) {
-		[self runState:INITFAILED];
-		return;
-	}
-	
-	[self setupModelsPanel];
-	[self setupPeoplePanel];
-	[self setupColorsPanel];
-	[self setupStylesPanel];
 
-	[self runStartState];
-	
+- (BOOL)loadServerConfig {
+	[self setValue:[[[ServerConfig alloc] init] autorelease] forKey:@"serverConfig"];
+	if (!serverConfig) return NO;
+	return YES;
 }
 
 
@@ -215,9 +208,40 @@
 
 
 
+- (NSString *)pictureDirectoryPath {
+//	return [NSHomeDirectory() stringByAppendingPathComponent:@"PicturesDebug"];
+	return [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
+}
+
+
+- (BOOL)pictureDirectoryExists {
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSString *dirPath = [self pictureDirectoryPath];
+	BOOL isDir;
+	BOOL exists = [fm fileExistsAtPath:dirPath isDirectory:&isDir];
+	if (isDir && exists) return YES;
+	NSLog(@"'Pictures' directory does not exist at expected location '%@'", dirPath);
+	return NO;
+}
+
+
+- (BOOL)checkAndPreparePictureDirectory {
+	return [self pictureDirectoryExists];
+}
+
+
+
+
+
+
 #pragma mark Barcode input handling
 
 - (void)handleInput:(NSString *)input {
+
+	if (appState == GENERIC_ERROR) {
+		[self dismissError:self];
+		return;
+	}
 
 	if (![input length]) {
 		NSLog(@"Empty input string received, ignoring...");
@@ -374,7 +398,9 @@
 #pragma mark App state management
 
 - (void)runState:(int)newState {
+#ifdef DEBUG
 	NSLog(@"State transition from %d to %d", appState, newState);
+#endif
 	[self setState:newState];
 	[self checkState];
 }
@@ -490,7 +516,12 @@
 		case SUBMIT_TARP_FAILED:
 			[self switchToPanelNamed:@"submitFailed"];
 			break;
-			
+
+		case GENERIC_ERROR:
+			[self enableInput];
+			[self switchToPanelNamed:@"genericError"];
+			break;
+
 		case CONFIRM_ACTION_SUCCESS:
 			[self switchToPanelNamed:@"actionSuccess"];
 			[self setStartState];
@@ -508,6 +539,7 @@
 
 		case WAIT_FOR_TURNTABLE_SIGNAL:
 			[self enableInput];
+			[self checkTurntablePictures];
 			[self switchToPanelNamed:@"turntable"];
 			break;
 			
@@ -529,18 +561,46 @@
 }
 
 
+- (void)runGenericErrorForMessage:(NSString *)message {
+	[self setValue:message forKey:@"genericErrorPanelMessage"];
+	[self runState:GENERIC_ERROR];
+}
 
 
 #pragma mark App state handlers
 
 
 - (void)doInit:(id)object {
-
 	[self disableInput];
 	[self setValue:[NSNumber numberWithBool:YES] forKey:@"initializing"];
-	[self loadServerConfig];
-	[self setupCamera];
+	if (![self loadServerConfig]) {
+		[self runState:INITFAILED];
+		return;
+	}
+	
+	if ([serverConfig isClientMode:CLIENT_MODE_BAG] || [serverConfig isClientMode:CLIENT_MODE_TARP]) {
+		// These modes need a QuickTime video source
+		[self setupModelsPanel];
+		[self setupPeoplePanel];
+		[self setupColorsPanel];
+		[self setupStylesPanel];
+		if (![self setupCamera]) {
+			NSLog(@"Unable to initialize camera");
+			[self runState:INITFAILED];
+			return;
+		}
+	} else if ([serverConfig isClientMode:CLIENT_MODE_TURNTABLE]) {
+		if (![self checkAndPreparePictureDirectory]) {
+			NSLog(@"Unable to set up Picture directory");
+			[self runState:INITFAILED];
+			return;
+		}
+	} else {
+		NSLog(@"Unknown client mode %d", [serverConfig clientMode]);
+	}
+
 	[self setValue:[NSNumber numberWithBool:NO] forKey:@"initializing"];
+	[self runStartState];
 
 }
 
@@ -597,6 +657,9 @@
 
 
 - (void)signalTurntableStart {
+
+	[self setValue:[NSDate date] forKey:@"timestamp"];
+
 	NSArray *devices = [MLUsbHidDevice findDevicesForForUsagePage:0x01 usage:0x06];
 	NSAssert([devices count] > 0, @"No matching USB devices found");
 
@@ -605,7 +668,7 @@
 		MLUsbHidDevice *device = [devices objectAtIndex:i];
 		BOOL result = [device setElementValue:1 forUsagePage:8 usage:2];
 		if (!result) {
-			NSLog(@"Unable to signal turntable (on) via USB");
+			NSLog(@"Unable to signal turntable (on) on USB device %d of %d", i + 1, count);
 		}
 	}
 
@@ -615,7 +678,7 @@
 		MLUsbHidDevice *device = [devices objectAtIndex:i];
 		BOOL result = [device setElementValue:0 forUsagePage:8 usage:2];
 		if (!result) {
-			NSLog(@"Unable to signal turntable (off) via USB");
+			NSLog(@"Unable to signal turntable (off) on USB device %d of %d", i + 1, count);
 		}
 	}
 
@@ -625,23 +688,43 @@
 
 
 - (void)processTurntableSignal {
-	NSLog(@"processing turntable pictures");
+	NSTimeInterval age = -[self updateTurntablePictures];
+	NSTimeInterval minimumAge = (NSTimeInterval)TURNTABLE_PICTURE_MINIMUM_AGE_SECONDS;
+	if (age < minimumAge) {
+		NSLog(@"age of last image file is below threshold (%f < %f), waiting...", age, minimumAge);
+		[self performSelector:@selector(processTurntableSignal) withObject:nil afterDelay:1.0];
+		return;
+	}
+	
+	int count = [turntableImages count];
+	if (count != TURNTABLE_THUMBNAIL_COUNT) {
+		[self runGenericErrorForMessage:[NSString stringWithFormat:@"Es wurden %d statt %d Bilder empfangen", count, TURNTABLE_THUMBNAIL_COUNT]];
+		return;
+	}
+
+	[self uploadTurntablePictures];
+}
+
+
+- (void)uploadTurntablePictures {
 
 	id tempDirPath = NSTemporaryDirectory();
 	NSString *transferScriptPath = [[NSBundle mainBundle] pathForResource:@"freitag-fuji-transfer" ofType:@"pl"];
 
 	NSString *perlLibPath = [[NSBundle mainBundle] pathForResource:@"perl-lib-lwp" ofType:@""];
 
-	NSArray *desktops = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES);
-	NSString *desktopPath = [desktops objectAtIndex:0];
-
 	NSMutableArray *args = [NSMutableArray array];
 	// first the script path as passed to the Perl interpreter
 	[args addObject:[NSString stringWithFormat:@"-I%@", perlLibPath]];     
 	[args addObject:transferScriptPath];     
 	// add the remaining args as key/value pairs
+
 	[args addObject:@"capture_dir_path"];
-	[args addObject:[NSString stringWithFormat:@"%@/capture", desktopPath]];
+	[args addObject:[self pictureDirectoryPath]];
+
+	[args addObject:@"capture_files"];
+	[args addObject:[self turntablePictureFilenameList]];
+
 	[args addObject:@"temp_dir_path"];
 	[args addObject:tempDirPath];
 	[args addObject:@"barcode"];
@@ -654,8 +737,87 @@
 	NSTask *task = [NSTask launchedTaskWithLaunchPath:@"/usr/bin/perl" arguments:args];
 	NSLog(@"transfer script launched with pid %d", [task processIdentifier]);
 
+	[self clearTurntablePictures];
 	[self runStartState];
+
 }
+
+
+- (NSString *)turntablePictureFilenameList {
+	NSMutableArray *filenameArray = [NSMutableArray array];
+	unsigned int i, count = [[turntableImages allKeys] count];
+	for (i = 0; i < count; i++) {
+		NSString *path = [[turntableImages allKeys] objectAtIndex:i];
+		[filenameArray addObject:[path lastPathComponent]];
+	}
+	return [filenameArray componentsJoinedByString:@","];
+}
+
+
+
+- (void)checkTurntablePictures {
+	if (appState != WAIT_FOR_TURNTABLE_SIGNAL) return;
+	[self clearTurntablePictures];
+	[self setValue:[NSMutableDictionary dictionary] forKey:@"turntableImages"];
+	[self performSelector:@selector(checkTurntablePicturesTimer) withObject:nil afterDelay:1.0];
+}
+
+
+- (void)checkTurntablePicturesTimer {
+	if (appState != WAIT_FOR_TURNTABLE_SIGNAL) return;
+	[self updateTurntablePictures];
+	[self performSelector:@selector(checkTurntablePicturesTimer) withObject:nil afterDelay:1.0];
+}
+
+
+- (void)clearTurntablePictures {
+	[self setValue:nil forKey:@"turntableImages"];
+	NSArray *images = [turntableThumbnailMatrix cells];
+	unsigned int i, count = [images count];
+	for (i = 0; i < count; i++) {
+		NSImageView *imageView = [images objectAtIndex:i];
+		[imageView setImage:nil];
+	}
+}
+
+
+- (NSTimeInterval)updateTurntablePictures {
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSString *picDirPath = [self pictureDirectoryPath];
+	NSArray *things = [fm directoryContentsAtPath:picDirPath];
+	
+	unsigned int i, count = [things count];
+	NSDate *latestModTime = [NSDate distantPast];
+	for (i = 0; i < count; i++) {
+		NSString *filename = [things objectAtIndex:i];
+		NSString *fullPath = [[picDirPath stringByAppendingString:@"/"] stringByAppendingString:filename];
+		if (![filename hasSuffix:@".jpg"]) continue;
+		NSDate *modTime = [[fm fileAttributesAtPath:fullPath traverseLink:YES] fileModificationDate];
+		if (!([modTime compare:timestamp] == NSOrderedDescending)) continue;
+		latestModTime = [modTime laterDate:latestModTime];
+		if ([turntableImages objectForKey:fullPath]) continue;
+		
+		NSImage *image = [[[NSImage alloc] initByReferencingFile:fullPath] autorelease];
+		[turntableImages setObject:image forKey:fullPath];
+
+		unsigned count = [turntableImages count];
+		if (count > TURNTABLE_THUMBNAIL_COUNT) continue;
+		
+		unsigned index = count - 1;
+		NSImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
+		[ic setObjectValue:image];
+		[turntableThumbnailMatrix setNeedsDisplay:YES];
+		
+//		NSLog(@"path %@", fullPath);
+	}
+
+	NSTimeInterval lastFileAge = [latestModTime timeIntervalSinceNow];
+//	NSLog(@"lastFileAge %f", lastFileAge);
+	return lastFileAge;
+
+}
+
+
 
 
 
@@ -962,6 +1124,7 @@
 
 		case SUBMIT_JOB_FAILED:
 		case SUBMIT_ACTION_FAILED:
+		case GENERIC_ERROR:
 		default:
 			[self runStartState];
 			break;

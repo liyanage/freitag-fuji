@@ -31,13 +31,15 @@ enum app_states {
 	SCAN_TURNTABLE_BARCODE,      // 28
 	SIGNAL_TURNTABLE_START,      // 29
 	WAIT_FOR_TURNTABLE_SIGNAL,   // 30
-	RECEIVED_TURNTABLE_SIGNAL    // 31
+	RECEIVED_TURNTABLE_SIGNAL,   // 31
+
+	GENERIC_ERROR                // 32
 	
 };
 
 enum client_modes {
-	CLIENT_MODE_BAG = 0,         // Product image capture workstation
-	CLIENT_MODE_TARP = 1,        // Tarp image capture workstation
-	CLIENT_MODE_TURNTABLE = 2    // Turntable multi-image capture workstation
+	CLIENT_MODE_BAG = 0,         // Product image video capture workstation
+	CLIENT_MODE_TARP = 1,        // Tarp image video capture workstation
+	CLIENT_MODE_TURNTABLE = 2    // Turntable multi-image DSLR capture workstation
 };
 

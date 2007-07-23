@@ -9,6 +9,10 @@
 #import <CocoaSequenceGrabber/CSGCameraSettingsCategory.h>
 #import <CURLHandle/CURLHandle+extras.h>
 #import <MLUsbHidWrapper/MLUsbHidDevice.h>
+#import <Foundation/NSFileManager.h>
+
+#define TURNTABLE_THUMBNAIL_COUNT 16
+#define TURNTABLE_PICTURE_MINIMUM_AGE_SECONDS 5
 
 @class FUJIWindow;
 
@@ -35,6 +39,7 @@
 	IBOutlet NSPanel *submitFailedPanel;
 	IBOutlet NSPanel *weightPanel;
 	IBOutlet NSPanel *turntablePanel;
+	IBOutlet NSPanel *genericErrorPanel;
 	
 	IBOutlet NSTextField *weightField;
 
@@ -42,6 +47,7 @@
 	IBOutlet NSMatrix *peopleMatrix;
 	IBOutlet NSMatrix *colorsMatrix;
 	IBOutlet NSMatrix *stylesMatrix;
+	IBOutlet NSMatrix *turntableThumbnailMatrix;
 
 	IBOutlet NSImageView *personImageView;
 	IBOutlet NSImageView *captureImageView;
@@ -61,6 +67,7 @@
 	ServerConfigStyle *currentStyle;
 	NSString *currentBagCount;
 	NSString *lastServerErrorMessage;
+	NSString *genericErrorPanelMessage;
 	NSString *currentBarcode;
 	NSString *currentJobId;
 	NSString *tarpWeight;
@@ -71,6 +78,8 @@
 	CSGCamera *camera;
 	CSGImage *lastImage;
 	
+	NSDate *timestamp;
+	NSMutableDictionary *turntableImages;
 	
 }
 
@@ -98,8 +107,9 @@
 - (void)setState:(int)newState;
 - (IBAction)doCheckState:(id)sender;
 - (void)runState:(int)newState;
-- (void)setupCamera;
-- (void)loadServerConfig;
+- (void)runGenericErrorForMessage:(NSString *)message;
+- (BOOL)setupCamera;
+- (BOOL)loadServerConfig;
 - (void)runStartState;
 - (void)setStartState;
 - (void)setupModelsPanel;
@@ -111,6 +121,7 @@
 - (void)startCapture;
 - (void)signalTurntableStart;
 - (void)processTurntableSignal;
+- (void)uploadTurntablePictures;
 - (void)submitBag;
 - (void)submitTarp;
 - (void)clearBag;
@@ -121,4 +132,12 @@
 - (IBAction)captureFrame:(id)sender;
 - (IBAction)enterWeight:(id)sender;
 - (IBAction)dismissError:(id)sender;
+- (BOOL)checkAndPreparePictureDirectory;
+- (NSString *)pictureDirectoryPath;
+- (NSString *)turntablePictureFilenameList;
+- (BOOL)pictureDirectoryExists;
+- (void)checkTurntablePictures;
+- (void)checkTurntablePicturesTimer;
+- (void)clearTurntablePictures;
+- (NSTimeInterval)updateTurntablePictures;
 @end
