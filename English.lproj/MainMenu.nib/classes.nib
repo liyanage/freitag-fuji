@@ -32,6 +32,7 @@
                 genericErrorPanel = NSPanel; 
                 initFailedPanel = NSPanel; 
                 jobScanPanel = NSPanel; 
+                logoImageView = NSImageView; 
                 modelsMatrix = NSMatrix; 
                 modelsPanel = NSPanel; 
                 peopleMatrix = NSMatrix; 
@@ -44,6 +45,7 @@
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
                 turntablePanel = NSPanel; 
+                turntableThumbnailBox = NSBox; 
                 turntableThumbnailMatrix = NSMatrix; 
                 weightField = NSTextField; 
                 weightPanel = NSPanel; 

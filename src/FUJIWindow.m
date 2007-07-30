@@ -48,40 +48,21 @@
 
 	// turn table completion signal
 	if ([[theEvent characters] characterAtIndex:0] == NSF1FunctionKey) {
-//		NSLog(@"f1 key");
 		[[self delegate] handleInput:[theEvent characters]];
 		[self clearKeyBuffer];
 		return;
 	}
 
-//	NSLog(@"event: %@ (unichar %d) / %d / %p", [theEvent characters], [[theEvent characters] characterAtIndex:0], [[theEvent characters] length], [theEvent modifierFlags]);
-	
-	
-	if ([[theEvent characters] characterAtIndex:0] == (unichar)63289) {
-		return;
-	}
+	if ([[theEvent characters] characterAtIndex:0] == (unichar)63289) return;
 
 	if (![acceptableCharacters characterIsMember:[[theEvent characters] characterAtIndex:0]]) {
 		[super keyDown:theEvent];
 		return;
 	}
 
-
-
 	[keyBuffer appendString:[theEvent characters]];
 
-/*
-	if ([theEvent modifierFlags] & NSDeviceIndependentModifierFlagsMask) {
-	}
-*/
-
-
-//	int value = [theEvent intValue];
-	
 /*	NSLog(@"event: %@ / %d / %d", [theEvent characters], [[theEvent characters] length], [theEvent modifierFlags]);
-	if ([[theEvent characters] isEqualToString:@"\r"]) {
-		NSLog(@"return detected");
-	}
 */
 	
 }

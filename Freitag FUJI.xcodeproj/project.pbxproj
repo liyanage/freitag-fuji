@@ -27,6 +27,7 @@
 		1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
 		1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
 		1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
+		1B92E9C10C5E4D7500C2E388 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B92E9C00C5E4D7500C2E388 /* QuartzCore.framework */; };
 		1B933AC2083B914F004D26FA /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B933AC1083B914F004D26FA /* Logo.png */; };
 		1B9D4F0008308C9B00CCED04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */; };
 		1B9FAE1B0843888900F5C792 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1B9FAE1A0843888900F5C792 /* Icon.icns */; };
@@ -140,6 +141,7 @@
 		1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "perl-lib-lwp"; sourceTree = "<group>"; };
 		1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = USBHidWrapper.xcodeproj; path = "../../entropy/cocoa-usb-hid-wrapper/USBHidWrapper.xcodeproj"; sourceTree = "<group>"; };
 		1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CURLHandle.xcodeproj; path = "framework-src/CURLHandle_1.9/CURLHandleSource/CURLHandle.xcodeproj"; sourceTree = "<group>"; };
+		1B92E9C00C5E4D7500C2E388 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
 		1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaSequenceGrabber.framework; path = Frameworks/CocoaSequenceGrabber.framework; sourceTree = "<group>"; };
 		1B933D64083D4DBD004D26FA /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CURLHandle.framework; path = Frameworks/CURLHandle.framework; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */,
 				1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				1B92E9C10C5E4D7500C2E388 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +214,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B92E9C00C5E4D7500C2E388 /* QuartzCore.framework */,
 				1B933D64083D4DBD004D26FA /* CURLHandle.framework */,
 				1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,

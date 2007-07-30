@@ -13,6 +13,8 @@
 
     NSRect screenRect = [[NSScreen mainScreen] frame];
 
+//	screenRect = NSMakeRect(0, 0, 1400, 900);
+
 	mainWindow = [[FUJIWindow alloc] initWithContentRect:screenRect
 											 styleMask:NSTexturedBackgroundWindowMask
 											   backing:NSBackingStoreBuffered
@@ -243,12 +245,7 @@
 		return;
 	}
 
-	if (![input length]) {
-		NSLog(@"Empty input string received, ignoring...");
-		return;
-	}
-
-	if ([input characterAtIndex:0] == NSF1FunctionKey) {
+	if ([input length] > 0 && [input characterAtIndex:0] == NSF1FunctionKey) {
 		if (appState != WAIT_FOR_TURNTABLE_SIGNAL) {
 			NSLog(@"F1 key seen while not in WAIT_FOR_TURNTABLE_SIGNAL state, ignoring...");
 			return;
@@ -256,6 +253,21 @@
 		[self runState:RECEIVED_TURNTABLE_SIGNAL];
 		return;
 	}
+
+
+	if (appState == WAIT_FOR_TURNTABLE_SIGNAL) {
+NSLog(@"input in wait state");
+		[self clearTurntablePictures];
+		[self runStartState];
+		return;
+	};
+
+
+	if (![input length]) {
+		NSLog(@"Empty input string received, ignoring...");
+		return;
+	}
+
 
 //	NSLog(@"handleInput: %@", input);
 	
@@ -393,6 +405,19 @@
 }
 
 
+- (void)showTurntablePreviews {
+	[boxView setHidden:YES];
+	[logoImageView setHidden:YES];
+	[turntableThumbnailBox setHidden:NO];
+}
+
+
+
+- (void)hideTurntablePreviews {
+	[turntableThumbnailBox setHidden:YES];
+	[boxView setHidden:NO];
+	[logoImageView setHidden:NO];
+}
 
 
 #pragma mark App state management
@@ -540,7 +565,8 @@
 		case WAIT_FOR_TURNTABLE_SIGNAL:
 			[self enableInput];
 			[self checkTurntablePictures];
-			[self switchToPanelNamed:@"turntable"];
+			[self showTurntablePreviews];
+//			[self switchToPanelNamed:@"turntable"];
 			break;
 			
 		case RECEIVED_TURNTABLE_SIGNAL:
@@ -698,6 +724,7 @@
 	
 	int count = [turntableImages count];
 	if (count != TURNTABLE_THUMBNAIL_COUNT) {
+		[self clearTurntablePictures];
 		[self runGenericErrorForMessage:[NSString stringWithFormat:@"Es wurden %d statt %d Bilder empfangen", count, TURNTABLE_THUMBNAIL_COUNT]];
 		return;
 	}
@@ -771,6 +798,7 @@
 
 
 - (void)clearTurntablePictures {
+	[self hideTurntablePreviews];
 	[self setValue:nil forKey:@"turntableImages"];
 	NSArray *images = [turntableThumbnailMatrix cells];
 	unsigned int i, count = [images count];
@@ -791,18 +819,18 @@
 	for (i = 0; i < count; i++) {
 		NSString *filename = [things objectAtIndex:i];
 		NSString *fullPath = [[picDirPath stringByAppendingString:@"/"] stringByAppendingString:filename];
-		if (![filename hasSuffix:@".jpg"]) continue;
+		if (![[filename lowercaseString] hasSuffix:@".jpg"]) continue;
 		NSDate *modTime = [[fm fileAttributesAtPath:fullPath traverseLink:YES] fileModificationDate];
 		if (!([modTime compare:timestamp] == NSOrderedDescending)) continue;
 		latestModTime = [modTime laterDate:latestModTime];
 		if ([turntableImages objectForKey:fullPath]) continue;
 		
-		NSImage *image = [[[NSImage alloc] initByReferencingFile:fullPath] autorelease];
+		NSImage *image = [self imageForPath:fullPath];
 		[turntableImages setObject:image forKey:fullPath];
 
 		unsigned count = [turntableImages count];
 		if (count > TURNTABLE_THUMBNAIL_COUNT) continue;
-		
+
 		unsigned index = count - 1;
 		NSImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
 		[ic setObjectValue:image];
@@ -818,6 +846,68 @@
 }
 
 
+- (NSImage *)imageForPath:(NSString *)path {
+
+	CIImage *ciImage = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:path]];
+
+	NSRect cropRect = [self cropRectForRect:[ciImage extent] Ratio:TURNTABLE_PICTURE_CROP_RECT_RATIO];
+	float x1 = cropRect.origin.x;
+	float y1 = cropRect.origin.y;
+	float x2 = cropRect.origin.x + cropRect.size.width;
+	float y2 = cropRect.origin.y + cropRect.size.height;
+	
+	CIFilter *cropFilter = [CIFilter filterWithName:@"CICrop"];
+	[cropFilter setDefaults];
+	[cropFilter setValue:ciImage forKey:@"inputImage"];
+	[cropFilter setValue:[CIVector vectorWithX:x1 Y:y1 Z:x2 W:y2] forKey:@"inputRectangle"];
+
+	CIImage *result = [cropFilter valueForKey: @"outputImage"];
+	NSCIImageRep *ir = [NSCIImageRep imageRepWithCIImage:result];
+	NSImage *image = [[[NSImage alloc] init] autorelease];
+//	NSImage *image = [[[NSImage alloc] initWithSize:cropRect.size] autorelease];
+	[image addRepresentation:ir];
+//	NSLog(@"crop rect %@", NSStringFromRect(cropRect));
+//	NSLog(@"image size %@", NSStringFromSize([image size]));
+	return image;
+
+// fixme: The output image size does not take the cropping into account, leading
+// to uneven centering in the nsimagecell...
+
+//	return [[[NSImage alloc] initByReferencingFile:path] autorelease];
+}
+
+
+
+- (NSRect)cropRectForRect:(CGRect)inputRect Ratio:(float)outputRatio {
+
+	float width, height, inputRatio = inputRect.size.width / inputRect.size.height;
+	NSRect outputRect;
+
+	if (inputRatio > outputRatio) {
+		height = inputRect.size.height;
+		width = height * outputRatio;
+		outputRect.origin.x = (inputRect.size.width - width) / 2;
+		outputRect.origin.y = 0;
+	} else {
+		width = inputRect.size.width;
+		height = width / outputRatio;
+		outputRect.origin.x = 0;
+		outputRect.origin.y = (inputRect.size.height - height) / 2;
+	}
+
+	outputRect.size.width = width;
+	outputRect.size.height = height;
+
+	return outputRect;
+}
+
+
+
+
+
+- (NSImage *)imageForPath2:(NSString *)path {
+	return [[[NSImage alloc] initByReferencingFile:path] autorelease];
+}
 
 
 

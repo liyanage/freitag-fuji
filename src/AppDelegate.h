@@ -10,9 +10,12 @@
 #import <CURLHandle/CURLHandle+extras.h>
 #import <MLUsbHidWrapper/MLUsbHidDevice.h>
 #import <Foundation/NSFileManager.h>
+#import <QuartzCore/CIFilter.h>
+#import <QuartzCore/CIVector.h>
 
 #define TURNTABLE_THUMBNAIL_COUNT 16
 #define TURNTABLE_PICTURE_MINIMUM_AGE_SECONDS 5
+#define TURNTABLE_PICTURE_CROP_RECT_RATIO 1.25
 
 @class FUJIWindow;
 
@@ -23,6 +26,7 @@
 	IBOutlet NSWindow *templateWindow;
 	IBOutlet NSBox *boxView;
 	IBOutlet NSView *currentPanelView;
+	IBOutlet NSImageView *logoImageView;
 
 	IBOutlet NSPanel *jobScanPanel;
 	IBOutlet NSPanel *bagScanPanel;
@@ -47,6 +51,7 @@
 	IBOutlet NSMatrix *peopleMatrix;
 	IBOutlet NSMatrix *colorsMatrix;
 	IBOutlet NSMatrix *stylesMatrix;
+	IBOutlet NSBox *turntableThumbnailBox;
 	IBOutlet NSMatrix *turntableThumbnailMatrix;
 
 	IBOutlet NSImageView *personImageView;
@@ -93,6 +98,8 @@
 - (NSString *)stringForXpath:(NSString *)xpath inDocument:(NSXMLDocument *)doc;
 //- (IBAction)toggleAcceptingInput:(id)sender;
 - (void)switchToPanelNamed:(NSString *)panelName;
+- (void)showTurntablePreviews;
+- (void)hideTurntablePreviews;
 
 - (IBAction)commitPrefs:(id)sender;
 - (IBAction)chooseModel:(id)sender;
@@ -140,4 +147,7 @@
 - (void)checkTurntablePicturesTimer;
 - (void)clearTurntablePictures;
 - (NSTimeInterval)updateTurntablePictures;
+- (NSImage *)imageForPath:(NSString *)path;
+- (NSRect)cropRectForRect:(CGRect)inputRect Ratio:(float)outputRatio;
+
 @end

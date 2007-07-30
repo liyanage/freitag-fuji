@@ -15,3 +15,12 @@ extension for camera capture skipping mode
   xpath /xml/options/nocapture
 
 - 
+
+--------------
+
+
+crop
+
+in dem verhältnis: 515 x 412
+ok. sie schneiden also den maximalen ausschnit mit diesem seitenverhältnis genau aus der mitte der von der kamera gelieferten bilder?
+
