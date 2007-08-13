@@ -58,7 +58,7 @@
 	IBOutlet NSImageView *captureMonitorView;
 	
 	int appState;
-	BOOL acceptingInput, initializing;
+	BOOL acceptingInput, initializing, shouldCaptureBagPhoto;
 	ServerConfig *serverConfig;
 
 	ServerConfigModel *currentModel;

@@ -19,6 +19,8 @@
 
 - (BOOL)isPrefsAction;
 - (BOOL)isCreateJobAction;
+- (BOOL)isBagPhotoOffAction;
+- (BOOL)isBagPhotoOnAction;
 - (BOOL)isType0;
 - (BOOL)isType1;
 

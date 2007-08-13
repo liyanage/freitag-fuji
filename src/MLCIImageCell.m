@@ -12,6 +12,17 @@
 @implementation MLCIImageCell
 
 
+
+- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+	if (!ciImage) return;
+	currentCellFrame = cellFrame;
+	CGRect extent = [ciImage extent];
+	NSRect destinationRect = [self centerScaleSize:NSMakeSize(extent.size.width, extent.size.height) inFrame:currentCellFrame];
+	[ciImage drawInRect:destinationRect fromRect:*(NSRect *)&extent operation:NSCompositeSourceOver fraction:1.0];
+}
+
+/*
+
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 
 	if (!ciImage) return;
@@ -36,6 +47,7 @@
 
 }
 
+*/
 
 - (void)animation:(NSAnimation*)animation didReachProgressMark:(NSAnimationProgress)progress {
 
@@ -56,9 +68,6 @@
 
 	[result drawInRect:destinationRect fromRect:*(NSRect *)&extent operation:NSCompositeSourceOver fraction:1.0];
 	
-//	[ciImage drawInRect:destinationRect fromRect:NSMakeRect(0,-1050,extent.size.width,extent.size.height) operation:NSCompositeSourceOver fraction:1.0];
-
-//	[NSBezierPath strokeRect:currentCellFrame];
 
 	[view unlockFocus];
 //	[[self controlView] setNeedsDisplay:YES];
@@ -145,6 +154,7 @@
 	[transform setValue:affineTransform forKey:@"inputTransform"];
 	result = [transform valueForKey:@"outputImage"];
 
+/*
 	CIFilter *constantColor = [CIFilter filterWithName:@"CIConstantColorGenerator"];
 	[constantColor setDefaults];
 	[constantColor setValue:[CIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0] forKey:@"inputColor"];
@@ -167,6 +177,7 @@
 
 //	CGRect extent = [result extent];
 //	NSLog(@"extent setobval %@", NSStringFromRect(*(NSRect *)&extent));
+*/
 
 	[self setValue:result forKey:@"ciImage"];
 

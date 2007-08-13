@@ -28,7 +28,6 @@
 }
 
 
-
 - (void) dealloc {
 	[barcode release];
 	[value release];
@@ -46,6 +45,16 @@
 	return [value isEqualToString:@"job_create"];
 }
 
+- (BOOL)isBagPhotoOffAction {
+	return [value isEqualToString:@"bag_photo_off"];
+}
+
+- (BOOL)isBagPhotoOnAction {
+	return [value isEqualToString:@"bag_photo_on"];
+}
+
+
+
 - (BOOL)isType0 {
 	return type == 0;
 }
@@ -53,6 +62,7 @@
 - (BOOL)isType1 {
 	return type == 1;
 }
+
 
 
 - (NSString *)description {

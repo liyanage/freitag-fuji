@@ -7,6 +7,7 @@
 	[self setupDefaults];
 	weightNumberCharacterSkipSet = [[[NSCharacterSet characterSetWithCharactersInString:@"01234567890."] invertedSet] retain];
 	
+	[self setValue:[NSNumber numberWithBool:YES] forKey:@"shouldCaptureBagPhoto"];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -292,6 +293,10 @@ NSLog(@"input in wait state");
 			[self runState:RUN_PREFS];
 		} else if ([action isCreateJobAction]) {
 			[self runState:SCAN_JOB_BARCODE];
+		} else if ([action isBagPhotoOffAction]) {
+			[self setValue:[NSNumber numberWithBool:NO] forKey:@"shouldCaptureBagPhoto"];
+		} else if ([action isBagPhotoOnAction]) {
+			[self setValue:[NSNumber numberWithBool:YES] forKey:@"shouldCaptureBagPhoto"];
 		} else if ([action isType0]) {
 			[self runState:SUBMIT_ACTION_TYPE0];
 		} else if ([action isType1]) {
@@ -310,7 +315,7 @@ NSLog(@"input in wait state");
 	if (appState == SCAN_JOB_BARCODE) {
 		[self runState:PICK_MODEL];
 	} else if (appState == SCAN_BAG_BARCODE) {
-		[self runState:CAMERA_CAPTURE];
+		[self runState:shouldCaptureBagPhoto ? CAMERA_CAPTURE : PICK_COLOR];
 	} else if (appState == SCAN_ACTION_PARAM_BARCODE) {
 		[self runState:SUBMIT_ACTION_TYPE1];
 	} else if (appState == SCAN_TARP_BARCODE) {
@@ -659,7 +664,8 @@ NSLog(@"input in wait state");
 		[self runState:SUBMIT_JOB_FAILED];
 		return;
 	}
-	
+
+	[self setValue:@"1234" forKey:@"currentJobId"];
 	[self setValue:[[[responseDoc nodesForXPath:@"xml/result/text()" error:nil] objectAtIndex:0] XMLString] forKey:@"currentJobId"];
 	[self runState:SCAN_BAG_BARCODE];
 	
@@ -863,13 +869,13 @@ NSLog(@"input in wait state");
 - (void)submitBag {
 
 	CURLHandle *curl = (CURLHandle *)[CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
-//	NSLog(@"curl: %@", curl);
-
-//	NSData *jpegImage = [NSData dataWithContentsOfFile:@"/Users/liyanage/Pictures/People/andyblond.jpg"];
-	NSData *jpegImage = [[[currentImage representations] objectAtIndex:0] representationUsingType:NSJPEGFileType properties:nil];
-//	[jpegImage writeToFile:@"/tmp/bag.jpg" atomically:YES];
-	NSDictionary *imagePart = [NSDictionary dictionaryWithObjectsAndKeys:jpegImage, @"data", @"dummy.jpg", @"filename", @"image/jpeg", @"mimeType", nil];
 	
+	id imagePart = @"ignore";
+	if (shouldCaptureBagPhoto) {
+		NSData *jpegImage = [[[currentImage representations] objectAtIndex:0] representationUsingType:NSJPEGFileType properties:nil];
+		imagePart = [NSDictionary dictionaryWithObjectsAndKeys:jpegImage, @"data", @"dummy.jpg", @"filename", @"image/jpeg", @"mimeType", nil];
+	}
+
 	NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
 		@"bag_add", @"action",
 		currentBarcode, @"param",

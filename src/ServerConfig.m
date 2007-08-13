@@ -29,10 +29,10 @@
 		NSLog(@"unable to load server config XML, no 'success' string found");
 		return nil;
 	}
-	
+
 	[self setupURLs];
 	[self setupClientMode];
-	
+
 	[self setupColors];
 	[self setupStyles];
 	[self setupPeople];
