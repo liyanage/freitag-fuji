@@ -5,17 +5,15 @@
 #import "FUJIWindow.h"
 #import "ServerConfig.h"
 #import "Constants.h"
+#import "MLCIImageCell.h"
 #import <CocoaSequenceGrabber/CocoaSequenceGrabber.h>
 #import <CocoaSequenceGrabber/CSGCameraSettingsCategory.h>
 #import <CURLHandle/CURLHandle+extras.h>
 #import <MLUsbHidWrapper/MLUsbHidDevice.h>
 #import <Foundation/NSFileManager.h>
-#import <QuartzCore/CIFilter.h>
-#import <QuartzCore/CIVector.h>
 
 #define TURNTABLE_THUMBNAIL_COUNT 16
 #define TURNTABLE_PICTURE_MINIMUM_AGE_SECONDS 5
-#define TURNTABLE_PICTURE_CROP_RECT_RATIO 1.25
 
 @class FUJIWindow;
 
@@ -42,7 +40,6 @@
 	IBOutlet NSPanel *actionSuccessPanel;
 	IBOutlet NSPanel *submitFailedPanel;
 	IBOutlet NSPanel *weightPanel;
-	IBOutlet NSPanel *turntablePanel;
 	IBOutlet NSPanel *genericErrorPanel;
 	
 	IBOutlet NSTextField *weightField;
@@ -147,7 +144,5 @@
 - (void)checkTurntablePicturesTimer;
 - (void)clearTurntablePictures;
 - (NSTimeInterval)updateTurntablePictures;
-- (NSImage *)imageForPath:(NSString *)path;
-- (NSRect)cropRectForRect:(CGRect)inputRect Ratio:(float)outputRatio;
 
 @end

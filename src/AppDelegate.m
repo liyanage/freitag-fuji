@@ -15,6 +15,16 @@
 
 //	screenRect = NSMakeRect(0, 0, 1400, 900);
 
+	NSString *resolution = [[NSUserDefaults standardUserDefaults] valueForKey:@"resolution"];
+	if (resolution) {
+		NSArray *items = [resolution componentsSeparatedByString:@"x"];
+		if ([items count] == 2) {
+			screenRect = NSMakeRect(0, 0, [[items objectAtIndex:0] floatValue], [[items objectAtIndex:1] floatValue]);
+		} else {
+			NSLog(@"resolution parameter must be of format XXXxYYY");
+		}
+	}
+
 	mainWindow = [[FUJIWindow alloc] initWithContentRect:screenRect
 											 styleMask:NSTexturedBackgroundWindowMask
 											   backing:NSBackingStoreBuffered
@@ -825,15 +835,18 @@ NSLog(@"input in wait state");
 		latestModTime = [modTime laterDate:latestModTime];
 		if ([turntableImages objectForKey:fullPath]) continue;
 		
-		NSImage *image = [self imageForPath:fullPath];
-		[turntableImages setObject:image forKey:fullPath];
+//		NSImage *image = [self imageForPath:fullPath];
+//		[turntableImages setObject:image forKey:fullPath];
+		[turntableImages setObject:[NSNull null] forKey:fullPath];
 
 		unsigned count = [turntableImages count];
 		if (count > TURNTABLE_THUMBNAIL_COUNT) continue;
 
 		unsigned index = count - 1;
-		NSImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
-		[ic setObjectValue:image];
+//		NSImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
+//		[ic setObjectValue:image];
+		MLCIImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
+		[ic setObjectValue:fullPath];
 		[turntableThumbnailMatrix setNeedsDisplay:YES];
 		
 //		NSLog(@"path %@", fullPath);
@@ -843,70 +856,6 @@ NSLog(@"input in wait state");
 //	NSLog(@"lastFileAge %f", lastFileAge);
 	return lastFileAge;
 
-}
-
-
-- (NSImage *)imageForPath:(NSString *)path {
-
-	CIImage *ciImage = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:path]];
-
-	NSRect cropRect = [self cropRectForRect:[ciImage extent] Ratio:TURNTABLE_PICTURE_CROP_RECT_RATIO];
-	float x1 = cropRect.origin.x;
-	float y1 = cropRect.origin.y;
-	float x2 = cropRect.origin.x + cropRect.size.width;
-	float y2 = cropRect.origin.y + cropRect.size.height;
-	
-	CIFilter *cropFilter = [CIFilter filterWithName:@"CICrop"];
-	[cropFilter setDefaults];
-	[cropFilter setValue:ciImage forKey:@"inputImage"];
-	[cropFilter setValue:[CIVector vectorWithX:x1 Y:y1 Z:x2 W:y2] forKey:@"inputRectangle"];
-
-	CIImage *result = [cropFilter valueForKey: @"outputImage"];
-	NSCIImageRep *ir = [NSCIImageRep imageRepWithCIImage:result];
-	NSImage *image = [[[NSImage alloc] init] autorelease];
-//	NSImage *image = [[[NSImage alloc] initWithSize:cropRect.size] autorelease];
-	[image addRepresentation:ir];
-//	NSLog(@"crop rect %@", NSStringFromRect(cropRect));
-//	NSLog(@"image size %@", NSStringFromSize([image size]));
-	return image;
-
-// fixme: The output image size does not take the cropping into account, leading
-// to uneven centering in the nsimagecell...
-
-//	return [[[NSImage alloc] initByReferencingFile:path] autorelease];
-}
-
-
-
-- (NSRect)cropRectForRect:(CGRect)inputRect Ratio:(float)outputRatio {
-
-	float width, height, inputRatio = inputRect.size.width / inputRect.size.height;
-	NSRect outputRect;
-
-	if (inputRatio > outputRatio) {
-		height = inputRect.size.height;
-		width = height * outputRatio;
-		outputRect.origin.x = (inputRect.size.width - width) / 2;
-		outputRect.origin.y = 0;
-	} else {
-		width = inputRect.size.width;
-		height = width / outputRatio;
-		outputRect.origin.x = 0;
-		outputRect.origin.y = (inputRect.size.height - height) / 2;
-	}
-
-	outputRect.size.width = width;
-	outputRect.size.height = height;
-
-	return outputRect;
-}
-
-
-
-
-
-- (NSImage *)imageForPath2:(NSString *)path {
-	return [[[NSImage alloc] initByReferencingFile:path] autorelease];
 }
 
 

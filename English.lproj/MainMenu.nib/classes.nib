@@ -44,7 +44,6 @@
                 stylesPanel = NSPanel; 
                 submitFailedPanel = NSPanel; 
                 templateWindow = NSWindow; 
-                turntablePanel = NSPanel; 
                 turntableThumbnailBox = NSBox; 
                 turntableThumbnailMatrix = NSMatrix; 
                 weightField = NSTextField; 
@@ -53,7 +52,9 @@
             SUPERCLASS = NSObject; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = MLCIImageCell; LANGUAGE = ObjC; SUPERCLASS = NSImageCell; }, 
         {CLASS = MLFloatFormatter; LANGUAGE = ObjC; SUPERCLASS = NSFormatter; }, 
+        {CLASS = NSLevelIndicator; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
         {CLASS = NoBackgroundClickView; LANGUAGE = ObjC; SUPERCLASS = NSView; }
     ); 
     IBVersion = 1; 
