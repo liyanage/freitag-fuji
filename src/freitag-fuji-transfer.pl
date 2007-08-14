@@ -38,6 +38,8 @@ sub check_args {
 	unless (@image_files and !@missing_image_files) {
 		die "No file list or missing image files: @missing_image_files";
 	}
+	# might need to add secondary sort by name:
+	# sort {$b->[1] <=> $a->[1] | $a->[0] cmp $b->[0]}
 	my @sorted_images = map {$_->[0]} sort {$b->[1] <=> $a->[1]} map {[$_, -M "$args{capture_dir_path}/$_"]} @image_files;
 	$args->{capture_files} = \@sorted_images;
 #	warn("sorted files: @sorted_images");

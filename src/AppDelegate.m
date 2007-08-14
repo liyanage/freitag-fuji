@@ -656,7 +656,7 @@ NSLog(@"input in wait state");
 		[[NSUserDefaults standardUserDefaults] valueForKey:@"clientId"]
 	];
 
-//	NSLog(@"url: %@", urlString);
+	NSLog(@"url: %@", urlString);
 	NSURL *requestURL = [NSURL URLWithString:urlString];
 	NSXMLDocument *responseDoc = [[[NSXMLDocument alloc] initWithContentsOfURL:requestURL options:0 error:nil] autorelease];
 
