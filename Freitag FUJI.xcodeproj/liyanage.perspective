@@ -240,6 +240,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,7 +276,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
@@ -286,8 +287,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>35</integer>
-									<integer>34</integer>
+									<integer>28</integer>
+									<integer>27</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -320,14 +321,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1B9D4EF608308ADC00CCED04</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>freitag-fuji-transfer.pl</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +334,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1B9D4EF708308ADC00CCED04</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>freitag-fuji-transfer.pl</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B8AB67D0C72567400F0BE3A</string>
+										<string>1BD4DBE90C72632D008F9F8D</string>
 										<key>history</key>
 										<array>
 											<string>1B9FAFD30843930600F5C792</string>
@@ -374,8 +373,8 @@
 											<string>1B8AB6450C72526500F0BE3A</string>
 											<string>1B8AB6460C72526500F0BE3A</string>
 											<string>1B8AB6710C7254BE00F0BE3A</string>
-											<string>1B8AB67A0C72567400F0BE3A</string>
-											<string>1B8AB67B0C72567400F0BE3A</string>
+											<string>1BD4DBDB0C7262DA008F9F8D</string>
+											<string>1BD4DBE20C7262EC008F9F8D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -413,17 +412,7 @@
 											<string>1B834C740C69032300195545</string>
 											<string>1B834CD20C691C7D00195545</string>
 											<string>1B834CD30C691C7D00195545</string>
-											<string>1B8AB6020C724CB400F0BE3A</string>
-											<string>1B8AB6150C724DF200F0BE3A</string>
-											<string>1B8AB6300C72524100F0BE3A</string>
-											<string>1B8AB6310C72524100F0BE3A</string>
-											<string>1B8AB6320C72524100F0BE3A</string>
-											<string>1B8AB6330C72524100F0BE3A</string>
-											<string>1B8AB6340C72524100F0BE3A</string>
-											<string>1B8AB6470C72526500F0BE3A</string>
-											<string>1B8AB6480C72526500F0BE3A</string>
-											<string>1B8AB6720C7254BE00F0BE3A</string>
-											<string>1B8AB67C0C72567400F0BE3A</string>
+											<string>1BD4DBDD0C7262DA008F9F8D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -523,11 +512,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B8AB5FA0C724C1F00F0BE3A</string>
+				<string>1BD4DBCC0C726024008F9F8D</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>1B8AB5FB0C724C1F00F0BE3A</string>
+				<string>1BD4DBCD0C726024008F9F8D</string>
 				<string>1B9D4EF608308ADC00CCED04</string>
-				<string>1B8AB5FC0C724C1F00F0BE3A</string>
+				<string>1BD4DBCE0C726024008F9F8D</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -643,7 +632,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B8AB67E0C72567400F0BE3A</string>
+										<string>1BD4DBEA0C72632D008F9F8D</string>
 										<key>history</key>
 										<array>
 											<string>1B9FAFD30843930600F5C792</string>
@@ -664,7 +653,6 @@
 											<string>1B66C22F0C3B8FB600BE5D68</string>
 											<string>1BE598010C4CED5700FE2E9C</string>
 											<string>1B1F93B40C5398B8003EFD14</string>
-											<string>1B1F95590C5566C5003EFD14</string>
 											<string>1B92E96C0C5E16A600C2E388</string>
 											<string>1B92EA210C5E520600C2E388</string>
 											<string>1B476ED40C5FD2A300C2EB4F</string>
@@ -679,7 +667,8 @@
 											<string>1B8AB61C0C724E8900F0BE3A</string>
 											<string>1B8AB65D0C72531B00F0BE3A</string>
 											<string>1B8AB6750C7254C500F0BE3A</string>
-											<string>1B8AB6730C7254BE00F0BE3A</string>
+											<string>1BD4DBDF0C7262E0008F9F8D</string>
+											<string>1BD4DBDE0C7262DA008F9F8D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -717,7 +706,6 @@
 											<string>1B834C740C69032300195545</string>
 											<string>1B834CD20C691C7D00195545</string>
 											<string>1B834CD30C691C7D00195545</string>
-											<string>1B8AB60C0C724DC400F0BE3A</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -747,7 +735,7 @@
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXBuildLogShowsTranscriptDefaultKey</key>
-										<string>{{0, 112}, {776, 147}}</string>
+										<string>{{0, 192}, {776, 67}}</string>
 										<key>PBXProjectModuleGUID</key>
 										<string>XCMainBuildResultsModuleGUID</string>
 										<key>PBXProjectModuleLabel</key>
@@ -840,14 +828,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B8AB6060C724CB900F0BE3A</string>
+				<string>1BD4DBE50C7262EC008F9F8D</string>
 				<string>1CA23EE50692099D00951B8B</string>
-				<string>1B8AB6070C724CB900F0BE3A</string>
+				<string>1BD4DBE60C7262EC008F9F8D</string>
 				<string>1B9D4EF608308ADC00CCED04</string>
-				<string>1B8AB6080C724CB900F0BE3A</string>
+				<string>1BD4DBE70C7262EC008F9F8D</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 				<string>1CA23EE80692099D00951B8B</string>
-				<string>1B8AB6090C724CB900F0BE3A</string>
+				<string>1BD4DBE80C7262EC008F9F8D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildAndRun</string>
@@ -1001,7 +989,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>208819828.81061399</real>
+	<real>208823085.57634199</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -1016,9 +1004,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1B8AB6400C72524800F0BE3A</string>
-		<string>1B8AB6410C72524800F0BE3A</string>
-		<string>1B8AB63F0C72524800F0BE3A</string>
 		<string>/Users/liyanage/svn/entropy-private/freitag-fuji/Freitag FUJI.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
