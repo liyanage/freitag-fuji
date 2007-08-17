@@ -20,10 +20,13 @@
 	NSRect cropRect, currentCellFrame;
 	NSAnimation *animation;
 	NSView *targetView;
+	BOOL drawingDone;
 }
 
 //- (NSImage *)imageForPath:(NSString *)path;
 - (NSRect)cropRectForRect:(CGRect)inputRect Ratio:(float)outputRatio;
 - (NSRect)centerScaleSize:(NSSize)size inFrame:(NSRect)frame;
+- (void)drawCurrentTransitionState;
+
 
 @end

@@ -12,6 +12,7 @@
 @implementation MLCIImageCell
 
 
+/*
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	if (!ciImage) return;
@@ -21,69 +22,88 @@
 	[ciImage drawInRect:destinationRect fromRect:*(NSRect *)&extent operation:NSCompositeSourceOver fraction:1.0];
 }
 
-/*
+*/
+
 
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 
-	if (!ciImage) return;
-
-	NSLog(@"rect 1 %@", NSStringFromRect(cellFrame));
-
+//	if (!ciImage) return;
+	if (!transitionFilter) return;
+	
+	if (animation) {
+		if ([animation isAnimating]) return;
+		if (drawingDone) {
+			[self drawCurrentTransitionState];
+			return;
+		}
+	} else {
+		animation = [[NSAnimation alloc] initWithDuration:0.5f animationCurve:NSAnimationEaseOut];
+		[animation setFrameRate:30];
+		[animation setAnimationBlockingMode:NSAnimationNonblocking]; // try blocking
+		[animation setDelegate:self];
+		float i;
+		for (i = 0.0; i <= 1.0; i += 0.05) [animation addProgressMark:i];
+		[animation addProgressMark:1.0];
+	}
+	
 	currentCellFrame = cellFrame;
 //	NSLog(@"draw %@", NSStringFromRect(cellFrame));
-	[animation release];
-	animation = [[NSAnimation alloc] initWithDuration:1.0f animationCurve:NSAnimationEaseOut];
-	[animation setFrameRate:15];
-	[animation setAnimationBlockingMode:NSAnimationNonblocking];
-	[animation setDelegate:self];
-
-	float i;
-	for (i = 0; i <= 1; i += 0.05) [animation addProgressMark:i];
-
-//	[NSBezierPath strokeRect:currentCellFrame];
 
 	[self setValue:controlView forKey:@"targetView"];
 	[animation startAnimation];
 
 }
 
-*/
 
-- (void)animation:(NSAnimation*)animation didReachProgressMark:(NSAnimationProgress)progress {
 
-	NSLog(@"animation callback, progress %f", progress);
+- (void)animation:(NSAnimation*)theAnimation didReachProgressMark:(NSAnimationProgress)progress {
+
+//	NSLog(@"animation callback, progress %f", progress);
 //	NSLog(@"rect 2 %@", NSStringFromRect(currentCellFrame));
 	
-	CGRect extent = [ciImage extent];
-//	NSLog(@"extent %@", NSStringFromRect(*(NSRect *)&extent));
-
 	NSView *view = targetView;
 //	NSLog(@"view %@", view);
 	[view lockFocus];
+	[transitionFilter setValue:[NSNumber numberWithFloat:1.0 - [theAnimation currentValue]] forKey:@"inputTime"];
+	[self drawCurrentTransitionState];
 	
-	[transitionFilter setValue:[NSNumber numberWithFloat:progress] forKey:@"inputTime"];
-	CIImage *result = [transitionFilter valueForKey:@"outputImage"];
-
-	NSRect destinationRect = [self centerScaleSize:NSMakeSize(extent.size.width, extent.size.height) inFrame:currentCellFrame];
-
-	[result drawInRect:destinationRect fromRect:*(NSRect *)&extent operation:NSCompositeSourceOver fraction:1.0];
-	
-
 	[view unlockFocus];
-//	[[self controlView] setNeedsDisplay:YES];
-	
 	[[view window] flushWindow];
+//	[[self controlView] setNeedsDisplay:YES];
 
 }
 
 
+- (void)drawCurrentTransitionState {
+	CIImage *result = [transitionFilter valueForKey:@"outputImage"];
+//	CGRect extent = [ciImage extent];
+//	NSLog(@"extent ciimage %@", NSStringFromRect(*(NSRect *)&extent));
+	CGRect extent = [result extent];
+//	NSLog(@"extent result %@", NSStringFromRect(*(NSRect *)&extent));
+	NSRect destinationRect = [self centerScaleSize:NSMakeSize(extent.size.width, extent.size.height) inFrame:currentCellFrame];
+	[result drawInRect:destinationRect fromRect:*(NSRect *)&extent operation:NSCompositeSourceOver fraction:1.0];
+}
+
+
+
+- (void)animationDidEnd:(NSAnimation*)animation {
+	drawingDone = YES;
+}
+
+
+
+- (void)highlight:(BOOL)flag withFrame:(NSRect)cellFrame inView:(NSView *)controlView {
+	NSLog(@"highlight");
+//	[self setHighlighted:flag];
+}
 
 
 
 
 - (void) dealloc {
 	[animation release];
-	[ciImage release];
+//	[ciImage release];
+	[transitionFilter release];
 	[targetView release];
 	[super dealloc];
 }
@@ -123,12 +143,13 @@
 
 - (void)setObjectValue:(id <NSCopying>)object {
 //	[super setObjectValue:object];
-
 	if (!object) return;
 
 	NSString *path = (NSString *)object;
 	CIImage *newCiImage = [CIImage imageWithContentsOfURL:[NSURL fileURLWithPath:path]];
 	if (!newCiImage) return;
+
+	drawingDone = NO;
 
 	cropRect = [self cropRectForRect:[newCiImage extent] Ratio:TURNTABLE_PICTURE_CROP_RECT_RATIO];
 	float x1 = cropRect.origin.x;
@@ -144,42 +165,52 @@
 	[cropFilter setDefaults];
 	[cropFilter setValue:newCiImage forKey:@"inputImage"];
 	[cropFilter setValue:inputRectangle forKey:@"inputRectangle"];
-	CIImage *result = [cropFilter valueForKey: @"outputImage"];
+	CIImage *targetImage = [cropFilter valueForKey: @"outputImage"];
 
 	CIFilter *transform = [CIFilter filterWithName:@"CIAffineTransform"];
-	[transform setValue:result forKey:@"inputImage"];
+	[transform setDefaults];
+	[transform setValue:targetImage forKey:@"inputImage"];
 	NSAffineTransform *affineTransform = [NSAffineTransform transform];
-//	[affineTransform translateXBy:0 yBy:128];
 	[affineTransform scaleXBy:1 yBy:-1];
 	[transform setValue:affineTransform forKey:@"inputTransform"];
-	result = [transform valueForKey:@"outputImage"];
+	targetImage = [transform valueForKey:@"outputImage"];
 
-/*
+
 	CIFilter *constantColor = [CIFilter filterWithName:@"CIConstantColorGenerator"];
 	[constantColor setDefaults];
-	[constantColor setValue:[CIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1.0] forKey:@"inputColor"];
+	[constantColor setValue:[CIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0] forKey:@"inputColor"];
 	CIImage *colorImage = [constantColor valueForKey:@"outputImage"];
 
-	cropFilter = [CIFilter filterWithName:@"CICrop"];
-	[cropFilter setDefaults];
-	[cropFilter setValue:colorImage forKey:@"inputImage"];
-	[cropFilter setValue:inputRectangle forKey:@"inputRectangle"];
-	colorImage = [cropFilter valueForKey: @"outputImage"];
 
-	CIFilter *transition = [CIFilter filterWithName:@"CICopyMachineTransition"];
+	CGRect extent = [targetImage extent];
+	inputRectangle = [CIVector vectorWithX:extent.origin.x Y:extent.origin.y Z:extent.size.width W:extent.size.height];
+
+	CIFilter *transition;
+
+/*	
+	transition = [CIFilter filterWithName:@"CICopyMachineTransition"];
 	[transition setDefaults];
 	[transition setValue:colorImage forKey:@"inputImage"];
-	[transition setValue:result forKey:@"inputTargetImage"];
+	[transition setValue:targetImage forKey:@"inputTargetImage"];
 	[transition setValue:inputRectangle forKey:@"inputExtent"];
-	result = [transition valueForKey:@"outputImage"];
-	
-	[self setValue:transition forKey:@"transitionFilter"];
+*/
+/*
 
-//	CGRect extent = [result extent];
-//	NSLog(@"extent setobval %@", NSStringFromRect(*(NSRect *)&extent));
+	transition = [CIFilter filterWithName:@"CIFlashTransition"];
+	[transition setDefaults];
+	[transition setValue:colorImage forKey:@"inputImage"];
+	[transition setValue:targetImage forKey:@"inputTargetImage"];
+	[transition setValue:[CIColor colorWithRed:1.0 green:1.0 blue:0.5] forKey:@"inputColor"];
+	[transition setValue:[CIVector vectorWithX:extent.size.width/3 Y:-(extent.size.height/3)] forKey:@"inputCenter"];
+	[transition setValue:inputRectangle forKey:@"inputExtent"];
 */
 
-	[self setValue:result forKey:@"ciImage"];
+	transition = [CIFilter filterWithName:@"CIDissolveTransition"];
+	[transition setDefaults];
+	[transition setValue:colorImage forKey:@"inputImage"];
+	[transition setValue:targetImage forKey:@"inputTargetImage"];
+
+	[self setValue:transition forKey:@"transitionFilter"];
 
 }
 
@@ -239,8 +270,12 @@
 }
 
 
-
-
+/*
+- (BOOL)isSelectable {
+	NSLog(@"selectable default: %d", [super isSelectable]);
+	return NO;
+}
+*/
 
 
 

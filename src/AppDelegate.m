@@ -816,11 +816,11 @@ NSLog(@"input in wait state");
 - (void)clearTurntablePictures {
 	[self hideTurntablePreviews];
 	[self setValue:nil forKey:@"turntableImages"];
-	NSArray *images = [turntableThumbnailMatrix cells];
-	unsigned int i, count = [images count];
+	NSArray *cells = [turntableThumbnailMatrix cells];
+	unsigned int i, count = [cells count];
 	for (i = 0; i < count; i++) {
-		NSImageView *imageView = [images objectAtIndex:i];
-		[imageView setImage:nil];
+		MLCIImageCell *cell = [cells objectAtIndex:i];
+		[cell setImage:nil];
 	}
 }
 
