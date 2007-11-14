@@ -698,6 +698,7 @@ NSLog(@"input in wait state");
 }
 
 
+
 - (void)signalTurntableStart {
 
 	[self setValue:[NSDate date] forKey:@"timestamp"];
@@ -753,7 +754,7 @@ NSLog(@"input in wait state");
 
 	id tempDirPath = NSTemporaryDirectory();
 	NSString *transferScriptPath = [[NSBundle mainBundle] pathForResource:@"freitag-fuji-transfer" ofType:@"pl"];
-
+	NSString *barcode = [self valueForKey:@"currentBarcode"];
 	NSString *perlLibPath = [[NSBundle mainBundle] pathForResource:@"perl-lib-lwp" ofType:@""];
 
 	NSMutableArray *args = [NSMutableArray array];
@@ -771,14 +772,14 @@ NSLog(@"input in wait state");
 	[args addObject:@"temp_dir_path"];
 	[args addObject:tempDirPath];
 	[args addObject:@"barcode"];
-	[args addObject:[self valueForKey:@"currentBarcode"]];
+	[args addObject:barcode];
 	[args addObject:@"action_url"];
 	[args addObject:[serverConfig valueForKey:@"urlAction"]];
 
 //	NSLog(@"/usr/bin/perl %@", [args componentsJoinedByString:@" "]);
 	
 	NSTask *task = [NSTask launchedTaskWithLaunchPath:@"/usr/bin/perl" arguments:args];
-	NSLog(@"transfer script launched with pid %d", [task processIdentifier]);
+	NSLog(@"transfer script launched with pid %d for job %@", [task processIdentifier], barcode);
 
 	[self clearTurntablePictures];
 	[self runStartState];

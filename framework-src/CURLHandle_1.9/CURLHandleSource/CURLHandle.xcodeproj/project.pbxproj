@@ -149,10 +149,12 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1B8AFD2208D0BF92007C79B2 /* Build configuration list for PBXProject "CURLHandle" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 0;
 			mainGroup = 0867D691FE84028FC02AAC07 /* CURLHandle */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				1B933E15083D5CD2004D26FA /* CURLHandle */,
 			);
@@ -243,12 +245,14 @@
 		1B8AFD2308D0BF92007C79B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Debug;
 		};
 		1B8AFD2408D0BF92007C79B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Release;
 		};

@@ -368,6 +368,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 1BB8E1EA08588B88009FA114 /* Build configuration list for PBXProject "Freitag FUJI" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Freitag FUJI */;
 			projectDirPath = "";
@@ -385,6 +386,7 @@
 					ProjectRef = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 				},
 			);
+			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Freitag FUJI */,
 			);
@@ -558,12 +560,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Debug;
 		};
 		1BB8E1EC08588B88009FA114 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 			};
 			name = Release;
 		};

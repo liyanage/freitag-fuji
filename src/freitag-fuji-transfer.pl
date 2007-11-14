@@ -11,6 +11,7 @@ use LWP::UserAgent;
 use HTTP::Request::Common ();
 use IO::Dir;
 use Data::Dumper;
+use File::Basename;
 
 #warn "args: @ARGV";
 
@@ -28,15 +29,18 @@ sub check_args {
 	my ($args) = @_;
 	my %args = %$args;
 
-	die "capture dir path '$args{capture_dir_path}' invalid" unless (-d "$args{capture_dir_path}");
-	die "missing 'barcode' parameter" unless ($args{barcode});
-	die "missing 'action_url' parameter" unless ($args{action_url});
-	die "missing 'barcode' parameter" unless (-d "$args{temp_dir_path}");
+	logdie("capture dir path '$args{capture_dir_path}' invalid") unless (-d "$args{capture_dir_path}");
+	logdie("missing 'barcode' parameter") unless ($args{barcode});
+	logdie("missing 'action_url' parameter") unless ($args{action_url});
+	logdie("missing 'barcode' parameter") unless (-d "$args{temp_dir_path}");
+
+	logmsg("transfer for job '$args{barcode}' started");
+	warn("transfer for job '$args{barcode}' started");
 
 	my @image_files = split(/,/, $args{capture_files});
 	my @missing_image_files = grep {! -f "$args{capture_dir_path}/$_"} @image_files;
 	unless (@image_files and !@missing_image_files) {
-		die "No file list or missing image files: @missing_image_files";
+		logdie("No file list or missing image files: @missing_image_files");
 	}
 	# sort by file age first then file name second
 	my @sorted_images =
@@ -55,11 +59,11 @@ sub move_images {
 	
 	my $jobdir = "$args{capture_dir_path}/$args{barcode}";
 	remove_jobdir($jobdir) if (-d $jobdir);
-	die "Unable to create job dir '$jobdir': $!" unless (mkdir($jobdir));
+	logdie("Unable to create job dir '$jobdir': $!") unless (mkdir($jobdir));
 
 	foreach my $file (@{$args{capture_files}}) {
 		my ($from, $to) = ("$args{capture_dir_path}/$file", "$jobdir/$file");
-		die "Unable to move '$from' to '$to': $!" unless (rename($from, $to));
+		logdie("Unable to move '$from' to '$to': $!") unless (rename($from, $to));
 	}
 
 	$args->{jobdir} = $jobdir;
@@ -83,8 +87,11 @@ sub upload_images {
 	my $response = $ua->request($request);
 	
 	unless ($response->is_success()) {
-		die "Unable to upload images for job '$args{barcode}': " . $response->status_line();
+		logmsg("transfer for job '$args{barcode}' failed");
+		logdie("Unable to upload images for job '$args{barcode}': " . $response->status_line());
 	}
+
+	logmsg("transfer for job '$args{barcode}' finished successfully");
 	
 	remove_jobdir($args{jobdir});
 }
@@ -107,6 +114,21 @@ sub make_file_list {
 sub remove_jobdir {
 	my ($jobdir) = @_;
 	if (system('rm', '-rf', $jobdir) >> 8) {
-		die "Unable to remove existing job dir '$jobdir': $!";
+		logdie("Unable to remove existing job dir '$jobdir': $!");
 	}
 }
+
+
+sub logmsg {
+	my ($message) = @_;
+	$message ||= '';
+	my $self = File::Basename::basename($0);
+	system qq(logger -t "$self" $message);
+}
+
+
+sub logdie {
+	logmsg(@_);
+	die @_;
+}
+
