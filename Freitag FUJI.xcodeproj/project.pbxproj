@@ -348,6 +348,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				1B933B9E083C0C42004D26FA /* CopyFiles */,
+				1BECDB860D07F071004C348D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -447,6 +448,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BECDB860D07F071004C348D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\nopen -a /Applications/SparkleZip.app \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\nosascript -e 'tell application \"SparkleZip\" to quit'\nopen $(dirname \"$TARGET_BUILD_DIR/$WRAPPER_NAME\")\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {

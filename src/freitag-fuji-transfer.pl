@@ -12,6 +12,7 @@ use HTTP::Request::Common ();
 use IO::Dir;
 use Data::Dumper;
 use File::Basename;
+use POSIX qw();
 
 #warn "args: @ARGV";
 
@@ -25,6 +26,7 @@ upload_images($args);
 exit 0;
 
 
+
 sub check_args {
 	my ($args) = @_;
 	my %args = %$args;
@@ -35,7 +37,6 @@ sub check_args {
 	logdie("missing 'barcode' parameter") unless (-d "$args{temp_dir_path}");
 
 	logmsg("transfer for job '$args{barcode}' started");
-	warn("transfer for job '$args{barcode}' started");
 
 	my @image_files = split(/,/, $args{capture_files});
 	my @missing_image_files = grep {! -f "$args{capture_dir_path}/$_"} @image_files;
@@ -124,11 +125,14 @@ sub logmsg {
 	$message ||= '';
 	my $self = File::Basename::basename($0);
 	system qq(logger -t "$self" $message);
+	my $timestamp = POSIX::strftime("%F %T $self [$$]", localtime);
+	warn "$timestamp $message";
 }
 
 
 sub logdie {
-	logmsg(@_);
+	my ($message) = @_;
+	logmsg("FATAL: $message");
 	die @_;
 }
 
