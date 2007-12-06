@@ -461,7 +461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\nopen -a /Applications/SparkleZip.app \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\nosascript -e 'tell application \"SparkleZip\" to quit'\nopen $(dirname \"$TARGET_BUILD_DIR/$WRAPPER_NAME\")\n";
+			shellScript = "[ $CONFIGURATION = Release ] || exit 0\necho \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\nopen -a /Applications/SparkleZip.app \"$TARGET_BUILD_DIR/$WRAPPER_NAME\"\n(sleep 8; osascript -e 'tell application \"SparkleZip\" to quit') &\nopen $(dirname \"$TARGET_BUILD_DIR/$WRAPPER_NAME\")\necho done zipping";
 		};
 /* End PBXShellScriptBuildPhase section */
 
