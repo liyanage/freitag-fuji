@@ -290,20 +290,19 @@
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>1B3138130D07F2EA005C2DC8</string>
 								<string>1C37FABC05509CD000000102</string>
 								<string>1CC0EA4004350EF90044410B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>39</integer>
-									<integer>31</integer>
-									<integer>30</integer>
+									<integer>9</integer>
+									<integer>8</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 213}, {317, 705}}</string>
+							<string>{{0, 0}, {317, 705}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -340,7 +339,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppDelegate.m</string>
+								<string>freitag-fuji-transfer.pl</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -348,11 +347,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppDelegate.m</string>
+										<string>freitag-fuji-transfer.pl</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1B3139230D07F4F6005C2DC8</string>
+										<string>1BAC48B90D22838C00691524</string>
 										<key>history</key>
 										<array>
 											<string>1B1B83950CE2736800A4FB09</string>
@@ -362,31 +361,29 @@
 											<string>1B1B83990CE2736800A4FB09</string>
 											<string>1B1B839A0CE2736800A4FB09</string>
 											<string>1B1B839B0CE2736800A4FB09</string>
-											<string>1B1B839E0CE2736800A4FB09</string>
 											<string>1B1B83A00CE2736800A4FB09</string>
 											<string>1BA73E2B0CEB2120009FAE0F</string>
-											<string>1B1EA6320D04C30C008A03ED</string>
 											<string>1B1EA6330D04C30C008A03ED</string>
 											<string>1B3139140D07F3ED005C2DC8</string>
-											<string>1B1EA6310D04C30C008A03ED</string>
+											<string>1BAC48B50D22838C00691524</string>
+											<string>1BAC48B60D22838C00691524</string>
+											<string>1BAC48B70D22838C00691524</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>1B1B83A20CE2736800A4FB09</string>
 											<string>1B1B83A30CE2736800A4FB09</string>
 											<string>1B1B83A50CE2736800A4FB09</string>
-											<string>1B1B83A60CE2736800A4FB09</string>
 											<string>1B1B83AB0CE2736800A4FB09</string>
 											<string>1B1B83AC0CE2736800A4FB09</string>
 											<string>1B1B83AD0CE2736800A4FB09</string>
 											<string>1B1B83AE0CE2736800A4FB09</string>
 											<string>1B1B83AF0CE2736800A4FB09</string>
 											<string>1B1B83B00CE2736800A4FB09</string>
-											<string>1B1B83B30CE2736800A4FB09</string>
 											<string>1B1B83B40CE2736800A4FB09</string>
 											<string>1B1B83B70CE2736800A4FB09</string>
 											<string>1BA73E2D0CEB2120009FAE0F</string>
-											<string>1B3139150D07F3ED005C2DC8</string>
+											<string>1BAC48B80D22838C00691524</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -444,9 +441,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>1B31390B0D07F306005C2DC8</string>
+				<string>1BAC48B10D22787D00691524</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>1B31390C0D07F306005C2DC8</string>
+				<string>1BAC48B20D22787D00691524</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -565,7 +562,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>218625270.465435</real>
+	<real>220362871.73981801</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -580,7 +577,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1B1B825D0CE21EC200A4FB09</string>
 		<string>/Users/liyanage/svn/entropy-private/freitag-fuji/Freitag FUJI.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

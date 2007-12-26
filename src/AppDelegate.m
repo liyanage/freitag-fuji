@@ -267,7 +267,7 @@
 
 
 	if (appState == WAIT_FOR_TURNTABLE_SIGNAL) {
-NSLog(@"input in wait state");
+		NSLog(@"Non-F1 keyboard input received while in WAIT_FOR_TURNTABLE_SIGNAL state, returning to start state");
 		[self clearTurntablePictures];
 		[self runStartState];
 		return;
