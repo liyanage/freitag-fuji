@@ -8,6 +8,8 @@
 	weightNumberCharacterSkipSet = [[[NSCharacterSet characterSetWithCharactersInString:@"01234567890."] invertedSet] retain];
 	
 	[self setValue:[NSNumber numberWithBool:YES] forKey:@"shouldCaptureBagPhoto"];
+	[self setValue:[NSNumber numberWithInt:TURNTABLE_THUMBNAIL_COUNT] forKey:@"turntableProductPhotoCount"];
+	
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -291,6 +293,8 @@
 		[self setValue:action forKey:@"currentAction"];
 		if ([action isPrefsAction]) {
 			[self runState:RUN_PREFS];
+		} else if ([action isTurntableProductPhotoCountAction]) {
+			[self setTurntableProductPhotoCount:[action turntableProductPhotoCount]];
 		} else if ([action isCreateJobAction]) {
 			[self runState:SCAN_JOB_BARCODE];
 		} else if ([action isBagPhotoOffAction]) {
@@ -608,6 +612,7 @@
 }
 
 
+
 #pragma mark App state handlers
 
 
@@ -740,9 +745,9 @@
 	}
 	
 	int count = [turntableImages count];
-	if (count != TURNTABLE_THUMBNAIL_COUNT) {
+	if (count != turntableProductPhotoCount) {
 		[self clearTurntablePictures];
-		[self runGenericErrorForMessage:[NSString stringWithFormat:@"Es wurden %d statt %d Bilder empfangen", count, TURNTABLE_THUMBNAIL_COUNT]];
+		[self runGenericErrorForMessage:[NSString stringWithFormat:@"Es wurden %d statt %d Bilder empfangen", count, turntableProductPhotoCount]];
 		return;
 	}
 
@@ -847,7 +852,7 @@
 		[turntableImages setObject:[NSNull null] forKey:fullPath];
 
 		unsigned count = [turntableImages count];
-		if (count > TURNTABLE_THUMBNAIL_COUNT) continue;
+		if (count > turntableProductPhotoCount) continue;
 
 		unsigned index = count - 1;
 //		NSImageCell *ic = [[turntableThumbnailMatrix cells] objectAtIndex:index];
@@ -1063,6 +1068,11 @@
 	[self setValue:nil forKey:@"currentJobId"];
 }
 
+
+- (void)setTurntableProductPhotoCount:(unsigned int)count {
+	NSLog(@"turntable product photo count: %d", count);
+	turntableProductPhotoCount = count;
+}
 
 
 

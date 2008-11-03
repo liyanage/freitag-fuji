@@ -83,6 +83,8 @@
 	NSDate *timestamp;
 	NSMutableDictionary *turntableImages;
 	
+	unsigned int turntableProductPhotoCount;
+	
 }
 
 - (BOOL)appStateAcceptsNonActionBarcode;
@@ -124,6 +126,7 @@
 - (void)createJob;
 - (void)startCapture;
 - (void)signalTurntableStart;
+- (void)setTurntableProductPhotoCount:(unsigned int)count;
 - (void)processTurntableSignal;
 - (void)uploadTurntablePictures;
 - (void)submitBag;

@@ -53,6 +53,17 @@
 	return [value isEqualToString:@"bag_photo_on"];
 }
 
+- (BOOL)isTurntableProductPhotoCountAction {
+	NSRange found = [value rangeOfString:@"product_photo_count_"];
+	return found.location != NSNotFound;
+}
+
+- (unsigned int)turntableProductPhotoCount {
+	unsigned int count = [[value substringFromIndex:20] intValue];
+	NSAssert1(count > 0, @"product photo count not found in value '%@'", value);
+	return count;
+}
+
 
 
 - (BOOL)isType0 {

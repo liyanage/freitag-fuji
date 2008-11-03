@@ -171,6 +171,22 @@
       <Name>HD-Bildspeicherung deaktivieren</Name>
       <Description>High Definition Bilder werden nicht mehr gespeichert für weitere Verwendung. Original-Bilder werden ab jetzt gelöscht.</Description>
     </item>
+    <item>
+      <id>21</id>
+      <Barcode>111034</Barcode>
+      <Value>product_photo_count_8</Value>
+      <Type>2</Type>
+      <Name>Drehtisch Bilderanzahl 8</Name>
+      <Description>Es werden 8 Drehtisch Fotos pro Produkt erfasst.</Description>
+    </item>
+    <item>
+      <id>22</id>
+      <Barcode>111035</Barcode>
+      <Value>product_photo_count_16</Value>
+      <Type>2</Type>
+      <Name>Drehtisch Bilderanzahl 16</Name>
+      <Description>Es werden 16 Drehtisch Fotos pro Produkt erfasst.</Description>
+    </item>
   </action>
   <mode>2</mode>
   <state>success</state>

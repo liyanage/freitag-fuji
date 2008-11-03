@@ -23,5 +23,7 @@
 - (BOOL)isBagPhotoOnAction;
 - (BOOL)isType0;
 - (BOOL)isType1;
+- (BOOL)isTurntableProductPhotoCountAction;
+- (unsigned int)turntableProductPhotoCount;
 
 @end
