@@ -3,20 +3,15 @@
 @implementation AppDelegate
 
 - (void)awakeFromNib {
-
-	[self setupDefaults];
 	weightNumberCharacterSkipSet = [[[NSCharacterSet characterSetWithCharactersInString:@"01234567890."] invertedSet] retain];
-	
 	[self setValue:[NSNumber numberWithBool:YES] forKey:@"shouldCaptureBagPhoto"];
 	[self setValue:[NSNumber numberWithInt:TURNTABLE_THUMBNAIL_COUNT] forKey:@"turntableProductPhotoCount"];
-	
 }
+
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 
     NSRect screenRect = [[NSScreen mainScreen] frame];
-
-//	screenRect = NSMakeRect(0, 0, 1400, 900);
 
 	NSString *resolution = [[NSUserDefaults standardUserDefaults] valueForKey:@"resolution"];
 	if (resolution) {
@@ -29,9 +24,9 @@
 	}
 
 	mainWindow = [[FUJIWindow alloc] initWithContentRect:screenRect
-											 styleMask:NSTexturedBackgroundWindowMask
-											   backing:NSBackingStoreBuffered
-												 defer:NO screen:[NSScreen mainScreen]];
+		styleMask:NSTexturedBackgroundWindowMask
+		backing:NSBackingStoreBuffered
+		defer:NO screen:[NSScreen mainScreen]];
 	
 	[mainWindow setDelegate:self];
 
@@ -65,20 +60,12 @@
 
 
 - (void)applicationWillTerminate:(NSNotification *)notification {
-	
 	[mainWindow orderOut:self];
-	
-// fixme: enable in final
 	CGDisplayRelease(kCGDirectMainDisplay);
 }
 
 
 # pragma mark Initialization
-
-- (void)setupDefaults {
-	// this stuff moved to the initialize class method
-}
-
 
 + (void)initialize {
     NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -92,9 +79,7 @@
 }
 
 
-
 - (void)setupModelsPanel {
-	
 	NSArray *cells = [modelsMatrix cells];
 	NSArray *models = [serverConfig valueForKey:@"models"];
 	
@@ -110,12 +95,10 @@
 		[cell setTitle:[model valueForKey:@"name"]];
 		[cell setRepresentedObject:model];
 	}
-	
 }
 
 
 - (void)setupPeoplePanel {
-	
 	NSArray *cells = [peopleMatrix cells];
 	NSArray *people = [serverConfig valueForKey:@"people"];
 	
@@ -132,12 +115,10 @@
 		[cell setImage:[person valueForKey:@"image"]];
 		[cell setRepresentedObject:person];
 	}
-	
 }
 
 
 - (void)setupColorsPanel {
-	
 	NSArray *cells = [colorsMatrix cells];
 	NSArray *colors = [serverConfig valueForKey:@"colors"];
 	
@@ -154,12 +135,10 @@
 		[cell setImage:[color valueForKey:@"image"]];
 		[cell setRepresentedObject:color];
 	}
-	
 }
 
 
 - (void)setupStylesPanel {
-	
 	NSArray *cells = [stylesMatrix cells];
 	NSArray *styles = [serverConfig valueForKey:@"styles"];
 	
@@ -174,8 +153,7 @@
 		id style = [styles objectAtIndex:i];
 		[cell setTitle:[style valueForKey:@"name"]];
 		[cell setRepresentedObject:style];
-	}
-	
+	}	
 }
 
 
@@ -224,7 +202,6 @@
 
 
 - (NSString *)pictureDirectoryPath {
-//	return [NSHomeDirectory() stringByAppendingPathComponent:@"PicturesDebug"];
 	return [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
 }
 
@@ -246,15 +223,27 @@
 
 
 
-
-
-
-#pragma mark Barcode input handling
+#pragma mark Barcode (and other keyboard) input handling
 
 - (void)handleInput:(NSString *)input {
 
+	/* If we're currently displaying an error message, any input
+	 * dismisses the error
+	 * and resets the app to the start state */
 	if (appState == GENERIC_ERROR) {
 		[self dismissError:self];
+		return;
+	}
+
+	if ([input length] > 0 && [input characterAtIndex:0] == NSF2FunctionKey) {
+		NSLog(@"8 photos");
+		[self setTurntableProductPhotoCount:8];
+		return;
+	}
+
+	if ([input length] > 0 && [input characterAtIndex:0] == NSF3FunctionKey) {
+		NSLog(@"16 photos");
+		[self setTurntableProductPhotoCount:16];
 		return;
 	}
 
@@ -281,8 +270,6 @@
 		return;
 	}
 
-
-//	NSLog(@"handleInput: %@", input);
 	
 	/* store the barcode for whatever purpose we might need it later on */
 	[self setValue:input forKey:@"currentBarcode"];
@@ -312,8 +299,7 @@
 		return;
 	}
 
-
-
+	
 	/* No action, must be a data or action parameter barcode */
 	
 	if (appState == SCAN_JOB_BARCODE) {
@@ -335,6 +321,7 @@
 	acceptingInput = NO;
 }
 
+
 - (void)enableInput {
 	[mainWindow clearKeyBuffer];
 	acceptingInput = YES;
@@ -342,7 +329,6 @@
 
 
 - (BOOL)appStateAcceptsNonActionBarcode {
-
 	switch (appState) {
 		case SCAN_TARP_BARCODE:
 		case SCAN_JOB_BARCODE:
@@ -357,27 +343,16 @@
 		default:
 			return NO;
 	}
-	
 }
-
-
 
 
 - (BOOL)isAcceptingInput {
 	return acceptingInput;
 }
 
-/*
-- (IBAction)toggleAcceptingInput:(id)sender {
-	acceptingInput = !acceptingInput;
-}
-*/
-
-
 
 
 #pragma mark Delegate method implementations
-
 
 
 #pragma mark Panel switching
@@ -394,7 +369,6 @@
 	// fixme: retain count keeps on going up. not leaking as we're
 	// reusing the views all the time until app termination, but not quite clean either.
 	
-		
 //	NSLog(@"1 old content view %@, retaincount %d", oldView, [oldView retainCount]);	
 //	NSLog(@"2 new content view %@, retaincount %d", newView, [newView retainCount]);	
 
@@ -431,7 +405,6 @@
 }
 
 
-
 - (void)hideTurntablePreviews {
 	[turntableThumbnailBox setHidden:YES];
 	[boxView setHidden:NO];
@@ -451,7 +424,6 @@
 
 
 - (void)checkState {
-	
 //	NSLog(@"checkState: %d", appState);
 	
 	switch (appState) {
@@ -597,7 +569,6 @@
 			NSLog(@"unknown state %d!", appState);
 			break;
 	}
-	
 }
 
 
@@ -612,9 +583,7 @@
 }
 
 
-
 #pragma mark App state handlers
-
 
 - (void)doInit:(id)object {
 	[self disableInput];
@@ -647,12 +616,10 @@
 
 	[self setValue:[NSNumber numberWithBool:NO] forKey:@"initializing"];
 	[self runStartState];
-
 }
 
 
 - (void)createJob {
-	
 	NSString *urlString = [NSString stringWithFormat:@"%@?action=job_create&param=%@&fotographer=%@&model=%@&client=%@",
 		[serverConfig valueForKey:@"urlAction"],
 		currentBarcode,
@@ -686,9 +653,6 @@
 }
 
 
-
-
-
 - (void)startCapture {
 //	NSSize captureSize = [captureMonitorView frame];
 //	NSLog(@"%@", NSStringFromRect([captureMonitorView frame]));
@@ -703,9 +667,7 @@
 }
 
 
-
 - (void)signalTurntableStart {
-
 	[self setValue:[NSDate date] forKey:@"timestamp"];
 
 	NSArray *devices = [MLUsbHidDevice findDevicesForForUsagePage:0x01 usage:0x06];
@@ -734,7 +696,6 @@
 }
 
 
-
 - (void)processTurntableSignal {
 	NSTimeInterval age = -[self updateTurntablePictures];
 	NSTimeInterval minimumAge = (NSTimeInterval)TURNTABLE_PICTURE_MINIMUM_AGE_SECONDS;
@@ -756,7 +717,6 @@
 
 
 - (void)uploadTurntablePictures {
-
 	id tempDirPath = NSTemporaryDirectory();
 	NSString *transferScriptPath = [[NSBundle mainBundle] pathForResource:@"freitag-fuji-transfer" ofType:@"pl"];
 	NSString *barcode = [self valueForKey:@"currentBarcode"];
@@ -788,7 +748,6 @@
 
 	[self clearTurntablePictures];
 	[self runStartState];
-
 }
 
 
@@ -801,7 +760,6 @@
 	}
 	return [filenameArray componentsJoinedByString:@","];
 }
-
 
 
 - (void)checkTurntablePictures {
@@ -867,13 +825,10 @@
 	NSTimeInterval lastFileAge = [latestModTime timeIntervalSinceNow];
 //	NSLog(@"lastFileAge %f", lastFileAge);
 	return lastFileAge;
-
 }
 
 
-
 - (void)submitBag {
-
 	CURLHandle *curl = (CURLHandle *)[CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
 	
 	id imagePart = @"ignore";
@@ -915,11 +870,8 @@
 
 
 - (void)submitTarp {
-
 	CURLHandle *curl = (CURLHandle *)[CURLHandle cachedHandleForURL:[NSURL URLWithString:[serverConfig valueForKey:@"urlAction"]]];
-//	NSLog(@"curl: %@", curl);
 
-//	NSData *jpegImage = [NSData dataWithContentsOfFile:@"/Users/liyanage/Pictures/People/andyblond.jpg"];
 	NSData *jpegImage = [[[currentImage representations] objectAtIndex:0] representationUsingType:NSJPEGFileType properties:nil];
 //	[jpegImage writeToFile:@"/tmp/bag.jpg" atomically:YES];
 	NSDictionary *imagePart = [NSDictionary dictionaryWithObjectsAndKeys:jpegImage, @"data", @"dummy.jpg", @"filename", @"image/jpeg", @"mimeType", nil];
@@ -955,12 +907,7 @@
 }
 
 
-
-
-
-
 - (void)submitAction0 {
-	
 	NSString *urlString = [NSString stringWithFormat:@"%@?action=%@&client=%@",
 		[serverConfig valueForKey:@"urlAction"],
 		[currentAction valueForKey:@"value"],
@@ -976,12 +923,10 @@
 	}
 	
 	[self runState:SUBMIT_ACTION_FAILED];
-		
 }
 
 
 - (void)submitAction1 {
-
 	NSString *urlString = [NSString stringWithFormat:@"%@?action=%@&param=%@&client=%@",
 		[serverConfig valueForKey:@"urlAction"],
 		[currentAction valueForKey:@"value"],
@@ -998,12 +943,10 @@
 	}
 	
 	[self runState:SUBMIT_ACTION_FAILED];
-	
 }
 
 
 - (BOOL)checkServerResponse:(NSXMLDocument *)responseDoc {
-
 	NSString *state = [self stringForXpath:@"xml/state/text()" inDocument:responseDoc];
 	NSString *result = [self stringForXpath:@"xml/result/text()" inDocument:responseDoc];
 	NSString *count = [self stringForXpath:@"xml/count/text()" inDocument:responseDoc];
@@ -1033,7 +976,6 @@
 	NSLog(@"checkServerResponse: Failure server response %@", [responseDoc XMLData]);
 
 	return NO;
-
 }
 
 
@@ -1051,6 +993,7 @@
 	[self setValue:nil forKey:@"currentImage"];
 }
 
+
 - (void)clearTarp {
 	[self setValue:nil forKey:@"currentBarcode"];
 	[self setValue:nil forKey:@"currentColor"];
@@ -1059,6 +1002,7 @@
 	[self setValue:nil forKey:@"currentImage"];
 	[self setValue:nil forKey:@"tarpWeight"];
 }
+
 
 - (void)clearJob {
 	[self clearBag];
@@ -1075,7 +1019,6 @@
 }
 
 
-
 #pragma mark IBActions
 
 - (IBAction)commitPrefs:(id)sender {
@@ -1083,13 +1026,13 @@
 	[self runState:UNINITIALIZED];
 }
 
+
 - (IBAction)chooseModel:(id)sender {
-	
 	id cell = [sender selectedCell];
 	[self setValue:[cell representedObject] forKey:@"currentModel"];
 	[self runState:PICK_PERSON];
-	
 }
+
 
 - (IBAction)choosePerson:(id)sender {
 	id cell = [sender selectedCell];
@@ -1102,7 +1045,6 @@
 	[camera stop];
 	[self setValue:lastImage forKey:@"currentImage"];
 	[self runState:PICK_COLOR];
-
 }
 
 
@@ -1124,8 +1066,8 @@
 	} else {
 		[self runState:PICK_QUALITY];
 	}
-
 }
+
 
 - (IBAction)chooseStyle:(id)sender {
 	id cell = [sender selectedCell];
@@ -1138,12 +1080,10 @@
 //		NSLog(@"chooseStyle: switching to state ENTER_WEIGHT, app state %d, client mode %d", appState, [serverConfig clientMode]);
 		[self runState:ENTER_WEIGHT];
 	}
-
 }
 
 
 - (IBAction)runCaptureSettingsDialog:(id)sender {
-
 #ifndef DEBUG
 	CGDisplayRelease(kCGDirectMainDisplay);
 	[mainWindow setLevel:NSNormalWindowLevel];
@@ -1158,16 +1098,15 @@
 	CGDisplayCapture(kCGDirectMainDisplay);
 	[mainWindow setLevel:CGShieldingWindowLevel()];
 #endif
-
-
 }
+
 
 - (IBAction)doRunPrefs:(id)sender {
 	[self runState:RUN_PREFS];
 }
 
-- (IBAction)dismissError:(id)sender {
 
+- (IBAction)dismissError:(id)sender {
 	switch (appState) {
 		
 		case SUBMIT_BAG_FAILED:
@@ -1185,13 +1124,12 @@
 			[self runStartState];
 			break;
 	}
-
 }
+
 
 - (IBAction)doCheckState:(id)sender {
 	[self checkState];
 }
-
 
 
 @end

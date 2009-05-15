@@ -46,14 +46,21 @@
 		return;
 	}
 
-	// turn table completion signal
-	if ([[theEvent characters] characterAtIndex:0] == NSF1FunctionKey) {
-		[[self delegate] handleInput:[theEvent characters]];
-		[self clearKeyBuffer];
-		return;
-	}
+	unichar firstInputChar = [[theEvent characters] characterAtIndex:0];
 
-	if ([[theEvent characters] characterAtIndex:0] == (unichar)63289) return;
+	// turn table special signaling
+	unichar specialKeys[] = {NSF1FunctionKey, NSF2FunctionKey, NSF3FunctionKey, 0};
+	int i = 0;
+	while (specialKeys[i]) {
+		if (firstInputChar == specialKeys[i]) {
+			[[self delegate] handleInput:[theEvent characters]];
+			[self clearKeyBuffer];
+			return;
+		}
+		i++;
+	}
+	
+	if (firstInputChar == (unichar)63289) return;
 
 	if (![acceptableCharacters characterIsMember:[[theEvent characters] characterAtIndex:0]]) {
 		[super keyDown:theEvent];

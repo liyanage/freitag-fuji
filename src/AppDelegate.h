@@ -87,6 +87,7 @@
 	
 }
 
+
 - (BOOL)appStateAcceptsNonActionBarcode;
 
 - (void)disableInput;
@@ -107,7 +108,6 @@
 - (IBAction)chooseStyle:(id)sender;
 - (IBAction)doRunPrefs:(id)sender;
 - (IBAction)runCaptureSettingsDialog:(id)sender;
-- (void)setupDefaults;
 - (void)runPrefs;
 - (void)checkState;
 - (void)setState:(int)newState;

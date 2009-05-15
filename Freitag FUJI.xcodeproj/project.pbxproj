@@ -25,8 +25,7 @@
 		1B476D820C5FD06200C2EB4F /* MLCIImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B476D800C5FD06200C2EB4F /* MLCIImageCell.m */; };
 		1B66BD130C39A31600BE5D68 /* freitag-fuji-transfer.pl in Resources */ = {isa = PBXBuildFile; fileRef = 1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */; };
 		1B66C1B50C3ADA7000BE5D68 /* perl-lib-lwp in Resources */ = {isa = PBXBuildFile; fileRef = 1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */; };
-		1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
-		1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */; };
+		1B7BE7600FBD647B00C371E2 /* MLUsbHidWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7BE75B0FBD645E00C371E2 /* MLUsbHidWrapper.framework */; };
 		1B834CBB0C691BD900195545 /* MLCIImageCellAnimation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B834CB90C691BD900195545 /* MLCIImageCellAnimation.h */; };
 		1B834CBC0C691BD900195545 /* MLCIImageCellAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B834CBA0C691BD900195545 /* MLCIImageCellAnimation.m */; };
 		1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */; };
@@ -48,26 +47,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1B7F2CA60C3823FF00111DB0 /* PBXContainerItemProxy */ = {
+		1B7BE75A0FBD645E00C371E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* MLUsbHidWrapper.framework */;
 			remoteInfo = MLUsbHidWrapper;
 		};
-		1B7F2CA80C3823FF00111DB0 /* PBXContainerItemProxy */ = {
+		1B7BE75C0FBD645E00C371E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1BF712DD0C2872EF0076E295;
+			remoteGlobalIDString = 1BF712DD0C2872EF0076E295 /* Test.octest */;
 			remoteInfo = Test;
-		};
-		1B7F2CBF0C38298A00111DB0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = MLUsbHidWrapper;
 		};
 		1B8AFE8F08D0C120007C79B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -106,7 +98,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1B7F2CAF0C38241800111DB0 /* MLUsbHidWrapper.framework in CopyFiles */,
 				1B8AFE9C08D0C15D007C79B2 /* CURLHandle.framework in CopyFiles */,
 				1BB8E57A0868B174009FA114 /* CocoaSequenceGrabber.framework in CopyFiles */,
 				1B476D810C5FD06200C2EB4F /* MLCIImageCell.h in CopyFiles */,
@@ -147,14 +138,12 @@
 		1B476D800C5FD06200C2EB4F /* MLCIImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLCIImageCell.m; path = src/MLCIImageCell.m; sourceTree = "<group>"; };
 		1B66BD120C39A31600BE5D68 /* freitag-fuji-transfer.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = "freitag-fuji-transfer.pl"; path = "src/freitag-fuji-transfer.pl"; sourceTree = "<group>"; };
 		1B66BE930C3ADA5B00BE5D68 /* perl-lib-lwp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "perl-lib-lwp"; sourceTree = "<group>"; };
-		1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = USBHidWrapper.xcodeproj; path = "../../entropy/cocoa-usb-hid-wrapper/USBHidWrapper.xcodeproj"; sourceTree = "<group>"; };
+		1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = USBHidWrapper.xcodeproj; path = "../../../git/entropy/cocoa-usb-hid-wrapper/USBHidWrapper.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		1B834CB90C691BD900195545 /* MLCIImageCellAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLCIImageCellAnimation.h; path = src/MLCIImageCellAnimation.h; sourceTree = "<group>"; };
 		1B834CBA0C691BD900195545 /* MLCIImageCellAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MLCIImageCellAnimation.m; path = src/MLCIImageCellAnimation.m; sourceTree = "<group>"; };
 		1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CURLHandle.xcodeproj; path = "framework-src/CURLHandle_1.9/CURLHandleSource/CURLHandle.xcodeproj"; sourceTree = "<group>"; };
 		1B92E9C00C5E4D7500C2E388 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		1B933AC1083B914F004D26FA /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = artwork/Logo.png; sourceTree = "<group>"; };
-		1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaSequenceGrabber.framework; path = Frameworks/CocoaSequenceGrabber.framework; sourceTree = "<group>"; };
-		1B933D64083D4DBD004D26FA /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CURLHandle.framework; path = Frameworks/CURLHandle.framework; sourceTree = "<group>"; };
 		1B9D4EFE08308C9B00CCED04 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = src/AppDelegate.m; sourceTree = "<group>"; };
 		1B9D4EFF08308C9B00CCED04 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = src/AppDelegate.h; sourceTree = "<group>"; };
 		1B9FAE1A0843888900F5C792 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Icon.icns; path = artwork/Icon.icns; sourceTree = "<group>"; };
@@ -181,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7F2CB00C38242200111DB0 /* MLUsbHidWrapper.framework in Frameworks */,
+				1B7BE7600FBD647B00C371E2 /* MLUsbHidWrapper.framework in Frameworks */,
 				1B8AFEA108D0C171007C79B2 /* CURLHandle.framework in Frameworks */,
 				1BB8E5740868B10D009FA114 /* CocoaSequenceGrabber.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
@@ -229,8 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				1B92E9C00C5E4D7500C2E388 /* QuartzCore.framework */,
-				1B933D64083D4DBD004D26FA /* CURLHandle.framework */,
-				1B933B93083C0C23004D26FA /* CocoaSequenceGrabber.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -255,11 +242,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1B7F2CA20C3823FF00111DB0 /* Products */ = {
+		1B7BE7560FBD645E00C371E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */,
-				1B7F2CA90C3823FF00111DB0 /* Test.octest */,
+				1B7BE75B0FBD645E00C371E2 /* MLUsbHidWrapper.framework */,
+				1B7BE75D0FBD645E00C371E2 /* Test.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,7 +342,6 @@
 			dependencies = (
 				1BB8E53C0868AD33009FA114 /* PBXTargetDependency */,
 				1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */,
-				1B7F2CC00C38298A00111DB0 /* PBXTargetDependency */,
 			);
 			name = "Freitag FUJI";
 			productInstallPath = "$(HOME)/Applications";
@@ -383,7 +369,7 @@
 					ProjectRef = 1B8AFE8B08D0C120007C79B2 /* CURLHandle.xcodeproj */;
 				},
 				{
-					ProductGroup = 1B7F2CA20C3823FF00111DB0 /* Products */;
+					ProductGroup = 1B7BE7560FBD645E00C371E2 /* Products */;
 					ProjectRef = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 				},
 			);
@@ -395,18 +381,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		1B7F2CA70C3823FF00111DB0 /* MLUsbHidWrapper.framework */ = {
+		1B7BE75B0FBD645E00C371E2 /* MLUsbHidWrapper.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MLUsbHidWrapper.framework;
-			remoteRef = 1B7F2CA60C3823FF00111DB0 /* PBXContainerItemProxy */;
+			remoteRef = 1B7BE75A0FBD645E00C371E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1B7F2CA90C3823FF00111DB0 /* Test.octest */ = {
+		1B7BE75D0FBD645E00C371E2 /* Test.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = Test.octest;
-			remoteRef = 1B7F2CA80C3823FF00111DB0 /* PBXContainerItemProxy */;
+			remoteRef = 1B7BE75C0FBD645E00C371E2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1B8AFE9008D0C120007C79B2 /* CURLHandle.framework */ = {
@@ -490,11 +476,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1B7F2CC00C38298A00111DB0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MLUsbHidWrapper;
-			targetProxy = 1B7F2CBF0C38298A00111DB0 /* PBXContainerItemProxy */;
-		};
 		1B8AFE9408D0C140007C79B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CURLHandle;
