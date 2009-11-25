@@ -235,27 +235,29 @@
 		return;
 	}
 
-	if ([input length] > 0 && [input characterAtIndex:0] == NSF2FunctionKey) {
-		NSLog(@"8 photos");
-		[self setTurntableProductPhotoCount:8];
-		return;
-	}
-
-	if ([input length] > 0 && [input characterAtIndex:0] == NSF3FunctionKey) {
-		NSLog(@"16 photos");
-		[self setTurntableProductPhotoCount:16];
-		return;
-	}
-
 	if ([input length] > 0 && [input characterAtIndex:0] == NSF1FunctionKey) {
 		if (appState != WAIT_FOR_TURNTABLE_SIGNAL) {
 			NSLog(@"F1 key seen while not in WAIT_FOR_TURNTABLE_SIGNAL state, ignoring...");
 			return;
 		};
+		NSLog(@"16 photos");
+		[self setTurntableProductPhotoCount:16];
 		[self runState:RECEIVED_TURNTABLE_SIGNAL];
 		return;
 	}
+	
 
+	if ([input length] > 0 && [input characterAtIndex:0] == NSF2FunctionKey) {
+		if (appState != WAIT_FOR_TURNTABLE_SIGNAL) {
+			NSLog(@"F2 key seen while not in WAIT_FOR_TURNTABLE_SIGNAL state, ignoring...");
+			return;
+		};
+		NSLog(@"8 photos");
+		[self setTurntableProductPhotoCount:8];
+		[self runState:RECEIVED_TURNTABLE_SIGNAL];
+		return;
+	}
+	
 
 	if (appState == WAIT_FOR_TURNTABLE_SIGNAL) {
 		NSLog(@"Non-F1 keyboard input received while in WAIT_FOR_TURNTABLE_SIGNAL state, returning to start state");

@@ -46,19 +46,30 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		1BA59AE110BCAAD100F9F970 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc.4_0;
+			fileType = sourcecode.c;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		1B7BE75A0FBD645E00C371E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* MLUsbHidWrapper.framework */;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
 			remoteInfo = MLUsbHidWrapper;
 		};
 		1B7BE75C0FBD645E00C371E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1B7F2C3F0C38205C00111DB0 /* USBHidWrapper.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1BF712DD0C2872EF0076E295 /* Test.octest */;
+			remoteGlobalIDString = 1BF712DD0C2872EF0076E295;
 			remoteInfo = Test;
 		};
 		1B8AFE8F08D0C120007C79B2 /* PBXContainerItemProxy */ = {
@@ -338,6 +349,7 @@
 				1BECDB860D07F071004C348D /* ShellScript */,
 			);
 			buildRules = (
+				1BA59AE110BCAAD100F9F970 /* PBXBuildRule */,
 			);
 			dependencies = (
 				1BB8E53C0868AD33009FA114 /* PBXTargetDependency */,

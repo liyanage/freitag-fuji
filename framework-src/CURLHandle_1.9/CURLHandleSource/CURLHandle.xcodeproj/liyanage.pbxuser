@@ -1,7 +1,6 @@
 // !$*UTF8*$!
 {
 	0867D690FE84028FC02AAC07 /* Project object */ = {
-		activeArchitecture = i386;
 		activeBuildConfigurationName = Debug;
 		activeTarget = 1B933E15083D5CD2004D26FA /* CURLHandle */;
 		addToTargets = (
@@ -14,7 +13,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					450,
+					751,
 					20,
 					48,
 					43,
@@ -36,7 +35,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					410,
+					711,
 					60,
 					20,
 					48,
@@ -53,8 +52,8 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 216735852;
-			PBXWorkspaceStateSaveDate = 216735852;
+			PBXPerProjectTemplateStateSaveDate = 280800467;
+			PBXWorkspaceStateSaveDate = 280800467;
 		};
 		sourceControlManager = 1B933DF9083D5BDC004D26FA /* Source Control */;
 		userBuildSettings = {
@@ -66,6 +65,9 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
 		};
 		scmType = "";
 	};
@@ -85,8 +87,9 @@
 	};
 	F54C717C0237234E01A8000B /* CURLHandle.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {949, 15171}}";
-			sepNavSelRange = "{28981, 9}";
+			sepNavIntBoundsRect = "{{0, 0}, {757, 14911}}";
+			sepNavSelRange = "{13151, 0}";
+			sepNavVisRange = "{20616, 588}";
 			sepNavVisRect = "{{0, 10933}, {949, 383}}";
 		};
 	};

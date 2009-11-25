@@ -20,11 +20,22 @@
 		1B933E2E083D5D5A004D26FA /* libcurl.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B933E2D083D5D5A004D26FA /* libcurl.3.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		1BA59B1710BCABDA00F9F970 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc.4_0;
+			fileType = sourcecode.c;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		1B933E23083D5CD2004D26FA /* Info-CURLHandle__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Info-CURLHandle__Upgraded_.plist"; sourceTree = "<group>"; };
+		1B933E23083D5CD2004D26FA /* Info-CURLHandle__Upgraded_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-CURLHandle__Upgraded_.plist"; sourceTree = "<group>"; };
 		1B933E24083D5CD2004D26FA /* CURLHandle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CURLHandle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B933E2D083D5D5A004D26FA /* libcurl.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.3.dylib; path = /usr/lib/libcurl.3.dylib; sourceTree = "<absolute>"; };
 		F54C717B0237234E01A8000B /* CURLHandle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CURLHandle.h; sourceTree = "<group>"; };
@@ -134,6 +145,7 @@
 				1B933E1C083D5CD2004D26FA /* Frameworks */,
 			);
 			buildRules = (
+				1BA59B1710BCABDA00F9F970 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -191,7 +203,6 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				OPTIMIZATION_CFLAGS = "-O0";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;

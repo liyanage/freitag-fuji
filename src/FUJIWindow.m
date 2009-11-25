@@ -49,7 +49,7 @@
 	unichar firstInputChar = [[theEvent characters] characterAtIndex:0];
 
 	// turn table special signaling
-	unichar specialKeys[] = {NSF1FunctionKey, NSF2FunctionKey, NSF3FunctionKey, 0};
+	unichar specialKeys[] = {NSF1FunctionKey, NSF2FunctionKey, 0};
 	int i = 0;
 	while (specialKeys[i]) {
 		if (firstInputChar == specialKeys[i]) {
