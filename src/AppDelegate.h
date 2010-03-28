@@ -84,7 +84,7 @@
 	NSMutableDictionary *turntableImages;
 	
 	unsigned int turntableProductPhotoCount;
-	
+	NSUInteger modelArrayOffset;
 }
 
 
@@ -119,6 +119,7 @@
 - (void)runStartState;
 - (void)setStartState;
 - (void)setupModelsPanel;
+- (void)updateModelsPanel;
 - (void)setupPeoplePanel;
 - (void)setupColorsPanel;
 - (void)setupStylesPanel;

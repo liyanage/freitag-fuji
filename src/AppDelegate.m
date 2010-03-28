@@ -3,6 +3,7 @@
 @implementation AppDelegate
 
 - (void)awakeFromNib {
+	NSLog(@"awake");
 	weightNumberCharacterSkipSet = [[[NSCharacterSet characterSetWithCharactersInString:@"01234567890."] invertedSet] retain];
 	[self setValue:[NSNumber numberWithBool:YES] forKey:@"shouldCaptureBagPhoto"];
 	[self setValue:[NSNumber numberWithInt:TURNTABLE_THUMBNAIL_COUNT] forKey:@"turntableProductPhotoCount"];
@@ -80,21 +81,70 @@
 
 
 - (void)setupModelsPanel {
+	modelArrayOffset = 0;
+	[self updateModelsPanel];
+}
+
+
+- (void)updateModelsPanel
+{
 	NSArray *cells = [modelsMatrix cells];
 	NSArray *models = [serverConfig valueForKey:@"models"];
-	
-	int i = 0;
-	for (i = 0; i < [cells count]; i++) {
-		id cell = [cells objectAtIndex:i];
-		if (i >= [models count]) {
+//	int cellIndex = 0;
+//	int modelIndex = modelArrayOffset;
+
+	int modelIndex = modelArrayOffset;
+	for (int cellIndex = 0; cellIndex < [cells count]; cellIndex++, modelIndex++) {
+		id cell = [cells objectAtIndex:cellIndex];
+		[cell setEnabled:YES];
+		[cell setTarget:nil];
+		[cell setAction:NULL];
+		if (cellIndex == 0 && modelArrayOffset > 0) {
+			[cell setTitle:@"\u2190"];
+			[cell setTarget:self];
+			[cell setAction:@selector(modelMatrixPreviousPage:)];
+			cellIndex++;
+			cell = [cells objectAtIndex:cellIndex];
+		}
+		if (modelIndex >= [models count]) {
 			[cell setEnabled:NO];
 			[cell setTitle:@""];
 			continue;
 		}
-		id model = [models objectAtIndex:i];
+		BOOL lastCell = cellIndex == [cells count] - 1;
+		if (lastCell && [models count] - 1 > modelIndex) {
+			[cell setTitle:@"\u2192"];
+			[cell setTarget:self];
+			[cell setAction:@selector(modelMatrixNextPage:)];
+			continue; // should be last iteration
+		}
+		id model = [models objectAtIndex:modelIndex];
 		[cell setTitle:[model valueForKey:@"name"]];
 		[cell setRepresentedObject:model];
 	}
+}
+
+
+- (IBAction)modelMatrixNextPage:(NSButtonCell *)sender
+{
+	if (modelArrayOffset == 0) {
+		modelArrayOffset += [[modelsMatrix cells] count] - 1;
+	} else {
+		modelArrayOffset += [[modelsMatrix cells] count] - 2;
+	}
+	[self updateModelsPanel];
+}
+
+
+- (IBAction)modelMatrixPreviousPage:(NSButtonCell *)sender
+{
+
+	if (modelArrayOffset > [[modelsMatrix cells] count] - 1) {
+		modelArrayOffset -= [[modelsMatrix cells] count] - 2;
+	} else {
+		modelArrayOffset -= [[modelsMatrix cells] count] - 1;
+	}
+	[self updateModelsPanel];
 }
 
 
