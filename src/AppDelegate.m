@@ -438,6 +438,9 @@
 	[boxView replaceSubview:oldView with:newView];
 	currentPanelView = newView;
 	[newView setFrame:oldRect];
+	if ([panelName isEqualToString:@"weight"]) {
+		[[weightField window] makeFirstResponder:weightField];
+	}
 //	[newView setNeedsDisplay:YES];
 //	[mainWindow update];
 //	[[NSApplication sharedApplication] updateWindows];

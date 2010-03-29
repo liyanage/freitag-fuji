@@ -3,7 +3,7 @@
   <url>
     <item>
       <id>action</id>
-      <url>http://localhost/</url>
+      <url>http://localhost/freitag-fuji/example-server-success-response.xml</url>
 <!--      <url>http://betabong.kicks-ass.net/fuji/_communication/action.php</url>-->
     </item>
     <item>
@@ -190,8 +190,25 @@
       <Description>Es werden 16 Drehtisch Fotos pro Produkt erfasst.</Description>
     </item>
   </action>
-  <mode>0</mode>
+  <mode>1</mode>
   <state>success</state>
+  <color>
+  	<item>
+  		<id>1</id>
+  		<Name>red</Name>
+  		<HexValue>ff0000</HexValue>
+  		<r>1.0</r>
+  		<g>0.0</g>
+  		<b>0.0</b>
+  	</item>
+  </color>
+  <style>
+  	<item>
+  		<id>123</id>
+  		<Name>test style</Name>
+  	</item>
+  </style>
+  
   <model>
   	<item>
   		<id>0x</id>
